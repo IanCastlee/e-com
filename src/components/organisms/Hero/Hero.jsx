@@ -101,17 +101,17 @@ export function Hero({
                   variant="primary"
                   size="lg"
                   to={primaryCta.path}
-                  leftIcon={primaryCta.icon || 'LayoutGrid'}
+                  rightIcon={primaryCta.icon || 'ArrowUpRight'}
                 >
                   {primaryCta.label}
                 </Button>
               )}
               {secondaryCta && (
                 <Button
-                  variant="outline"
+                  variant="white"
                   size="lg"
                   to={secondaryCta.path}
-                  rightIcon={secondaryCta.icon || 'ArrowUpRight'}
+                  leftIcon={secondaryCta.icon || 'LayoutGrid'}
                 >
                   {secondaryCta.label}
                 </Button>

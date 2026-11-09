@@ -12,6 +12,8 @@ const VARIANT_CLASSES = {
     'bg-navy-900 hover:bg-navy-800 text-white dark:bg-white dark:text-navy-950 dark:hover:bg-navy-100 shadow-sm focus-visible:ring-navy-500 border border-transparent',
   outline:
     'bg-transparent hover:bg-brand-50/70 dark:hover:bg-navy-800/80 text-navy-800 dark:text-navy-100 border border-navy-300 dark:border-navy-700 hover:border-brand-500 dark:hover:border-brand-400 focus-visible:ring-brand-500',
+  white:
+    'bg-white hover:bg-navy-50 text-navy-900 border border-navy-200/90 dark:bg-navy-900 dark:text-white dark:border-navy-700 shadow-soft focus-visible:ring-brand-500',
   ghost:
     'bg-transparent hover:bg-navy-100 dark:hover:bg-navy-800/70 text-navy-700 dark:text-navy-200 border border-transparent focus-visible:ring-brand-500',
   accent:
@@ -105,7 +107,7 @@ export function Button({
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'ghost', 'accent']),
+  variant: PropTypes.oneOf(['primary', 'secondary', 'outline', 'white', 'ghost', 'accent']),
   size: PropTypes.oneOf(['sm', 'md', 'lg']),
   to: PropTypes.string,
   href: PropTypes.string,

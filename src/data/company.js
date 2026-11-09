@@ -19,14 +19,14 @@ export const heroData = {
   subheadline:
     'e-yhan is a Bicolano web engineering studio building high-converting ready-made and custom websites for resorts, communities, schools, cafes, and growing businesses locally and worldwide.',
   primaryCta: {
-    label: 'Explore Website Catalog',
-    path: '/portfolio',
-    icon: 'LayoutGrid',
-  },
-  secondaryCta: {
     label: 'Get a Custom Website',
     path: '/contact',
     icon: 'ArrowUpRight',
+  },
+  secondaryCta: {
+    label: 'Explore Website Catalog',
+    path: '/portfolio',
+    icon: 'LayoutGrid',
   },
   trustBadges: [
     { icon: 'ShieldCheck', label: '99.9% Uptime Cloud Architecture' },
