@@ -26,8 +26,31 @@ export function Hero({
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
+  const [touchStartX, setTouchStartX] = useState(null);
 
   const total = localWebsites.length;
+
+  // Touch swipe support for smooth mobile swiping
+  const handleTouchStart = (e) => {
+    if (e.touches && e.touches.length > 0) {
+      setTouchStartX(e.touches[0].clientX);
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX === null) return;
+    if (e.changedTouches && e.changedTouches.length > 0) {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (diff > 45) {
+        // Swiped left -> next
+        setCurrentIndex((prev) => (prev + 1) % total);
+      } else if (diff < -45) {
+        // Swiped right -> prev
+        setCurrentIndex((prev) => (prev - 1 + total) % total);
+      }
+    }
+    setTouchStartX(null);
+  };
 
   // Auto-scroll through thumbnails every 4 seconds
   useEffect(() => {
@@ -143,14 +166,18 @@ export function Hero({
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
-            <div className="relative mx-auto w-full max-w-lg lg:max-w-none h-[440px] sm:h-[490px] flex items-center justify-center select-none">
+            <div
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+              className="relative mx-auto w-full max-w-lg lg:max-w-none min-h-[440px] sm:min-h-[470px] md:h-[490px] flex items-center justify-center select-none px-2 sm:px-0"
+            >
               {/* Radial Ambient Lighting Behind Center */}
               <div
                 className="absolute inset-x-10 inset-y-10 rounded-full bg-brand-500/15 blur-3xl pointer-events-none"
                 aria-hidden="true"
               />
 
-              {/* Left Flanking Card (Sharp, No Blur, Full Image Display) */}
+              {/* Left Flanking Card (Desktop Only - Sharp, No Blur, Full Image Display) */}
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
@@ -189,7 +216,7 @@ export function Hero({
                 </div>
               )}
 
-              {/* Right Flanking Card (Sharp, No Blur, Full Image Display) */}
+              {/* Right Flanking Card (Desktop Only - Sharp, No Blur, Full Image Display) */}
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
@@ -228,16 +255,16 @@ export function Hero({
                 </div>
               )}
 
-              {/* Center Active Focal Card (Sharp, Full Image, Explore Website CTA) */}
+              {/* Center Active Focal Card (Mobile & Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-[300px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                <div className="relative w-full max-w-[340px] xs:max-w-[360px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Top Bar: Category Pill & Slide Counter */}
                   <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
                       <Icon name="Sparkles" size="xs" />
-                      {currentItem.website.categoryName}
+                      <span className="truncate max-w-[150px] sm:max-w-none">{currentItem.website.categoryName}</span>
                     </span>
-                    <span className="text-[11px] font-mono font-bold text-navy-200 px-2.5 py-1 rounded-full bg-navy-800/80 border border-white/10">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-navy-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-navy-800/80 border border-white/10">
                       {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
                     </span>
                   </div>
@@ -245,7 +272,7 @@ export function Hero({
                   {/* Dedicated Full Image Screen Showcase — Completely Sharp & Uncropped */}
                   <Link
                     to={`/portfolio/${currentItem.website.slug}`}
-                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/80 border border-white/15 shadow-inner flex items-center justify-center p-2 group-hover:border-brand-400/50 transition-colors duration-300 cursor-pointer"
+                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/90 border border-white/15 shadow-inner flex items-center justify-center p-1.5 sm:p-2 group-hover:border-brand-400/50 transition-colors duration-300 cursor-pointer"
                     title={`View ${currentItem.website.title}`}
                   >
                     <img
@@ -257,7 +284,7 @@ export function Hero({
                   </Link>
 
                   {/* Card Content & Action Button */}
-                  <div className="mt-3.5 text-center flex flex-col items-center">
+                  <div className="mt-3 sm:mt-3.5 text-center flex flex-col items-center">
                     <Link
                       to={`/portfolio/${currentItem.website.slug}`}
                       className="hover:text-brand-400 transition-colors"
@@ -271,27 +298,27 @@ export function Hero({
                       {currentItem.website.shortDescription}
                     </p>
 
-                    {/* Explore Website Catalog White Button (Moved to Card Carousel) */}
-                    <div className="mt-4">
+                    {/* Explore Website Catalog White Button (Full Width on Mobile, Auto on Desktop) */}
+                    <div className="mt-3.5 sm:mt-4 w-full flex justify-center">
                       <Link
                         to="/portfolio"
-                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white hover:bg-brand-50 text-navy-950 font-bold text-xs sm:text-sm shadow-md hover:shadow-glow transition-all active:scale-95"
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 rounded-xl bg-white hover:bg-brand-50 text-navy-950 font-bold text-xs sm:text-sm shadow-md hover:shadow-glow transition-all active:scale-95"
                       >
-                        <Icon name="LayoutGrid" size="xs" className="text-brand-600" />
-                        <span>Explore Website Catalog</span>
-                        <Icon name="ArrowUpRight" size="xs" />
+                        <Icon name="LayoutGrid" size="xs" className="text-brand-600 shrink-0" />
+                        <span className="truncate">Explore Website Catalog</span>
+                        <Icon name="ArrowUpRight" size="xs" className="shrink-0" />
                       </Link>
                     </div>
                   </div>
                 </div>
               )}
 
-              {/* Navigation Arrows for manual control */}
+              {/* Floating Desktop-only Navigation Arrows (Hidden on Mobile to Prevent Overlap) */}
               <button
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + total) % total)}
                 aria-label="Previous website showcase"
-                className="absolute left-1 sm:-left-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-navy-900/90 hover:bg-brand-600 text-white border border-white/20 shadow-lg flex items-center justify-center transition-all"
+                className="hidden sm:flex absolute -left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-navy-900/90 hover:bg-brand-600 text-white border border-white/20 shadow-lg items-center justify-center transition-all"
               >
                 <Icon name="ChevronLeft" size="sm" />
               </button>
@@ -299,25 +326,48 @@ export function Hero({
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % total)}
                 aria-label="Next website showcase"
-                className="absolute right-1 sm:-right-3 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-navy-900/90 hover:bg-brand-600 text-white border border-white/20 shadow-lg flex items-center justify-center transition-all"
+                className="hidden sm:flex absolute -right-3 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-navy-900/90 hover:bg-brand-600 text-white border border-white/20 shadow-lg items-center justify-center transition-all"
               >
                 <Icon name="ChevronRight" size="sm" />
               </button>
             </div>
 
-            {/* Slider Dots Indicator */}
-            <div className="mt-4 flex items-center justify-center gap-2">
-              {localWebsites.map((_, dotIdx) => (
-                <button
-                  key={dotIdx}
-                  type="button"
-                  onClick={() => setCurrentIndex(dotIdx)}
-                  aria-label={`Go to slide ${dotIdx + 1}`}
-                  className={`h-2 rounded-full transition-all duration-300 ${
-                    currentIndex === dotIdx ? 'w-7 bg-brand-500' : 'w-2 bg-navy-300 dark:bg-navy-700'
-                  }`}
-                />
-              ))}
+            {/* Navigation Controls: Mobile Prev/Next Arrows + Dots Indicator */}
+            <div className="mt-4 sm:mt-5 flex items-center justify-center gap-3">
+              {/* Mobile Prev Arrow Button */}
+              <button
+                type="button"
+                onClick={() => setCurrentIndex((prev) => (prev - 1 + total) % total)}
+                aria-label="Previous website showcase"
+                className="sm:hidden w-8 h-8 rounded-full bg-navy-900/90 active:bg-brand-600 text-white border border-white/20 shadow-sm flex items-center justify-center transition-all active:scale-90"
+              >
+                <Icon name="ChevronLeft" size="xs" />
+              </button>
+
+              {/* Slider Dots Indicator */}
+              <div className="flex items-center gap-1.5 px-1">
+                {localWebsites.map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    type="button"
+                    onClick={() => setCurrentIndex(dotIdx)}
+                    aria-label={`Go to slide ${dotIdx + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      currentIndex === dotIdx ? 'w-6 sm:w-7 bg-brand-500' : 'w-2 bg-navy-300 dark:bg-navy-700'
+                    }`}
+                  />
+                ))}
+              </div>
+
+              {/* Mobile Next Arrow Button */}
+              <button
+                type="button"
+                onClick={() => setCurrentIndex((prev) => (prev + 1) % total)}
+                aria-label="Next website showcase"
+                className="sm:hidden w-8 h-8 rounded-full bg-navy-900/90 active:bg-brand-600 text-white border border-white/20 shadow-sm flex items-center justify-center transition-all active:scale-90"
+              >
+                <Icon name="ChevronRight" size="xs" />
+              </button>
             </div>
           </motion.div>
         </div>
