@@ -243,32 +243,42 @@ export function Hero({
                   </div>
 
                   {/* Dedicated Full Image Screen Showcase — Completely Sharp & Uncropped */}
-                  <div className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/80 border border-white/15 shadow-inner flex items-center justify-center p-2 group-hover:border-brand-400/50 transition-colors duration-300">
+                  <Link
+                    to={`/portfolio/${currentItem.website.slug}`}
+                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/80 border border-white/15 shadow-inner flex items-center justify-center p-2 group-hover:border-brand-400/50 transition-colors duration-300 cursor-pointer"
+                    title={`View ${currentItem.website.title}`}
+                  >
                     <img
                       src={currentItem.website.thumbnail}
                       alt={currentItem.website.title}
                       className="w-full h-full object-contain drop-shadow-md transform group-hover:scale-[1.02] transition-transform duration-500"
                       loading="eager"
                     />
-                  </div>
+                  </Link>
 
                   {/* Card Content & Action Button */}
                   <div className="mt-3.5 text-center flex flex-col items-center">
-                    <h3 className="font-display font-bold text-base sm:text-lg md:text-xl text-white tracking-tight leading-snug line-clamp-1">
-                      {currentItem.website.title}
-                    </h3>
+                    <Link
+                      to={`/portfolio/${currentItem.website.slug}`}
+                      className="hover:text-brand-400 transition-colors"
+                    >
+                      <h3 className="font-display font-bold text-base sm:text-lg md:text-xl text-white tracking-tight leading-snug line-clamp-1">
+                        {currentItem.website.title}
+                      </h3>
+                    </Link>
 
                     <p className="mt-1 text-xs sm:text-sm text-navy-200 line-clamp-2 leading-relaxed px-1">
                       {currentItem.website.shortDescription}
                     </p>
 
-                    {/* Explore Website CTA */}
+                    {/* Explore Website Catalog White Button (Moved to Card Carousel) */}
                     <div className="mt-4">
                       <Link
-                        to={`/portfolio/${currentItem.website.slug}`}
-                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-navy-950 font-bold text-xs sm:text-sm shadow-glow transition-all active:scale-95"
+                        to="/portfolio"
+                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-white hover:bg-brand-50 text-navy-950 font-bold text-xs sm:text-sm shadow-md hover:shadow-glow transition-all active:scale-95"
                       >
-                        <span>Explore Website</span>
+                        <Icon name="LayoutGrid" size="xs" className="text-brand-600" />
+                        <span>Explore Website Catalog</span>
                         <Icon name="ArrowUpRight" size="xs" />
                       </Link>
                     </div>
