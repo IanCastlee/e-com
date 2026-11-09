@@ -19,7 +19,7 @@ export function NotFound({
       seoTitle="404 Page Not Found | e-yhan Digital Solutions"
       showPageHeader={false}
     >
-      <section className="py-20 sm:py-32 max-w-3xl mx-auto px-[5px] sm:px-6 lg:px-8 text-center">
+      <section className="py-20 sm:py-32 max-w-3xl mx-auto px-3.5 sm:px-6 lg:px-8 text-center">
         <div className="p-8 sm:p-14 rounded-3xl bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-elevated space-y-6">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-50 dark:bg-brand-950 text-brand-600 dark:text-brand-400">
             <Icon name="Compass" size="xl" />

@@ -67,7 +67,7 @@ export function Home() {
 
       {/* 2. Enterprise Engineering Pillars */}
       <section className="py-12 sm:py-16 bg-white dark:bg-navy-900 border-b border-navy-200/70 dark:border-navy-800/80">
-        <div className="max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {companyHighlights.map((pillar) => (
               <div

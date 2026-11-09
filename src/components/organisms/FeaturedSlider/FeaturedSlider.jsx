@@ -45,7 +45,7 @@ export function FeaturedSlider({
         className
       )}
     >
-      <div className="max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
           <SectionTitle
             eyebrow={eyebrow}

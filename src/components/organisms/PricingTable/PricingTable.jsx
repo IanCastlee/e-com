@@ -20,7 +20,7 @@ export function PricingTable({
 
   return (
     <section className={cn('py-16 sm:py-24', className)}>
-      <div className="max-w-6xl mx-auto px-[5px] sm:px-6 lg:px-8">
+      <div className="max-w-6xl mx-auto px-3.5 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center">
           {sectionHeader && (
             <SectionTitle
