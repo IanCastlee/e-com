@@ -23,7 +23,11 @@ export const heroData = {
     path: '/contact',
     icon: 'ArrowUpRight',
   },
-  secondaryCta: null,
+  secondaryCta: {
+    label: 'Explore Website Catalog',
+    path: '/portfolio',
+    icon: 'LayoutGrid',
+  },
   trustBadges: [
     { icon: 'ShieldCheck', label: '99.9% Uptime Cloud Architecture' },
     { icon: 'Smartphone', label: '100% Mobile-First & Responsive' },

@@ -298,14 +298,13 @@ export function Hero({
                       {currentItem.website.shortDescription}
                     </p>
 
-                    {/* Explore Website Catalog White Button (Full Width on Mobile, Auto on Desktop) */}
+                    {/* Card Action Button: Frosted Glass Button for the Specific Template */}
                     <div className="mt-3.5 sm:mt-4 w-full flex justify-center">
                       <Link
-                        to="/portfolio"
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-2.5 sm:px-6 rounded-xl bg-white hover:bg-brand-50 text-navy-950 font-bold text-xs sm:text-sm shadow-md hover:shadow-glow transition-all active:scale-95"
+                        to={`/portfolio/${currentItem.website.slug}`}
+                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white text-white hover:text-navy-950 border border-white/20 hover:border-white font-bold text-xs sm:text-sm backdrop-blur-md shadow-soft hover:shadow-glow transition-all duration-300 active:scale-95"
                       >
-                        <Icon name="LayoutGrid" size="xs" className="text-brand-600 shrink-0" />
-                        <span className="truncate">Explore Website Catalog</span>
+                        <span>Explore This Template</span>
                         <Icon name="ArrowUpRight" size="xs" className="shrink-0" />
                       </Link>
                     </div>
