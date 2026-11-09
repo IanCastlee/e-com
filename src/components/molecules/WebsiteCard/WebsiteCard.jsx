@@ -49,6 +49,13 @@ export function WebsiteCard({
             className="w-full h-full object-contain rounded-none transform group-hover:scale-[1.03] transition-transform duration-500"
           />
         </Link>
+
+        {/* Free Customization Badge */}
+        <div className="absolute top-3 left-3 pointer-events-none">
+          <Badge variant="accent" size="sm" icon="Sparkles" className="shadow-md bg-accent-400 text-navy-950 font-bold border-amber-300">
+            Free Customization
+          </Badge>
+        </div>
       </div>
 
       {/* Card Body */}

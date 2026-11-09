@@ -41,8 +41,8 @@ export const heroData = {
     floatingBottomSubtitle: 'Built with React, Tailwind CSS & Enterprise SEO',
   },
   companyStats: [
-    { value: '$55–$180', label: 'Static Website (₱3k–₱10k)', detail: 'Output first before payment' },
-    { value: '$215–$1,450', label: 'With Database (₱12k–₱80k)', detail: 'Min. $90 (₱5k) downpayment' },
+    { value: '100% Free', label: 'Customization Included', detail: 'Tailored based on user needs' },
+    { value: 'Direct Support', label: 'Developer Consultation', detail: 'No middlemen or agency bloat' },
     { value: '2–7 Days', label: 'Fast Turnaround', detail: 'From inquiry to live domain' },
     { value: '98/100', label: 'Performance Score', detail: 'Fast Core Web Vitals' },
   ],

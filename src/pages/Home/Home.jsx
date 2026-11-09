@@ -40,6 +40,11 @@ export function Home() {
 
   const flagshipSite = featuredWebsites[0] || websites[0];
 
+  const localShowcaseWebsites = useMemo(
+    () => websites.filter((site) => site.thumbnail && site.thumbnail.startsWith('/')),
+    []
+  );
+
   return (
     <PageLayout
       seoTitle="e-yhan | Ready-Made & Custom Websites — Bulusan, Sorsogon"
@@ -57,7 +62,7 @@ export function Home() {
         secondaryCta={heroData.secondaryCta}
         trustBadges={heroData.trustBadges}
         companyStats={heroData.companyStats}
-        heroImage={heroData.heroImage}
+        showcaseWebsites={localShowcaseWebsites}
       />
 
       {/* 2. Enterprise Engineering Pillars */}
