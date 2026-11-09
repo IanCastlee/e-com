@@ -78,7 +78,7 @@ export function Contact() {
         { label: 'Contact Us' },
       ]}
     >
-      <section className="py-12 sm:py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-12 sm:py-16 max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Column: Contact Form Organism */}
           <div className="lg:col-span-7">

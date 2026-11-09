@@ -85,7 +85,7 @@ export function Hero({
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           {/* Left Copy Column */}
           <motion.div
@@ -257,7 +257,7 @@ export function Hero({
 
               {/* Center Active Focal Card (Mobile & Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] xs:max-w-[360px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                <div className="relative w-full max-w-[420px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Top Bar: Category Pill & Slide Counter */}
                   <div className="flex items-center justify-between mb-3">
                     <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">

@@ -45,7 +45,7 @@ export function About() {
       footerBannerSlot={<CTABanner {...ctaBannerData} />}
     >
       {/* 1. Mission, Vision & Founder Profile */}
-      <section className="py-14 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+      <section className="py-14 sm:py-20 max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8 space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           {/* Mission & Vision Column */}
           <div className="lg:col-span-6 flex flex-col justify-between gap-6">
@@ -140,7 +140,7 @@ export function About() {
 
       {/* 3. Core Engineering Values */}
       <section className="py-16 sm:py-20 bg-white dark:bg-navy-900/60 border-y border-navy-200/70 dark:border-navy-800/80">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8">
           <SectionTitle
             eyebrow="Our Guiding Principles"
             eyebrowIcon="HeartHandshake"
@@ -170,7 +170,7 @@ export function About() {
       </section>
 
       {/* 4. Technical Stack & Capabilities */}
-      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 sm:py-20 max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8">
         <SectionTitle
           eyebrow="Technical Capabilities"
           eyebrowIcon="Cpu"

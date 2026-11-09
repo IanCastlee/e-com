@@ -48,7 +48,7 @@ export function CategoryPage() {
           { label: 'Not Found' },
         ]}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center">
+        <div className="max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8 py-16 text-center">
           <Button variant="primary" size="lg" to="/portfolio" leftIcon="LayoutGrid">
             Browse All Website Categories
           </Button>
@@ -82,9 +82,9 @@ export function CategoryPage() {
       }
       footerBannerSlot={<CTABanner {...ctaBannerData} />}
     >
-      <section className="py-10 sm:py-14 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+      <section className="py-10 sm:py-14 max-w-7xl mx-auto px-[5px] sm:px-6 lg:px-8 space-y-8">
         {/* Search & Sort Controls */}
-        <div className="p-4 sm:p-6 rounded-3xl bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-soft flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+        <div className="p-2.5 sm:p-6 rounded-3xl bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-soft flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
           <div className="w-full md:max-w-md">
             <SearchBar
               value={searchQuery}

@@ -16,7 +16,7 @@ export function CTABanner({
   className = '',
 }) {
   return (
-    <section className={cn('py-14 sm:py-20 px-4 sm:px-6 lg:px-8', className)}>
+    <section className={cn('py-14 sm:py-20 px-[5px] sm:px-6 lg:px-8', className)}>
       <div className="max-w-7xl mx-auto">
         <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-navy-900 via-brand-950 to-navy-950 text-white px-6 py-12 sm:px-12 sm:py-16 shadow-elevated border border-brand-800/50 text-center">
           <div

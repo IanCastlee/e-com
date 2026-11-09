@@ -103,7 +103,7 @@ export function WebsiteGrid({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-navy-950/80 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-[5px] sm:p-6 bg-navy-950/80 backdrop-blur-sm"
             onClick={() => setPreviewSite(null)}
             role="dialog"
             aria-modal="true"
