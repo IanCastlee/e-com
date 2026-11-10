@@ -1,42 +1,29 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Button, Icon, Badge, Heading, Text, Tag } from '../../atoms';
-import { SectionTitle, PriceTag } from '../../molecules';
+import { Link } from 'react-router-dom';
+import { Button, Icon, Tag } from '../../atoms';
+import { SectionTitle } from '../../molecules';
 import { cn } from '../../../utils/formatters';
 
 /**
  * Organism: FeaturedSlider
- * Interactive spotlight carousel showcasing featured ready-made website systems.
+ * Feed-style responsive showcase of featured website solutions.
+ * Caps at max 6 items and conditionally displays a "View All" button.
  */
 export function FeaturedSlider({
   websites = [],
   eyebrow = 'Curated Web Solutions',
   title = 'Featured Websites for Your Business',
-  subtitle = 'Production-tested digital solutions ready to be customized with your brand, pricing, and domain.',
-  viewAllLabel = 'Browse All Websites',
+  subtitle = 'Pick a website design that fits your brand. Free logo, colors, and content customization included — inspect the working live preview before paying.',
+  viewAllLabel = 'View All Websites in Catalog',
   viewAllPath = '/portfolio',
-  requestLabel = 'Get This Website',
-  detailsLabel = 'Details',
+  maxItems = 6,
   className = '',
 }) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  if (!websites || websites.length === 0) return null;
 
-  const total = websites.length;
-
-  const handlePrev = useCallback(() => {
-    if (!total) return;
-    setActiveIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
-
-  const handleNext = useCallback(() => {
-    if (!total) return;
-    setActiveIndex((prev) => (prev + 1) % total);
-  }, [total]);
-
-  if (!total) return null;
-
-  const currentSite = websites[activeIndex] || websites[0];
+  const displayWebsites = websites.slice(0, maxItems);
+  const hasMoreThanSix = websites.length > maxItems;
 
   return (
     <section
@@ -56,161 +43,138 @@ export function FeaturedSlider({
             className="!mb-0"
           />
 
-          {/* Slider Controls */}
-          <div className="flex items-center gap-3 shrink-0">
-            <button
-              type="button"
-              onClick={handlePrev}
-              aria-label="Previous featured website"
-              className="w-10 h-10 rounded-[5px] border border-navy-200/90 dark:border-navy-700 bg-white dark:bg-navy-900 text-navy-800 dark:text-white hover:bg-brand-50 dark:hover:bg-navy-800 flex items-center justify-center shadow-sm transition-all"
-            >
-              <Icon name="ChevronLeft" size="sm" />
-            </button>
-            <span className="text-xs font-semibold text-navy-600 dark:text-navy-300 px-2 font-mono">
-              {String(activeIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+          <div className="hidden md:flex items-center gap-2 shrink-0">
+            <span className="text-xs font-semibold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-3 py-1 rounded-[5px] border border-brand-500/20">
+              Showing {displayWebsites.length} of {websites.length} Designs
             </span>
-            <button
-              type="button"
-              onClick={handleNext}
-              aria-label="Next featured website"
-              className="w-10 h-10 rounded-[5px] border border-navy-200/90 dark:border-navy-700 bg-white dark:bg-navy-900 text-navy-800 dark:text-white hover:bg-brand-50 dark:hover:bg-navy-800 flex items-center justify-center shadow-sm transition-all"
+            <Button
+              variant="outline"
+              size="sm"
+              to={viewAllPath}
+              rightIcon="ArrowUpRight"
+              className="rounded-[5px] border-navy-200 dark:border-navy-700 text-navy-800 dark:text-white hover:bg-navy-50 dark:hover:bg-navy-900"
             >
-              <Icon name="ChevronRight" size="sm" />
-            </button>
+              Browse All
+            </Button>
           </div>
         </div>
 
-        {/* Main Active Slide Showcase */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentSite.id}
-            initial={{ opacity: 0, x: 18 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -18 }}
-            transition={{ duration: 0.28 }}
-            className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-10 items-center bg-navy-50/70 dark:bg-navy-900/60 border border-navy-200/90 dark:border-navy-700/80 rounded-[5px] p-4 sm:p-7 lg:p-10 shadow-soft dark:shadow-elevated"
-          >
-            {/* Left Image Preview */}
-            <div className="lg:col-span-7 overflow-hidden rounded-[5px] border border-navy-200/80 dark:border-navy-700 bg-white dark:bg-navy-950 p-2 sm:p-3 flex items-center justify-center">
-              <img
-                src={currentSite.thumbnail}
-                alt={currentSite.title}
-                className="w-full h-auto max-h-[380px] sm:max-h-[440px] object-contain rounded-[5px]"
-              />
-            </div>
-
-            {/* Right Specification Details */}
-            <div className="lg:col-span-5 space-y-4 sm:space-y-5">
-              <div className="flex flex-wrap items-center gap-2">
-                <Badge variant="brand" size="sm" className="rounded-[5px]">
-                  {currentSite.categoryName}
-                </Badge>
-                {currentSite.turnaround && (
-                  <Badge variant="accent" size="sm" icon="Clock" className="rounded-[5px]">
-                    {currentSite.turnaround}
-                  </Badge>
-                )}
+        {/* Feed-Style Cards Grid (Mobile 1 col feed, Tablet 2 cols, Desktop 3 cols) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+          {displayWebsites.map((site, idx) => (
+            <div
+              key={site.id}
+              className="rounded-[5px] p-4 bg-white dark:bg-navy-900/90 border border-navy-200/90 dark:border-brand-500/30 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
+            >
+              {/* Top Bar: Category Pill & Index Counter */}
+              <div className="flex items-center justify-between mb-2.5">
+                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[5px] text-[10px] font-semibold bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
+                  <Icon name="Sparkles" size="xs" />
+                  <span>{site.categoryName}</span>
+                </span>
+                <span className="text-[10px] font-mono font-bold text-navy-700 dark:text-navy-200 px-2 py-0.5 rounded-[5px] bg-navy-100 dark:bg-navy-800/80 border border-navy-200 dark:border-white/10">
+                  0{idx + 1} / 0{displayWebsites.length}
+                </span>
               </div>
 
-              <Heading as="h3" size="lg" className="text-navy-900 dark:text-white text-lg sm:text-2xl font-bold">
-                {currentSite.title}
-              </Heading>
+              {/* Website Preview Image Showcase with Free Customization Badge */}
+              <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-950 border border-navy-200/80 dark:border-white/15 flex items-center justify-center p-1.5 group-hover:border-brand-500/40 transition-colors">
+                {/* Free Customization Badge */}
+                <div className="absolute top-2 left-2 z-20 pointer-events-none">
+                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow border border-amber-300">
+                    <Icon name="Sparkles" size="xs" />
+                    <span>Free Customization</span>
+                  </span>
+                </div>
 
-              <Text size="sm" variant="muted" className="text-navy-600 dark:text-navy-300 text-xs sm:text-sm leading-relaxed">
-                {currentSite.description}
-              </Text>
-
-              {/* Key Features List */}
-              <ul className="space-y-2 pt-1">
-                {(currentSite.features || []).slice(0, 4).map((feat) => (
-                  <li key={feat} className="flex items-start gap-2 text-xs sm:text-sm text-navy-700 dark:text-navy-200">
-                    <Icon name="CheckCircle2" size="xs" className="text-brand-600 dark:text-brand-400 mt-0.5 shrink-0" />
-                    <span>{feat}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Tech Tags */}
-              <div className="flex flex-wrap gap-1.5 pt-1">
-                {(currentSite.techStack || []).map((tech) => (
-                  <Tag
-                    key={tech}
-                    label={tech}
-                    size="sm"
-                    className="bg-white dark:bg-navy-900/90 text-navy-700 dark:text-navy-200 border-navy-200/80 dark:border-navy-700 rounded-[5px]"
+                <Link
+                  to={`/portfolio/${site.slug}`}
+                  className="w-full h-full flex items-center justify-center cursor-pointer"
+                  title={`View ${site.title}`}
+                >
+                  <img
+                    src={site.thumbnail}
+                    alt={site.title}
+                    className="w-full h-full object-contain drop-shadow-md transform group-hover:scale-[1.02] transition-transform duration-500"
+                    loading="lazy"
                   />
-                ))}
+                </Link>
               </div>
 
-              {/* Price & Actions */}
-              <div className="pt-4 border-t border-navy-200/80 dark:border-navy-700/80 flex flex-wrap items-center justify-between gap-3 sm:gap-4">
-                <PriceTag
-                  amount={currentSite.price}
-                  size="md"
-                />
-                <div className="flex flex-wrap items-center gap-2 sm:gap-2.5">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    to={currentSite.demoUrl || `/portfolio/${currentSite.slug}`}
-                    leftIcon="Eye"
-                    className="rounded-[5px]"
+              {/* Card Content & Action Links */}
+              <div className="mt-3.5 flex flex-col flex-1 justify-between">
+                <div>
+                  <Link
+                    to={`/portfolio/${site.slug}`}
+                    className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                   >
-                    Live Preview
-                  </Button>
-                  <Button
-                    variant="primary"
-                    size="sm"
-                    to={`/portfolio/${currentSite.slug}`}
-                    rightIcon="ArrowRight"
-                    className="rounded-[5px]"
+                    <h3 className="font-display font-bold text-base sm:text-lg text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
+                      {site.title}
+                    </h3>
+                  </Link>
+
+                  <p className="mt-1 text-xs sm:text-sm text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
+                    {site.shortDescription}
+                  </p>
+
+                  {/* Tech Stack Pills */}
+                  {site.techStack && site.techStack.length > 0 && (
+                    <div className="flex flex-wrap gap-1 mt-2.5">
+                      {site.techStack.slice(0, 3).map((tech) => (
+                        <Tag
+                          key={tech}
+                          label={tech}
+                          size="sm"
+                          className="bg-navy-50 dark:bg-navy-800/80 text-navy-600 dark:text-navy-300 border-navy-200/70 dark:border-navy-700 text-[10px] py-0.5 rounded-[5px]"
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+
+                {/* Footer Actions: Live Preview & Details */}
+                <div className="mt-4 pt-3 border-t border-navy-100 dark:border-white/10 flex items-center justify-between">
+                  <a
+                    href={site.demoUrl || `/portfolio/${site.slug}`}
+                    target={site.demoUrl ? "_blank" : undefined}
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
                   >
-                    {detailsLabel}
-                  </Button>
-                  <Button
-                    variant="accent"
-                    size="sm"
-                    to={`/contact?website=${encodeURIComponent(currentSite.title)}&category=${encodeURIComponent(currentSite.categoryName)}`}
-                    className="rounded-[5px]"
+                    <Icon name="Eye" size="xs" />
+                    <span>Live Preview</span>
+                  </a>
+
+                  <Link
+                    to={`/portfolio/${site.slug}`}
+                    className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                   >
-                    {requestLabel}
-                  </Button>
+                    <span>Details</span>
+                    <Icon name="ArrowRight" size="xs" />
+                  </Link>
                 </div>
               </div>
             </div>
-          </motion.div>
-        </AnimatePresence>
-
-        {/* Bottom Selector Thumbnails & View All Link */}
-        <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-wrap items-center gap-2">
-            {websites.map((site, index) => (
-              <button
-                key={site.id}
-                type="button"
-                onClick={() => setActiveIndex(index)}
-                className={cn(
-                  'px-3 py-1.5 rounded-[5px] text-xs font-semibold transition-all duration-200 border',
-                  index === activeIndex
-                    ? 'bg-brand-600 text-white border-brand-500 shadow-sm'
-                    : 'bg-white dark:bg-navy-900/80 text-navy-700 dark:text-navy-300 border-navy-200 dark:border-navy-700 hover:text-navy-900 dark:hover:text-white hover:border-brand-500/50'
-                )}
-              >
-                {site.title}
-              </button>
-            ))}
-          </div>
-
-          <Button
-            variant="outline"
-            size="md"
-            to={viewAllPath}
-            rightIcon="ArrowUpRight"
-            className="rounded-[5px] border-navy-200 dark:border-navy-700 text-navy-800 dark:text-white hover:bg-navy-50 dark:hover:bg-navy-900 shrink-0"
-          >
-            {viewAllLabel}
-          </Button>
+          ))}
         </div>
+
+        {/* View All Button: Rendered if lumampas sa 6 (or when catalog has 5+) */}
+        {(hasMoreThanSix || websites.length >= 5) && (
+          <div className="mt-10 sm:mt-12 text-center flex flex-col items-center justify-center gap-2">
+            <Button
+              variant="primary"
+              size="lg"
+              to={viewAllPath}
+              leftIcon="LayoutGrid"
+              rightIcon="ArrowRight"
+              className="w-full sm:w-auto px-8 py-3.5 text-sm sm:text-base font-bold shadow-soft hover:shadow-glow rounded-[5px]"
+            >
+              {viewAllLabel}
+            </Button>
+            <span className="text-xs text-navy-500 dark:text-navy-400">
+              Explore all industry designs with instant live demos & free customization
+            </span>
+          </div>
+        )}
       </div>
     </section>
   );
@@ -223,8 +187,7 @@ FeaturedSlider.propTypes = {
   subtitle: PropTypes.string,
   viewAllLabel: PropTypes.string,
   viewAllPath: PropTypes.string,
-  requestLabel: PropTypes.string,
-  detailsLabel: PropTypes.string,
+  maxItems: PropTypes.number,
   className: PropTypes.string,
 };
 

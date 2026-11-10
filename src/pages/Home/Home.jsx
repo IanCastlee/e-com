@@ -67,7 +67,8 @@ export function Home() {
 
       {/* 2. Featured Websites Showcase (Immediate Product Visibility) */}
       <FeaturedSlider
-        websites={featuredWebsites}
+        websites={websites}
+        maxItems={6}
         eyebrow="Curated Website Solutions"
         title="Featured Websites for Your Business"
         subtitle="Pick a website design that fits your brand. Free logo, colors, and content customization included — inspect the working live preview before paying."

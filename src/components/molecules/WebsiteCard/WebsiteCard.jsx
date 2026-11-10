@@ -63,10 +63,11 @@ export function WebsiteCard({
         </Link>
 
         {/* Free Customization Badge */}
-        <div className="absolute top-3 left-3 pointer-events-none">
-          <Badge variant="accent" size="sm" icon="Sparkles" className="shadow-md bg-accent-400 text-navy-950 font-bold border-amber-300">
-            Free Customization
-          </Badge>
+        <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
+            <Icon name="Sparkles" size="xs" />
+            <span>Free Customization</span>
+          </span>
         </div>
       </div>
 

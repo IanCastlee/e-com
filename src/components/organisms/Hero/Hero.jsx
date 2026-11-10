@@ -257,18 +257,28 @@ export function Hero({
                   </div>
 
                   {/* Dedicated Full Image Screen Showcase — Completely Sharp & Uncropped */}
-                  <Link
-                    to={`/portfolio/${currentItem.website.slug}`}
-                    className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 shadow-inner flex items-center justify-center p-1.5 sm:p-2 group-hover:border-brand-400/50 transition-colors duration-300 cursor-pointer"
-                    title={`View ${currentItem.website.title}`}
-                  >
-                    <img
-                      src={currentItem.website.thumbnail}
-                      alt={currentItem.website.title}
-                      className="w-full h-full object-contain drop-shadow-md transform group-hover:scale-[1.02] transition-transform duration-500"
-                      loading="eager"
-                    />
-                  </Link>
+                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 shadow-inner flex items-center justify-center p-1.5 sm:p-2 group-hover:border-brand-400/50 transition-colors duration-300">
+                    {/* Free Customization Badge */}
+                    <div className="absolute top-2 left-2 z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
+                        <Icon name="Sparkles" size="xs" />
+                        <span>Free Customization</span>
+                      </span>
+                    </div>
+
+                    <Link
+                      to={`/portfolio/${currentItem.website.slug}`}
+                      className="w-full h-full flex items-center justify-center cursor-pointer"
+                      title={`View ${currentItem.website.title}`}
+                    >
+                      <img
+                        src={currentItem.website.thumbnail}
+                        alt={currentItem.website.title}
+                        className="w-full h-full object-contain drop-shadow-md transform group-hover:scale-[1.02] transition-transform duration-500"
+                        loading="eager"
+                      />
+                    </Link>
+                  </div>
 
                   {/* Card Content */}
                   <div className="mt-2.5 sm:mt-3.5 text-center flex flex-col items-center">
@@ -376,18 +386,28 @@ export function Hero({
                   </div>
 
                   {/* Website Preview Image Showcase */}
-                  <Link
-                    to={`/portfolio/${site.slug}`}
-                    className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 flex items-center justify-center p-1.5 active:scale-[0.98] transition-transform"
-                    title={`View ${site.title}`}
-                  >
-                    <img
-                      src={site.thumbnail}
-                      alt={site.title}
-                      className="w-full h-full object-contain drop-shadow-md"
-                      loading="lazy"
-                    />
-                  </Link>
+                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 flex items-center justify-center p-1.5 active:scale-[0.98] transition-transform">
+                    {/* Free Customization Badge */}
+                    <div className="absolute top-2 left-2 z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
+                        <Icon name="Sparkles" size="xs" />
+                        <span>Free Customization</span>
+                      </span>
+                    </div>
+
+                    <Link
+                      to={`/portfolio/${site.slug}`}
+                      className="w-full h-full flex items-center justify-center"
+                      title={`View ${site.title}`}
+                    >
+                      <img
+                        src={site.thumbnail}
+                        alt={site.title}
+                        className="w-full h-full object-contain drop-shadow-md"
+                        loading="lazy"
+                      />
+                    </Link>
+                  </div>
 
                   {/* Card Content & Action Link */}
                   <div className="mt-2.5">
