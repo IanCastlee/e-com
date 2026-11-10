@@ -8,3 +8,4 @@ export { Heading } from './Heading';
 export { Text } from './Text';
 export { Logo } from './Logo';
 export { Spinner } from './Spinner';
+export { Skeleton } from './Skeleton';

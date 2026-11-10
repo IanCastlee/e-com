@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Badge, Tag, Heading, Text, Button, Icon } from '../../atoms';
@@ -18,6 +18,8 @@ export function WebsiteCard({
   onPreviewDemo,
   className = '',
 }) {
+  const [imageLoaded, setImageLoaded] = useState(false);
+
   const {
     title,
     slug,
@@ -39,14 +41,24 @@ export function WebsiteCard({
         className
       )}
     >
-      {/* Thumbnail Preview Container */}
+      {/* Thumbnail Preview Container with Skeleton Placeholder */}
       <div className="relative aspect-[16/9] w-full overflow-hidden rounded-none bg-navy-100 dark:bg-navy-950 border-b border-navy-100 dark:border-navy-800 flex items-center justify-center">
-        <Link to={detailsPath} aria-label={title} className="flex items-center justify-center w-full h-full">
+        {!imageLoaded && (
+          <div className="absolute inset-0 bg-navy-200/70 dark:bg-navy-800/80 animate-pulse flex items-center justify-center pointer-events-none z-0">
+            <Icon name="Image" size="md" className="text-navy-300 dark:text-navy-600 animate-pulse" />
+          </div>
+        )}
+
+        <Link to={detailsPath} aria-label={title} className="flex items-center justify-center w-full h-full relative z-10">
           <img
             src={thumbnail}
             alt={`${title} website preview`}
             loading="lazy"
-            className="w-full h-full object-contain rounded-none transform group-hover:scale-[1.03] transition-transform duration-500"
+            onLoad={() => setImageLoaded(true)}
+            className={cn(
+              'w-full h-full object-contain rounded-none transform group-hover:scale-[1.03] transition-all duration-500',
+              imageLoaded ? 'opacity-100' : 'opacity-0'
+            )}
           />
         </Link>
 

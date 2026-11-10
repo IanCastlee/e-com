@@ -32,19 +32,43 @@ export function WebsiteGrid({
         {Array.from({ length: skeletonCount }).map((_, idx) => (
           <div
             key={`skeleton-${idx}`}
-            className="rounded-2xl bg-white dark:bg-navy-900 border border-navy-200/70 dark:border-navy-800 overflow-hidden shadow-soft animate-pulse"
+            className="flex flex-col rounded-2xl bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800/90 overflow-hidden shadow-soft animate-pulse"
           >
-            <div className="aspect-[16/10] w-full bg-navy-200 dark:bg-navy-800" />
-            <div className="p-6 space-y-4">
-              <div className="h-3 w-28 bg-navy-200 dark:bg-navy-800 rounded" />
-              <div className="h-5 w-3/4 bg-navy-200 dark:bg-navy-800 rounded" />
-              <div className="space-y-2">
-                <div className="h-3 w-full bg-navy-100 dark:bg-navy-800/70 rounded" />
-                <div className="h-3 w-5/6 bg-navy-100 dark:bg-navy-800/70 rounded" />
+            {/* Thumbnail Skeleton */}
+            <div className="relative aspect-[16/9] w-full bg-navy-200/80 dark:bg-navy-800 flex items-center justify-center border-b border-navy-100 dark:border-navy-800/80">
+              <Icon name="Image" size="md" className="text-navy-300 dark:text-navy-700" />
+              {/* Badge placeholder */}
+              <div className="absolute top-3 left-3 h-5 w-28 bg-navy-300/80 dark:bg-navy-700/80 rounded-full" />
+            </div>
+
+            {/* Card Body Skeleton */}
+            <div className="flex flex-col flex-1 p-5 sm:p-6 space-y-4">
+              {/* Title */}
+              <div className="h-5 w-3/4 bg-navy-200 dark:bg-navy-800 rounded-md" />
+
+              {/* Short Description */}
+              <div className="space-y-2 flex-1">
+                <div className="h-3.5 w-full bg-navy-100 dark:bg-navy-800/60 rounded" />
+                <div className="h-3.5 w-5/6 bg-navy-100 dark:bg-navy-800/60 rounded" />
               </div>
-              <div className="pt-4 border-t border-navy-100 dark:border-navy-800 flex items-center justify-between">
-                <div className="h-6 w-24 bg-navy-200 dark:bg-navy-800 rounded" />
-                <div className="h-9 w-28 bg-navy-200 dark:bg-navy-800 rounded-xl" />
+
+              {/* Tech Stack Pills */}
+              <div className="flex flex-wrap gap-1.5 pt-2">
+                <div className="h-5 w-16 bg-navy-100 dark:bg-navy-800/70 rounded-md" />
+                <div className="h-5 w-12 bg-navy-100 dark:bg-navy-800/70 rounded-md" />
+                <div className="h-5 w-20 bg-navy-100 dark:bg-navy-800/70 rounded-md" />
+              </div>
+
+              {/* Price & Action Footer */}
+              <div className="mt-4 pt-4 border-t border-navy-100 dark:border-navy-800/80 flex items-center justify-between gap-3">
+                <div className="space-y-1">
+                  <div className="h-2.5 w-14 bg-navy-200/70 dark:bg-navy-800/70 rounded" />
+                  <div className="h-5 w-20 bg-navy-200 dark:bg-navy-800 rounded-md" />
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="h-8 w-20 bg-navy-100 dark:bg-navy-800 rounded-xl" />
+                  <div className="h-8 w-16 bg-brand-500/20 dark:bg-brand-500/30 rounded-xl" />
+                </div>
               </div>
             </div>
           </div>

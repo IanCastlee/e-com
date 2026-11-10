@@ -30,10 +30,19 @@ export function WebsiteDetails() {
   }, [website]);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [mainImageLoaded, setMainImageLoaded] = useState(false);
 
   useEffect(() => {
     setActiveImageIndex(0);
+    setMainImageLoaded(false);
   }, [slug]);
+
+  const handleThumbnailClick = (idx) => {
+    if (idx !== activeImageIndex) {
+      setMainImageLoaded(false);
+      setActiveImageIndex(idx);
+    }
+  };
 
   const relatedWebsites = useMemo(() => {
     if (!website) return [];
@@ -96,13 +105,22 @@ export function WebsiteDetails() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Column: Gallery + Overview + Features + Tech Stack */}
           <div className="lg:col-span-8 space-y-10">
-            {/* Large Preview Gallery */}
+            {/* Large Preview Gallery with Skeleton Loader */}
             <div className="space-y-4">
-              <div className="rounded-none overflow-hidden border border-navy-200 dark:border-navy-800 bg-navy-100 dark:bg-navy-950 shadow-soft flex items-center justify-center">
+              <div className="relative min-h-[220px] sm:min-h-[380px] rounded-none overflow-hidden border border-navy-200 dark:border-navy-800 bg-navy-100 dark:bg-navy-950 shadow-soft flex items-center justify-center">
+                {!mainImageLoaded && (
+                  <div className="absolute inset-0 bg-navy-200/70 dark:bg-navy-800/80 animate-pulse flex items-center justify-center">
+                    <Icon name="Image" size="xl" className="text-navy-300 dark:text-navy-600 animate-pulse" />
+                  </div>
+                )}
                 <img
                   src={galleryImages[activeImageIndex] || website.thumbnail}
                   alt={`${website.title} preview screen ${activeImageIndex + 1}`}
-                  className="w-full h-auto object-contain rounded-none"
+                  onLoad={() => setMainImageLoaded(true)}
+                  className={cn(
+                    'w-full h-auto object-contain rounded-none transition-all duration-500',
+                    mainImageLoaded ? 'opacity-100' : 'opacity-0'
+                  )}
                 />
               </div>
 
@@ -112,7 +130,7 @@ export function WebsiteDetails() {
                     <button
                       key={`thumb-${idx}`}
                       type="button"
-                      onClick={() => setActiveImageIndex(idx)}
+                      onClick={() => handleThumbnailClick(idx)}
                       className={cn(
                         'rounded-none overflow-hidden border-2 transition-all focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500',
                         activeImageIndex === idx

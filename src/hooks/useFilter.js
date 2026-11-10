@@ -13,11 +13,23 @@ export function useFilter(items = [], options = {}) {
     initialSort = 'popular',
     initialSearch = '',
     enableLoadingTransition = true,
+    initialLoading = true,
+    loadingDuration = 320,
   } = options;
 
   const [selectedCategory, setSelectedCategory] = useState(initialCategory);
   const [sortBy, setSortBy] = useState(initialSort);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(initialLoading);
+
+  // Initial skeleton loader simulation on mount
+  useEffect(() => {
+    if (initialLoading) {
+      const timer = setTimeout(() => {
+        setIsLoading(false);
+      }, loadingDuration);
+      return () => clearTimeout(timer);
+    }
+  }, [initialLoading, loadingDuration]);
 
   const { searchQuery, setSearchQuery, clearSearch, searchedItems } = useSearch(
     items,
@@ -27,36 +39,59 @@ export function useFilter(items = [], options = {}) {
 
   // Sync external initialCategory changes (e.g., when navigating between /category/:slug routes)
   useEffect(() => {
-    setSelectedCategory(initialCategory);
-  }, [initialCategory]);
+    if (initialCategory !== selectedCategory) {
+      if (enableLoadingTransition) {
+        setIsLoading(true);
+        const timer = setTimeout(() => setIsLoading(false), loadingDuration);
+        setSelectedCategory(initialCategory);
+        return () => clearTimeout(timer);
+      }
+      setSelectedCategory(initialCategory);
+    }
+  }, [initialCategory, selectedCategory, enableLoadingTransition, loadingDuration]);
 
   const handleCategoryChange = useCallback(
     (categorySlug) => {
-      if (enableLoadingTransition) {
+      if (enableLoadingTransition && categorySlug !== selectedCategory) {
         setIsLoading(true);
-        setTimeout(() => setIsLoading(false), 180);
+        setTimeout(() => setIsLoading(false), loadingDuration);
       }
       setSelectedCategory(categorySlug);
     },
-    [enableLoadingTransition]
+    [enableLoadingTransition, selectedCategory, loadingDuration]
   );
 
   const handleSortChange = useCallback(
     (newSort) => {
-      if (enableLoadingTransition) {
+      if (enableLoadingTransition && newSort !== sortBy) {
         setIsLoading(true);
-        setTimeout(() => setIsLoading(false), 150);
+        setTimeout(() => setIsLoading(false), 240);
       }
       setSortBy(newSort);
     },
-    [enableLoadingTransition]
+    [enableLoadingTransition, sortBy]
+  );
+
+  const handleSearchChange = useCallback(
+    (val) => {
+      if (enableLoadingTransition) {
+        setIsLoading(true);
+        setTimeout(() => setIsLoading(false), 260);
+      }
+      setSearchQuery(val);
+    },
+    [enableLoadingTransition, setSearchQuery]
   );
 
   const resetFilters = useCallback(() => {
+    if (enableLoadingTransition) {
+      setIsLoading(true);
+      setTimeout(() => setIsLoading(false), 240);
+    }
     setSelectedCategory('all');
     setSortBy('popular');
     clearSearch();
-  }, [clearSearch]);
+  }, [enableLoadingTransition, clearSearch]);
 
   // Compute counts per category
   const categoryCounts = useMemo(() => {
@@ -101,7 +136,7 @@ export function useFilter(items = [], options = {}) {
     sortBy,
     setSortBy: handleSortChange,
     searchQuery,
-    setSearchQuery,
+    setSearchQuery: handleSearchChange,
     clearSearch,
     resetFilters,
     filteredItems,
