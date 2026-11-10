@@ -141,6 +141,45 @@ export function Hero({
               )}
             </div>
 
+            {/* Quick Popular Category Shortcuts */}
+            <div className="pt-2">
+              <span className="text-[11px] font-bold text-navy-500 dark:text-navy-400 uppercase tracking-wider block mb-2">
+                Popular Ready-Made Websites:
+              </span>
+              <div className="flex flex-wrap gap-2">
+                <Link
+                  to="/portfolio?category=resort-hotel"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+                >
+                  <span>🏨 Resort & Hotel</span>
+                </Link>
+                <Link
+                  to="/portfolio?category=personal-portfolio"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+                >
+                  <span>📸 Photographer</span>
+                </Link>
+                <Link
+                  to="/portfolio?category=personal-portfolio"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+                >
+                  <span>💼 Virtual Assistant</span>
+                </Link>
+                <Link
+                  to="/portfolio?category=business"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+                >
+                  <span>🛍️ Business & Cafe</span>
+                </Link>
+                <Link
+                  to="/portfolio?category=government-community"
+                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+                >
+                  <span>🏛️ Barangay & LGU</span>
+                </Link>
+              </div>
+            </div>
+
             {/* Trust Badges */}
             {trustBadges.length > 0 && (
               <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2.5 border-t border-navy-200/70 dark:border-navy-800/80">
@@ -187,8 +226,8 @@ export function Hero({
                     <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
                       {prevItem.website.categoryName}
                     </span>
-                    <span className="text-[10px] font-mono text-navy-400">
-                      {String(prevItem.index + 1).padStart(2, '0')}
+                    <span className="text-[10px] font-semibold text-brand-400 bg-navy-900/90 px-2 py-0.5 rounded-full border border-white/10">
+                      ${prevItem.website.price || 75}
                     </span>
                   </div>
 
@@ -226,8 +265,8 @@ export function Hero({
                     <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
                       {nextItem.website.categoryName}
                     </span>
-                    <span className="text-[10px] font-mono text-navy-400">
-                      {String(nextItem.index + 1).padStart(2, '0')}
+                    <span className="text-[10px] font-semibold text-brand-400 bg-navy-900/90 px-2 py-0.5 rounded-full border border-white/10">
+                      ${nextItem.website.price || 75}
                     </span>
                   </div>
 
@@ -298,13 +337,43 @@ export function Hero({
                       {currentItem.website.shortDescription}
                     </p>
 
-                    {/* Card Action Button: Frosted Glass Button for the Specific Template */}
-                    <div className="mt-3.5 sm:mt-4 w-full flex justify-center">
+                    {/* Commercial Specs Bar: Price & Fast Turnaround */}
+                    <div className="mt-3 w-full py-2 px-3 rounded-xl bg-navy-900/90 border border-white/10 flex items-center justify-between">
+                      <div className="flex flex-col text-left">
+                        <span className="text-[10px] uppercase font-bold text-navy-400 tracking-wider">
+                          Ready-Made Price
+                        </span>
+                        <div className="flex items-baseline gap-1">
+                          <span className="font-bold text-brand-400 text-sm sm:text-base">
+                            ${currentItem.website.price || 75} USD
+                          </span>
+                          <span className="text-navy-300 text-[11px]">
+                            (~₱{((currentItem.website.price || 75) * 56).toLocaleString()})
+                          </span>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-300 border border-brand-500/30 text-[11px] font-semibold">
+                          <Icon name="Zap" size="xs" />
+                          <span>{currentItem.website.turnaround || '2–4 Days'}</span>
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Card Action Buttons: Live Preview / Details & Get This Site */}
+                    <div className="mt-3 w-full grid grid-cols-2 gap-2">
                       <Link
                         to={`/portfolio/${currentItem.website.slug}`}
-                        className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl bg-white/10 hover:bg-white text-white hover:text-navy-950 border border-white/20 hover:border-white font-bold text-xs sm:text-sm backdrop-blur-md shadow-soft hover:shadow-glow transition-all duration-300 active:scale-95"
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all active:scale-95"
                       >
-                        <span>Explore This Template</span>
+                        <span>Live Preview</span>
+                        <Icon name="Eye" size="xs" className="shrink-0" />
+                      </Link>
+                      <Link
+                        to={`/contact?website=${currentItem.website.slug}`}
+                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-navy-950 font-bold text-xs sm:text-sm shadow-glow transition-all active:scale-95"
+                      >
+                        <span>Get This Site</span>
                         <Icon name="ArrowUpRight" size="xs" className="shrink-0" />
                       </Link>
                     </div>

@@ -52,7 +52,7 @@ export function Home() {
       showPageHeader={false}
       footerBannerSlot={<CTABanner {...ctaBannerData} />}
     >
-      {/* 1. Corporate Hero */}
+      {/* 1. Direct Product-Focused Hero */}
       <Hero
         originBadge={heroData.originBadge}
         headline={heroData.headline}
@@ -65,7 +65,41 @@ export function Home() {
         showcaseWebsites={localShowcaseWebsites}
       />
 
-      {/* 2. Enterprise Engineering Pillars */}
+      {/* 2. Featured Ready-Made Websites Showcase (Immediate Product Visibility) */}
+      <FeaturedSlider
+        websites={featuredWebsites}
+        eyebrow="Ready-to-Deploy Websites"
+        title="Featured Ready-Made Websites for Sale"
+        subtitle="Pick a website for your business. We customize the colors, logo, and content for free — pay only after you review and approve the working preview."
+      />
+
+      {/* 3. Industry Categories Grid (8 Categories) */}
+      <CategoryTabs
+        variant="cards"
+        categories={categories}
+        categoryCounts={categoryCounts}
+        sectionHeader={{
+          eyebrow: 'Websites for Every Industry',
+          eyebrowIcon: 'Layers',
+          title: 'Browse Ready-Made Websites by Sector',
+          subtitle:
+            'Select your category below to explore live website solutions built for resorts, personal portfolios, barangays, schools, and stores.',
+        }}
+      />
+
+      {/* 4. How It Works Process Steps (Choose > Customize > Launch) */}
+      <ProcessSteps
+        steps={processSteps}
+        sectionHeader={{
+          eyebrow: 'Simple 3-Step Process',
+          eyebrowIcon: 'Workflow',
+          title: 'How to Get Your Website Live in 3 Simple Steps',
+          subtitle:
+            'No complicated technical jargon. Choose a website template, send us your details, and test the live demo before paying.',
+        }}
+      />
+
+      {/* 5. Customer Guarantees & Highlights */}
       <section className="py-12 sm:py-16 bg-white dark:bg-navy-900 border-b border-navy-200/70 dark:border-navy-800/80">
         <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
@@ -90,35 +124,6 @@ export function Home() {
           </div>
         </div>
       </section>
-
-      {/* 3. Industry Categories Grid (8 Categories) */}
-      <CategoryTabs
-        variant="cards"
-        categories={categories}
-        categoryCounts={categoryCounts}
-        sectionHeader={{
-          eyebrow: 'Industry-Tailored Digital Solutions',
-          eyebrowIcon: 'Layers',
-          title: 'Websites Built for Every Local Sector',
-          subtitle:
-            'Select an industry category below to explore ready-made systems engineered for Philippine resorts, barangays, schools, stores, and enterprises.',
-        }}
-      />
-
-      {/* 4. Featured Websites Slider */}
-      <FeaturedSlider websites={featuredWebsites} />
-
-      {/* 5. How It Works Process Steps (Choose > Customize > Launch) */}
-      <ProcessSteps
-        steps={processSteps}
-        sectionHeader={{
-          eyebrow: 'Turnkey Engineering Workflow',
-          eyebrowIcon: 'Workflow',
-          title: 'How We Launch Your Website in 3 Simple Steps',
-          subtitle:
-            'Skip the 6-month agency delays. Our modular architecture gets your organization live in days while tailored 100% to your brand.',
-        }}
-      />
 
       {/* 6. Pricing & Packages Preview */}
       <PricingTable

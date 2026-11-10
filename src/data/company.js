@@ -13,11 +13,11 @@ export const navLinks = [
 ];
 
 export const heroData = {
-  originBadge: 'Proudly Engineered in Bulusan, Sorsogon • Serving Clients Worldwide',
-  headline: 'Enterprise-Grade Websites & Digital Storefronts for Modern Growth.',
-  highlightedText: 'Ready to Launch in Days.',
+  originBadge: 'Ready-to-Launch Websites • Serving Clients in PH & Worldwide',
+  headline: 'Ready-Made & Custom Websites for Your Business.',
+  highlightedText: 'Live in 2–4 Days.',
   subheadline:
-    'e-yhan is a Bicolano web engineering studio building high-converting ready-made and custom websites for resorts, communities, schools, cafes, and growing businesses locally and worldwide.',
+    'Choose from high-converting ready-made website templates starting at $55 (₱3,000) or request a custom build. 100% free logo, colors, and content customization included — pay only after you inspect and approve the live preview ($0 downpayment on static sites).',
   primaryCta: {
     label: 'Get a Custom Website',
     path: '/contact',
@@ -29,8 +29,9 @@ export const heroData = {
     icon: 'LayoutGrid',
   },
   trustBadges: [
-    { icon: 'ShieldCheck', label: '99.9% Uptime Cloud Architecture' },
-    { icon: 'Smartphone', label: '100% Mobile-First & Responsive' },
+    { icon: 'ShieldCheck', label: '$0 Downpayment (Output First bago bayad)' },
+    { icon: 'Zap', label: '2–4 Business Days Fast Launch' },
+    { icon: 'Sparkles', label: '100% Free Customization Included' },
   ],
   heroImage: {
     src: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=85',
@@ -41,10 +42,10 @@ export const heroData = {
     floatingBottomSubtitle: 'Built with React, Tailwind CSS & Enterprise SEO',
   },
   companyStats: [
-    { value: '100% Free', label: 'Customization Included', detail: 'Tailored based on user needs' },
-    { value: 'Direct Support', label: 'Developer Consultation', detail: 'No middlemen or agency bloat' },
-    { value: '2–7 Days', label: 'Fast Turnaround', detail: 'From inquiry to live domain' },
-    { value: '98/100', label: 'Performance Score', detail: 'Fast Core Web Vitals' },
+    { value: 'From $55', label: 'Starting Price (₱3,000)', detail: 'Transparent pricing with no hidden fees' },
+    { value: '$0 Down', label: 'Output First Guarantee', detail: 'Pay only when satisfied on static sites' },
+    { value: '2–4 Days', label: 'Fast Turnaround', detail: 'From inquiry to live website' },
+    { value: '100% Free', label: 'Customization Included', detail: 'Your logo, photos, and colors applied' },
   ],
 };
 
@@ -52,23 +53,23 @@ export const companyHighlights = [
   {
     id: 'hl-01',
     icon: 'Zap',
-    title: 'Engineered for Speed & Mobile Data',
+    title: 'Fast on Mobile & Low Data',
     description:
-      'Over 85% of Filipino customers browse on smartphones. Every e-yhan system is built with lightweight React & Tailwind architecture for sub-second page loads.',
+      'Over 85% of Filipino customers browse on smartphones. Every e-yhan website loads in under 1 second on mobile connections.',
   },
   {
     id: 'hl-02',
-    icon: 'Layers',
-    title: 'Strict Atomic Design Modularity',
+    icon: 'ShieldCheck',
+    title: 'Output First bago Bayad ($0 Down)',
     description:
-      'Our codebase follows strict Atomic Design standards—meaning your website can seamlessly scale from a starter brochure site to a full API-driven enterprise portal.',
+      'For static websites, we build and present the live website demo first. You only pay once you are 100% satisfied with the output.',
   },
   {
     id: 'hl-03',
     icon: 'HeartHandshake',
-    title: 'Direct Bicolano Craftsmanship & Support',
+    title: '100% Free Customization & Direct Support',
     description:
-      'Work directly with a senior frontend engineer based in Bulusan, Sorsogon. No middlemen, no bloated agency retainers—just honest, responsive partnership.',
+      'We replace all demo photos, logos, colors, and text with your brand details at zero extra fee. Talk directly with the developer.',
   },
 ];
 

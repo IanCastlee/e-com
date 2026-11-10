@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { PageLayout } from '../../components/templates';
 import { CategoryTabs, WebsiteGrid, CTABanner } from '../../components/organisms';
 import { SearchBar, FilterDropdown } from '../../components/molecules';
@@ -13,6 +14,9 @@ import { SORT_OPTIONS } from '../../utils/constants';
  * loading skeletons, empty states, and interactive live preview modal.
  */
 export function Portfolio() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const categoryParam = searchParams.get('category') || 'all';
+
   const {
     selectedCategory,
     setSelectedCategory,
@@ -27,7 +31,24 @@ export function Portfolio() {
     isLoading,
     resultCount,
     totalCount,
-  } = useFilter(websites);
+  } = useFilter(websites, { initialCategory: categoryParam });
+
+  // Keep search params in sync when category changes
+  const handleCategoryChange = (catId) => {
+    setSelectedCategory(catId);
+    if (catId === 'all') {
+      searchParams.delete('category');
+      setSearchParams(searchParams, { replace: true });
+    } else {
+      setSearchParams({ category: catId }, { replace: true });
+    }
+  };
+
+  const handleReset = () => {
+    resetFilters();
+    searchParams.delete('category');
+    setSearchParams(searchParams, { replace: true });
+  };
 
   const hasActiveFilters = selectedCategory !== 'all' || Boolean(searchQuery.trim());
 
@@ -82,7 +103,7 @@ export function Portfolio() {
             <CategoryTabs
               categories={categories}
               selectedCategory={selectedCategory}
-              onSelectCategory={setSelectedCategory}
+              onSelectCategory={handleCategoryChange}
               categoryCounts={categoryCounts}
               variant="tabs"
               className="flex-1"
@@ -91,7 +112,7 @@ export function Portfolio() {
               <Button
                 variant="ghost"
                 size="sm"
-                onClick={resetFilters}
+                onClick={handleReset}
                 leftIcon="RotateCcw"
                 className="shrink-0 hidden sm:inline-flex"
               >
