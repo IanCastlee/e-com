@@ -169,10 +169,10 @@ export function Hero({
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[10px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[10px] overflow-hidden bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
-                  {/* Sharp Full Image Container — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-video my-1 rounded-[10px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  {/* Sharp Full Image Container — Full Bleed */}
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                     <img
                       src={prevItem.website.thumbnail}
                       alt={prevItem.website.title}
@@ -180,13 +180,15 @@ export function Hero({
                     />
                   </div>
 
-                  <div>
-                    <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
-                      {prevItem.website.title}
-                    </h4>
-                    <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
-                      {prevItem.website.shortDescription}
-                    </p>
+                  <div className="p-3 md:p-3.5 flex flex-col flex-1 justify-between">
+                    <div>
+                      <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
+                        {prevItem.website.title}
+                      </h4>
+                      <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
+                        {prevItem.website.shortDescription}
+                      </p>
+                    </div>
                     <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
                       <span>Click to view</span>
                       <Icon name="ChevronRight" size="xs" />
@@ -199,10 +201,10 @@ export function Hero({
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[10px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[10px] overflow-hidden bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
-                  {/* Sharp Full Image Container — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-video my-1 rounded-[10px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  {/* Sharp Full Image Container — Full Bleed */}
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                     <img
                       src={nextItem.website.thumbnail}
                       alt={nextItem.website.title}
@@ -210,13 +212,15 @@ export function Hero({
                     />
                   </div>
 
-                  <div>
-                    <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
-                      {nextItem.website.title}
-                    </h4>
-                    <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
-                      {nextItem.website.shortDescription}
-                    </p>
+                  <div className="p-3 md:p-3.5 flex flex-col flex-1 justify-between">
+                    <div>
+                      <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
+                        {nextItem.website.title}
+                      </h4>
+                      <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
+                        {nextItem.website.shortDescription}
+                      </p>
+                    </div>
                     <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
                       <span>Click to view</span>
                       <Icon name="ChevronRight" size="xs" />
@@ -227,9 +231,9 @@ export function Hero({
 
               {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[10px] p-3.5 sm:p-4 bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
-                  {/* Dedicated Full Image Screen Showcase */}
-                  <div className="relative w-full aspect-video rounded-[10px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[10px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                  {/* Dedicated Full Image Screen Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
@@ -252,40 +256,42 @@ export function Hero({
                     </Link>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="mt-2.5 sm:mt-3.5 text-center flex flex-col items-center">
-                    <Link
-                      to={`/portfolio/${currentItem.website.slug}`}
-                      className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                    >
-                      <h3 className="font-display font-bold text-sm sm:text-base md:text-xl text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
-                        {currentItem.website.title}
-                      </h3>
-                    </Link>
+                  {/* Card Content & Action Footer Container with Even Padding */}
+                  <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
+                    <div>
+                      <Link
+                        to={`/portfolio/${currentItem.website.slug}`}
+                        className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                      >
+                        <h3 className="font-display font-bold text-sm sm:text-base md:text-xl text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
+                          {currentItem.website.title}
+                        </h3>
+                      </Link>
 
-                    <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed px-1">
-                      {currentItem.website.shortDescription}
-                    </p>
-                  </div>
+                      <p className="mt-1.5 text-xs sm:text-sm text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
+                        {currentItem.website.shortDescription}
+                      </p>
+                    </div>
 
-                  {/* Card Action Footer */}
-                  <div className="mt-3 pt-3 border-t border-navy-100 dark:border-white/10 w-full flex items-center justify-between px-1">
-                    <a
-                      href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
-                      target={currentItem.website.demoUrl ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
-                    >
-                      <Icon name="Eye" size="xs" />
-                      <span>Live Preview</span>
-                    </a>
-                    <Link
-                      to={`/portfolio/${currentItem.website.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                    >
-                      <span>Details</span>
-                      <Icon name="ArrowRight" size="xs" />
-                    </Link>
+                    {/* Card Action Footer */}
+                    <div className="mt-4 pt-3 border-t border-navy-100 dark:border-white/10 w-full flex items-center justify-between">
+                      <a
+                        href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
+                        target={currentItem.website.demoUrl ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                      >
+                        <Icon name="Eye" size="xs" />
+                        <span>Live Preview</span>
+                      </a>
+                      <Link
+                        to={`/portfolio/${currentItem.website.slug}`}
+                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                      >
+                        <span>Details</span>
+                        <Icon name="ArrowRight" size="xs" />
+                      </Link>
+                    </div>
                   </div>
                 </div>
               )}
