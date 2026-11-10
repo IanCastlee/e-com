@@ -208,7 +208,7 @@ export function Hero({
             <div
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              className="relative mx-auto w-full max-w-lg lg:max-w-none min-h-[440px] sm:min-h-[470px] md:h-[490px] flex items-center justify-center select-none px-2 sm:px-0"
+              className="relative mx-auto w-full max-w-lg lg:max-w-none min-h-[360px] sm:min-h-[390px] md:h-[410px] flex items-center justify-center select-none px-2 sm:px-0"
             >
               {/* Radial Ambient Lighting Behind Center */}
               <div
@@ -220,14 +220,14 @@ export function Hero({
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 w-[240px] md:w-[280px] h-[360px] md:h-[400px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
                       {prevItem.website.categoryName}
                     </span>
-                    <span className="text-[10px] font-semibold text-brand-400 bg-navy-900/90 px-2 py-0.5 rounded-full border border-white/10">
-                      ${prevItem.website.price || 75}
+                    <span className="text-[10px] font-mono text-navy-400">
+                      {String(prevItem.index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
@@ -259,14 +259,14 @@ export function Hero({
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 w-[240px] md:w-[280px] h-[360px] md:h-[400px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
                       {nextItem.website.categoryName}
                     </span>
-                    <span className="text-[10px] font-semibold text-brand-400 bg-navy-900/90 px-2 py-0.5 rounded-full border border-white/10">
-                      ${nextItem.website.price || 75}
+                    <span className="text-[10px] font-mono text-navy-400">
+                      {String(nextItem.index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
@@ -322,7 +322,7 @@ export function Hero({
                     />
                   </Link>
 
-                  {/* Card Content & Action Button */}
+                  {/* Card Content */}
                   <div className="mt-3 sm:mt-3.5 text-center flex flex-col items-center">
                     <Link
                       to={`/portfolio/${currentItem.website.slug}`}
@@ -336,47 +336,6 @@ export function Hero({
                     <p className="mt-1 text-xs sm:text-sm text-navy-200 line-clamp-2 leading-relaxed px-1">
                       {currentItem.website.shortDescription}
                     </p>
-
-                    {/* Commercial Specs Bar: Price & Fast Turnaround */}
-                    <div className="mt-3 w-full py-2 px-3 rounded-xl bg-navy-900/90 border border-white/10 flex items-center justify-between">
-                      <div className="flex flex-col text-left">
-                        <span className="text-[10px] uppercase font-bold text-navy-400 tracking-wider">
-                          Ready-Made Price
-                        </span>
-                        <div className="flex items-baseline gap-1">
-                          <span className="font-bold text-brand-400 text-sm sm:text-base">
-                            ${currentItem.website.price || 75} USD
-                          </span>
-                          <span className="text-navy-300 text-[11px]">
-                            (~₱{((currentItem.website.price || 75) * 56).toLocaleString()})
-                          </span>
-                        </div>
-                      </div>
-                      <div className="text-right">
-                        <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-brand-500/20 text-brand-300 border border-brand-500/30 text-[11px] font-semibold">
-                          <Icon name="Zap" size="xs" />
-                          <span>{currentItem.website.turnaround || '2–4 Days'}</span>
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Card Action Buttons: Live Preview / Details & Get This Site */}
-                    <div className="mt-3 w-full grid grid-cols-2 gap-2">
-                      <Link
-                        to={`/portfolio/${currentItem.website.slug}`}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold text-xs sm:text-sm backdrop-blur-md transition-all active:scale-95"
-                      >
-                        <span>Live Preview</span>
-                        <Icon name="Eye" size="xs" className="shrink-0" />
-                      </Link>
-                      <Link
-                        to={`/contact?website=${currentItem.website.slug}`}
-                        className="inline-flex items-center justify-center gap-1.5 px-3 py-2 sm:py-2.5 rounded-xl bg-brand-500 hover:bg-brand-400 text-navy-950 font-bold text-xs sm:text-sm shadow-glow transition-all active:scale-95"
-                      >
-                        <span>Get This Site</span>
-                        <Icon name="ArrowUpRight" size="xs" className="shrink-0" />
-                      </Link>
-                    </div>
                   </div>
                 </div>
               )}
