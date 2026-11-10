@@ -140,60 +140,6 @@ export function Hero({
                 </Button>
               )}
             </div>
-
-            {/* Quick Popular Category Shortcuts */}
-            <div className="pt-2">
-              <span className="text-[11px] font-bold text-navy-500 dark:text-navy-400 uppercase tracking-wider block mb-2">
-                Popular Ready-Made Websites:
-              </span>
-              <div className="flex flex-wrap gap-2">
-                <Link
-                  to="/portfolio?category=resort-hotel"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
-                >
-                  <span>🏨 Resort & Hotel</span>
-                </Link>
-                <Link
-                  to="/portfolio?category=personal-portfolio"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
-                >
-                  <span>📸 Photographer</span>
-                </Link>
-                <Link
-                  to="/portfolio?category=personal-portfolio"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
-                >
-                  <span>💼 Virtual Assistant</span>
-                </Link>
-                <Link
-                  to="/portfolio?category=business"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
-                >
-                  <span>🛍️ Business & Cafe</span>
-                </Link>
-                <Link
-                  to="/portfolio?category=government-community"
-                  className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
-                >
-                  <span>🏛️ Barangay & LGU</span>
-                </Link>
-              </div>
-            </div>
-
-            {/* Trust Badges */}
-            {trustBadges.length > 0 && (
-              <div className="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2.5 border-t border-navy-200/70 dark:border-navy-800/80">
-                {trustBadges.map((item) => (
-                  <div
-                    key={item.label}
-                    className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-navy-600 dark:text-navy-300"
-                  >
-                    <Icon name={item.icon || 'CheckCircle2'} size="sm" className="text-brand-600 dark:text-brand-400" />
-                    <span>{item.label}</span>
-                  </div>
-                ))}
-              </div>
-            )}
           </motion.div>
 
           {/* Right Column: 3D Cascading Auto-Scroll Cards Carousel */}
@@ -220,7 +166,7 @@ export function Hero({
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
@@ -259,7 +205,7 @@ export function Hero({
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
@@ -399,9 +345,64 @@ export function Hero({
           </motion.div>
         </div>
 
+        {/* Secondary Bar: Popular Categories & Trust Badges */}
+        <div className="mt-8 pt-6 border-t border-navy-200/70 dark:border-navy-800/80 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+          {/* Quick Popular Category Shortcuts */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-[11px] font-bold text-navy-500 dark:text-navy-400 uppercase tracking-wider mr-1">
+              Popular Ready-Made Websites:
+            </span>
+            <Link
+              to="/portfolio?category=resort-hotel"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+            >
+              <span>🏨 Resort & Hotel</span>
+            </Link>
+            <Link
+              to="/portfolio?category=personal-portfolio"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+            >
+              <span>📸 Photographer</span>
+            </Link>
+            <Link
+              to="/portfolio?category=personal-portfolio"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+            >
+              <span>💼 Virtual Assistant</span>
+            </Link>
+            <Link
+              to="/portfolio?category=business"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+            >
+              <span>🛍️ Business & Cafe</span>
+            </Link>
+            <Link
+              to="/portfolio?category=government-community"
+              className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full text-xs font-semibold bg-white dark:bg-navy-900 border border-navy-200 dark:border-navy-800 text-navy-700 dark:text-navy-200 hover:border-brand-500 hover:text-brand-600 dark:hover:text-brand-400 shadow-sm transition-all"
+            >
+              <span>🏛️ Barangay & LGU</span>
+            </Link>
+          </div>
+
+          {/* Trust Badges */}
+          {trustBadges.length > 0 && (
+            <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+              {trustBadges.map((item) => (
+                <div
+                  key={item.label}
+                  className="inline-flex items-center gap-2 text-xs sm:text-sm font-medium text-navy-600 dark:text-navy-300"
+                >
+                  <Icon name={item.icon || 'CheckCircle2'} size="sm" className="text-brand-600 dark:text-brand-400" />
+                  <span>{item.label}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
         {/* Corporate Metrics Strip */}
         {companyStats.length > 0 && (
-          <div className="mt-14 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="mt-8 sm:mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
             {companyStats.map((stat) => (
               <div
                 key={stat.label}
