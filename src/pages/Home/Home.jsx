@@ -65,12 +65,12 @@ export function Home() {
         showcaseWebsites={localShowcaseWebsites}
       />
 
-      {/* 2. Featured Ready-Made Websites Showcase (Immediate Product Visibility) */}
+      {/* 2. Featured Websites Showcase (Immediate Product Visibility) */}
       <FeaturedSlider
         websites={featuredWebsites}
-        eyebrow="Ready-to-Deploy Websites"
-        title="Featured Ready-Made Websites for Sale"
-        subtitle="Pick a website for your business. We customize the colors, logo, and content for free — pay only after you review and approve the working preview."
+        eyebrow="Curated Website Solutions"
+        title="Featured Websites for Your Business"
+        subtitle="Pick a website design that fits your brand. Free logo, colors, and content customization included — inspect the working live preview before paying."
       />
 
       {/* 3. Industry Categories Grid (8 Categories) */}
@@ -81,7 +81,7 @@ export function Home() {
         sectionHeader={{
           eyebrow: 'Websites for Every Industry',
           eyebrowIcon: 'Layers',
-          title: 'Browse Ready-Made Websites by Sector',
+          title: 'Browse Websites by Sector',
           subtitle:
             'Select your category below to explore live website solutions built for resorts, personal portfolios, barangays, schools, and stores.',
         }}
