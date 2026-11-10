@@ -227,9 +227,9 @@ export function Hero({
 
               {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[10px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
-                  {/* Dedicated Full Image Screen Showcase — Full Bleed */}
-                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[10px] p-3.5 sm:p-4 bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                  {/* Dedicated Full Image Screen Showcase */}
+                  <div className="relative w-full aspect-video rounded-[10px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
@@ -252,8 +252,8 @@ export function Hero({
                     </Link>
                   </div>
 
-                  {/* Card Content with Padding */}
-                  <div className="p-3.5 sm:p-4 text-center flex flex-col items-center">
+                  {/* Card Content */}
+                  <div className="mt-2.5 sm:mt-3.5 text-center flex flex-col items-center">
                     <Link
                       to={`/portfolio/${currentItem.website.slug}`}
                       className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
