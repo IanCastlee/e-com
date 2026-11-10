@@ -144,12 +144,12 @@ export function Hero({
             </div>
           </motion.div>
 
-          {/* Right Column: 3D Cascading Auto-Scroll Cards Carousel */}
+          {/* Right Column: 3D Cascading Auto-Scroll Cards Carousel (Desktop Only) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="lg:col-span-6"
+            className="hidden lg:block lg:col-span-6"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
@@ -242,7 +242,7 @@ export function Hero({
                 </div>
               )}
 
-              {/* Center Active Focal Card (Mobile & Desktop Responsive) */}
+              {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
                 <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Top Bar: Category Pill & Slide Counter */}
@@ -288,7 +288,7 @@ export function Hero({
                 </div>
               )}
 
-              {/* Floating Desktop-only Navigation Arrows (Hidden on Mobile to Prevent Overlap) */}
+              {/* Floating Desktop-only Navigation Arrows */}
               <button
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + total) % total)}
@@ -307,44 +307,116 @@ export function Hero({
               </button>
             </div>
 
-            {/* Navigation Controls: Mobile Prev/Next Arrows + Dots Indicator */}
-            <div className="mt-4 sm:mt-5 flex items-center justify-center gap-3">
-              {/* Mobile Prev Arrow Button */}
-              <button
-                type="button"
-                onClick={() => setCurrentIndex((prev) => (prev - 1 + total) % total)}
-                aria-label="Previous website showcase"
-                className="sm:hidden w-8 h-8 rounded-full bg-navy-900/90 active:bg-brand-600 text-white border border-white/20 shadow-sm flex items-center justify-center transition-all active:scale-90"
-              >
-                <Icon name="ChevronLeft" size="xs" />
-              </button>
-
-              {/* Slider Dots Indicator */}
-              <div className="flex items-center gap-1.5 px-1">
-                {localWebsites.map((_, dotIdx) => (
-                  <button
-                    key={dotIdx}
-                    type="button"
-                    onClick={() => setCurrentIndex(dotIdx)}
-                    aria-label={`Go to slide ${dotIdx + 1}`}
-                    className={`h-2 rounded-full transition-all duration-300 ${
-                      currentIndex === dotIdx ? 'w-6 sm:w-7 bg-brand-500' : 'w-2 bg-navy-300 dark:bg-navy-700'
-                    }`}
-                  />
-                ))}
-              </div>
-
-              {/* Mobile Next Arrow Button */}
-              <button
-                type="button"
-                onClick={() => setCurrentIndex((prev) => (prev + 1) % total)}
-                aria-label="Next website showcase"
-                className="sm:hidden w-8 h-8 rounded-full bg-navy-900/90 active:bg-brand-600 text-white border border-white/20 shadow-sm flex items-center justify-center transition-all active:scale-90"
-              >
-                <Icon name="ChevronRight" size="xs" />
-              </button>
+            {/* Slider Dots Indicator */}
+            <div className="mt-4 sm:mt-5 flex items-center justify-center gap-1.5 px-1">
+              {localWebsites.map((_, dotIdx) => (
+                <button
+                  key={dotIdx}
+                  type="button"
+                  onClick={() => setCurrentIndex(dotIdx)}
+                  aria-label={`Go to slide ${dotIdx + 1}`}
+                  className={`h-2 rounded-full transition-all duration-300 ${
+                    currentIndex === dotIdx ? 'w-6 sm:w-7 bg-brand-500' : 'w-2 bg-navy-300 dark:bg-navy-700'
+                  }`}
+                />
+              ))}
             </div>
           </motion.div>
+
+          {/* Mobile Feed-Style Scrollable Showcase (lg:hidden) */}
+          <div className="lg:hidden col-span-1 space-y-4 pt-4">
+            <div className="flex items-center justify-between px-1 mb-1">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-brand-500 animate-pulse" />
+                <span className="text-xs font-bold uppercase tracking-wider text-navy-800 dark:text-navy-100">
+                  Featured Website Feed
+                </span>
+              </div>
+              <span className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded-full border border-brand-500/20">
+                {localWebsites.length} Designs
+              </span>
+            </div>
+
+            {/* Scrollable Feed List */}
+            <div className="space-y-4">
+              {localWebsites.map((site, idx) => (
+                <div
+                  key={site.id}
+                  className="rounded-2xl p-3.5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border border-brand-500/30 shadow-lg flex flex-col justify-between"
+                >
+                  {/* Top Bar: Category & Index */}
+                  <div className="flex items-center justify-between mb-2.5">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                      <Icon name="Sparkles" size="xs" />
+                      <span>{site.categoryName}</span>
+                    </span>
+                    <span className="text-[10px] font-mono font-bold text-navy-200 px-2 py-0.5 rounded-full bg-navy-800/80 border border-white/10">
+                      0{idx + 1} / 0{localWebsites.length}
+                    </span>
+                  </div>
+
+                  {/* Website Preview Image Showcase */}
+                  <Link
+                    to={`/portfolio/${site.slug}`}
+                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/90 border border-white/15 flex items-center justify-center p-1.5 active:scale-[0.98] transition-transform"
+                    title={`View ${site.title}`}
+                  >
+                    <img
+                      src={site.thumbnail}
+                      alt={site.title}
+                      className="w-full h-full object-contain drop-shadow-md"
+                      loading="lazy"
+                    />
+                  </Link>
+
+                  {/* Card Content & Action Link */}
+                  <div className="mt-2.5">
+                    <Link
+                      to={`/portfolio/${site.slug}`}
+                      className="hover:text-brand-400 transition-colors"
+                    >
+                      <h4 className="font-display font-bold text-sm text-white tracking-tight leading-snug line-clamp-1">
+                        {site.title}
+                      </h4>
+                    </Link>
+                    <p className="mt-0.5 text-xs text-navy-200 line-clamp-2 leading-relaxed">
+                      {site.shortDescription}
+                    </p>
+
+                    <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between">
+                      <span className="text-xs font-bold text-brand-400">
+                        Starts at ${site.price || 55} USD{' '}
+                        <span className="text-navy-300 text-[10px] font-normal">
+                          (~₱{((site.price || 55) * 56).toLocaleString()})
+                        </span>
+                      </span>
+                      <Link
+                        to={`/portfolio/${site.slug}`}
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-white hover:text-brand-400 transition-colors"
+                      >
+                        <span>Explore Website</span>
+                        <Icon name="ArrowRight" size="xs" />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* View All Button sa baba */}
+            <div className="pt-2 pb-1 text-center">
+              <Button
+                variant="white"
+                size="md"
+                to="/portfolio"
+                leftIcon="LayoutGrid"
+                rightIcon="ArrowRight"
+                className="w-full py-3 justify-center text-sm font-bold shadow-soft hover:shadow-glow"
+              >
+                View All Websites in Catalog
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Corporate Metrics Strip */}
