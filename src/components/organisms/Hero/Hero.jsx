@@ -96,7 +96,7 @@ export function Hero({
           >
             {originBadge && (
               <div className="flex items-center">
-                <span className="inline-flex items-center gap-1 sm:gap-1.5 font-semibold text-[10px] sm:text-xs text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/15 sm:bg-brand-50 sm:dark:bg-brand-950/60 px-2 py-0.5 sm:px-3 sm:py-1 rounded-[5px] border-0 sm:border sm:border-brand-200 sm:dark:border-brand-800 transition-colors tracking-normal">
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 font-semibold text-[10px] sm:text-xs text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/15 sm:bg-brand-50 sm:dark:bg-brand-950/60 px-2 py-0.5 sm:px-3 sm:py-1 rounded-[10px] border-0 sm:border sm:border-brand-200 sm:dark:border-brand-800 transition-colors tracking-normal">
                   <Icon name="MapPin" size="xs" className="shrink-0" />
                   <span>{originBadge}</span>
                 </span>
@@ -169,10 +169,10 @@ export function Hero({
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[5px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[10px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   {/* Sharp Full Image Container — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-video my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  <div className="relative w-full aspect-video my-1 rounded-[10px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     <img
                       src={prevItem.website.thumbnail}
                       alt={prevItem.website.title}
@@ -199,10 +199,10 @@ export function Hero({
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[5px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[10px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   {/* Sharp Full Image Container — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-video my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  <div className="relative w-full aspect-video my-1 rounded-[10px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     <img
                       src={nextItem.website.thumbnail}
                       alt={nextItem.website.title}
@@ -227,12 +227,12 @@ export function Hero({
 
               {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[10px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Dedicated Full Image Screen Showcase — Full Bleed */}
                   <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
                         <Icon name="Sparkles" size="xs" />
                         <span>Free Customization</span>
                       </span>
@@ -295,7 +295,7 @@ export function Hero({
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + total) % total)}
                 aria-label="Previous website showcase"
-                className="hidden sm:flex absolute -left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-[5px] bg-white/95 dark:bg-navy-900/90 hover:bg-brand-600 hover:text-white text-navy-800 dark:text-white border border-navy-200/90 dark:border-white/20 shadow-lg items-center justify-center transition-all"
+                className="hidden sm:flex absolute -left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-[10px] bg-white/95 dark:bg-navy-900/90 hover:bg-brand-600 hover:text-white text-navy-800 dark:text-white border border-navy-200/90 dark:border-white/20 shadow-lg items-center justify-center transition-all"
               >
                 <Icon name="ChevronLeft" size="sm" />
               </button>
@@ -303,7 +303,7 @@ export function Hero({
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % total)}
                 aria-label="Next website showcase"
-                className="hidden sm:flex absolute -right-3 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-[5px] bg-white/95 dark:bg-navy-900/90 hover:bg-brand-600 hover:text-white text-navy-800 dark:text-white border border-navy-200/90 dark:border-white/20 shadow-lg items-center justify-center transition-all"
+                className="hidden sm:flex absolute -right-3 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-[10px] bg-white/95 dark:bg-navy-900/90 hover:bg-brand-600 hover:text-white text-navy-800 dark:text-white border border-navy-200/90 dark:border-white/20 shadow-lg items-center justify-center transition-all"
               >
                 <Icon name="ChevronRight" size="sm" />
               </button>
@@ -334,7 +334,7 @@ export function Hero({
                   Featured Website Feed
                 </span>
               </div>
-              <span className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded-[5px] border border-brand-500/20">
+              <span className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded-[10px] border border-brand-500/20">
                 {localWebsites.length} Designs
               </span>
             </div>
@@ -344,13 +344,13 @@ export function Hero({
               {localWebsites.map((site) => (
                 <div
                   key={site.id}
-                  className="rounded-[5px] overflow-hidden bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-sm flex flex-col justify-between"
+                  className="rounded-[10px] overflow-hidden bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-sm flex flex-col justify-between"
                 >
                   {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
                   <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center active:scale-[0.98] transition-transform overflow-hidden">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
                         <Icon name="Sparkles" size="xs" />
                         <span>Free Customization</span>
                       </span>
@@ -431,7 +431,7 @@ export function Hero({
             {companyStats.map((stat) => (
               <div
                 key={stat.label}
-                className="p-3 sm:p-5 md:p-6 rounded-[5px] bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
+                className="p-3 sm:p-5 md:p-6 rounded-[10px] bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
               >
                 <div className="font-display text-base sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
                   {stat.value}

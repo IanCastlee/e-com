@@ -28,9 +28,9 @@ export const DESIGN_TOKENS = {
     container: 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8',
   },
   radius: {
-    card: 'rounded-[5px]',
-    button: 'rounded-[5px]',
-    badge: 'rounded-[5px]',
+    card: 'rounded-[10px]',
+    button: 'rounded-[10px]',
+    badge: 'rounded-[10px]',
   },
   shadows: {
     card: 'shadow-soft hover:shadow-elevated',

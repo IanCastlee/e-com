@@ -37,7 +37,7 @@ export function WebsiteCard({
   return (
     <article
       className={cn(
-        'group flex flex-col bg-white dark:bg-navy-900 rounded-[5px] border border-navy-200/80 dark:border-navy-800/90 overflow-hidden shadow-soft hover:shadow-elevated hover:border-brand-500/60 dark:hover:border-brand-500/50 transition-all duration-300',
+        'group flex flex-col bg-white dark:bg-navy-900 rounded-[10px] border border-navy-200/80 dark:border-navy-800/90 overflow-hidden shadow-soft hover:shadow-elevated hover:border-brand-500/60 dark:hover:border-brand-500/50 transition-all duration-300',
         className
       )}
     >
@@ -64,7 +64,7 @@ export function WebsiteCard({
 
         {/* Free Customization Badge */}
         <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
+          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
             <Icon name="Sparkles" size="xs" />
             <span>Free Customization</span>
           </span>

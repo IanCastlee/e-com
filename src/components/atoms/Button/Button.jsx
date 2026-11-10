@@ -21,9 +21,9 @@ const VARIANT_CLASSES = {
 };
 
 const SIZE_CLASSES = {
-  sm: 'px-3.5 py-2 text-xs font-semibold rounded-[5px] gap-1.5',
-  md: 'px-5 py-2.5 text-sm font-semibold rounded-[5px] gap-2',
-  lg: 'px-7 py-3.5 text-base font-semibold rounded-[5px] gap-2.5',
+  sm: 'px-3.5 py-2 text-xs font-semibold rounded-[10px] gap-1.5',
+  md: 'px-5 py-2.5 text-sm font-semibold rounded-[10px] gap-2',
+  lg: 'px-7 py-3.5 text-base font-semibold rounded-[10px] gap-2.5',
 };
 
 /**

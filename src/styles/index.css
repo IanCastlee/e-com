@@ -44,7 +44,7 @@
   }
 }
 
-/* Universal 5px border radius across all cards, buttons, badges, modals, inputs */
+/* Universal 10px border radius across all cards, buttons, badges, modals, inputs */
 .rounded,
 .rounded-sm,
 .rounded-md,
@@ -52,12 +52,12 @@
 .rounded-xl,
 .rounded-2xl,
 .rounded-3xl {
-  border-radius: 5px !important;
+  border-radius: 10px !important;
 }
 
 button,
 input,
 select,
 textarea {
-  border-radius: 5px;
+  border-radius: 10px;
 }

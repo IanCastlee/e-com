@@ -36,7 +36,7 @@ export function Badge({
   return (
     <span
       className={cn(
-        'inline-flex items-center gap-1.5 font-semibold tracking-wide rounded-[5px] border transition-colors',
+        'inline-flex items-center gap-1.5 font-semibold tracking-wide rounded-[10px] border transition-colors',
         VARIANT_CLASSES[variant] || VARIANT_CLASSES.brand,
         SIZE_CLASSES[size] || SIZE_CLASSES.md,
         className
