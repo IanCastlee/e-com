@@ -172,7 +172,7 @@ export function Hero({
                   className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[5px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   {/* Sharp Full Image Container — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-[16/10] my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  <div className="relative w-full aspect-video my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     <img
                       src={prevItem.website.thumbnail}
                       alt={prevItem.website.title}
@@ -202,7 +202,7 @@ export function Hero({
                   className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[5px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   {/* Sharp Full Image Container — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-[16/10] my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  <div className="relative w-full aspect-video my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     <img
                       src={nextItem.website.thumbnail}
                       alt={nextItem.website.title}
@@ -229,7 +229,7 @@ export function Hero({
               {currentItem && (
                 <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Dedicated Full Image Screen Showcase — Full Bleed */}
-                  <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
@@ -347,7 +347,7 @@ export function Hero({
                   className="rounded-[5px] overflow-hidden bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-sm flex flex-col justify-between"
                 >
                   {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
-                  <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center active:scale-[0.98] transition-transform overflow-hidden">
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center active:scale-[0.98] transition-transform overflow-hidden">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
@@ -364,7 +364,7 @@ export function Hero({
                       <img
                         src={site.thumbnail}
                         alt={site.title}
-                        className="w-full h-full object-cover sm:object-contain drop-shadow-sm"
+                        className="w-full h-full object-contain drop-shadow-sm"
                         loading="lazy"
                       />
                     </Link>

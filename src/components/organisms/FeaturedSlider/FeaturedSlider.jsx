@@ -67,7 +67,7 @@ export function FeaturedSlider({
               className="rounded-[5px] overflow-hidden bg-white dark:bg-navy-900/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
             >
               {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
-              <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
+              <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                 {/* Free Customization Badge */}
                 <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
