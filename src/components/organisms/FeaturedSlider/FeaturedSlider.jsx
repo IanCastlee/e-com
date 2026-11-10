@@ -64,12 +64,12 @@ export function FeaturedSlider({
           {displayWebsites.map((site) => (
             <div
               key={site.id}
-              className="rounded-[5px] p-4 bg-white dark:bg-navy-900/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
+              className="rounded-[5px] overflow-hidden bg-white dark:bg-navy-900/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
             >
-              {/* Website Preview Image Showcase (Clean, No Inner Border) */}
-              <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+              {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
+              <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                 {/* Free Customization Badge */}
-                <div className="absolute top-2 left-2 z-20 pointer-events-none">
+                <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                   <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
                     <Icon name="Sparkles" size="xs" />
                     <span>Free Customization</span>
@@ -91,7 +91,7 @@ export function FeaturedSlider({
               </div>
 
               {/* Card Content & Action Links */}
-              <div className="mt-3.5 flex flex-col flex-1 justify-between">
+              <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
                 <div>
                   <Link
                     to={`/portfolio/${site.slug}`}

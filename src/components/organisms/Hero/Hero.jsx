@@ -95,10 +95,11 @@ export function Hero({
             className="lg:col-span-6 space-y-4 sm:space-y-6"
           >
             {originBadge && (
-              <div>
-                <Badge variant="brand" size="md" icon="MapPin" className="text-[11px] sm:text-xs">
-                  {originBadge}
-                </Badge>
+              <div className="flex items-center">
+                <span className="inline-flex items-center gap-1 sm:gap-1.5 font-semibold text-[10px] sm:text-xs text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/15 sm:bg-brand-50 sm:dark:bg-brand-950/60 px-2 py-0.5 sm:px-3 sm:py-1 rounded-[5px] border-0 sm:border sm:border-brand-200 sm:dark:border-brand-800 transition-colors tracking-normal">
+                  <Icon name="MapPin" size="xs" className="shrink-0" />
+                  <span>{originBadge}</span>
+                </span>
               </div>
             )}
 
@@ -226,9 +227,9 @@ export function Hero({
 
               {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] p-3.5 sm:p-4 bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
-                  {/* Dedicated Full Image Screen Showcase — Clean, No Inner Border */}
-                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                  {/* Dedicated Full Image Screen Showcase — Full Bleed */}
+                  <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
                       <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
@@ -251,8 +252,8 @@ export function Hero({
                     </Link>
                   </div>
 
-                  {/* Card Content */}
-                  <div className="mt-2.5 sm:mt-3.5 text-center flex flex-col items-center">
+                  {/* Card Content with Padding */}
+                  <div className="p-3.5 sm:p-4 text-center flex flex-col items-center">
                     <Link
                       to={`/portfolio/${currentItem.website.slug}`}
                       className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -343,13 +344,13 @@ export function Hero({
               {localWebsites.map((site) => (
                 <div
                   key={site.id}
-                  className="rounded-[5px] p-3.5 bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-sm flex flex-col justify-between"
+                  className="rounded-[5px] overflow-hidden bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-sm flex flex-col justify-between"
                 >
-                  {/* Website Preview Image Showcase (Clean, No Inner Border) */}
-                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center active:scale-[0.98] transition-transform">
+                  {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
+                  <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center active:scale-[0.98] transition-transform overflow-hidden">
                     {/* Free Customization Badge */}
-                    <div className="absolute top-2 left-2 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
+                    <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
                         <Icon name="Sparkles" size="xs" />
                         <span>Free Customization</span>
                       </span>
@@ -363,25 +364,27 @@ export function Hero({
                       <img
                         src={site.thumbnail}
                         alt={site.title}
-                        className="w-full h-full object-contain drop-shadow-sm"
+                        className="w-full h-full object-cover sm:object-contain drop-shadow-sm"
                         loading="lazy"
                       />
                     </Link>
                   </div>
 
                   {/* Card Content & Action Link */}
-                  <div className="mt-3">
-                    <Link
-                      to={`/portfolio/${site.slug}`}
-                      className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                    >
-                      <h4 className="font-display font-bold text-sm text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
-                        {site.title}
-                      </h4>
-                    </Link>
-                    <p className="mt-1 text-xs text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
-                      {site.shortDescription}
-                    </p>
+                  <div className="p-3.5 flex flex-col flex-1 justify-between">
+                    <div>
+                      <Link
+                        to={`/portfolio/${site.slug}`}
+                        className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                      >
+                        <h4 className="font-display font-bold text-sm text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
+                          {site.title}
+                        </h4>
+                      </Link>
+                      <p className="mt-1 text-xs text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
+                        {site.shortDescription}
+                      </p>
+                    </div>
 
                     <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-navy-800/80 flex items-center justify-between">
                       <a
