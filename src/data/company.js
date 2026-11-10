@@ -14,10 +14,10 @@ export const navLinks = [
 
 export const heroData = {
   originBadge: 'Ready-to-Launch Websites • Serving Clients in PH & Worldwide',
-  headline: 'Ready-Made & Custom Websites for Your Business.',
-  highlightedText: 'Live in 2–4 Days.',
+  headline: 'Ready-Made & Custom Websites',
+  highlightedText: 'for Your Business.',
   subheadline:
-    'Choose from high-converting ready-made website templates starting at $55 (₱3,000) or request a custom build. 100% free logo, colors, and content customization included — pay only after you inspect and approve the live preview ($0 downpayment on static sites).',
+    "Choose the website design that fits you best, and we'll take care of the customization for you. Free logo, colors, and content setup included — review your working website preview first before paying ($0 downpayment on static sites, starts at $55 / ₱3,000).",
   primaryCta: {
     label: 'Get a Custom Website',
     path: '/contact',
