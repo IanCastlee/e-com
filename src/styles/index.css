@@ -43,3 +43,21 @@
     scrollbar-width: none;
   }
 }
+
+/* Universal 5px border radius across all cards, buttons, badges, modals, inputs */
+.rounded,
+.rounded-sm,
+.rounded-md,
+.rounded-lg,
+.rounded-xl,
+.rounded-2xl,
+.rounded-3xl {
+  border-radius: 5px !important;
+}
+
+button,
+input,
+select,
+textarea {
+  border-radius: 5px;
+}

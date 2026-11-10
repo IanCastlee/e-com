@@ -168,19 +168,19 @@ export function Hero({
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-[5px] p-3 md:p-4 bg-white/95 dark:bg-navy-950/90 border border-navy-200/90 dark:border-navy-700/80 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
+                    <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-[5px] bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30 line-clamp-1">
                       {prevItem.website.categoryName}
                     </span>
-                    <span className="text-[10px] font-mono text-navy-400">
+                    <span className="text-[10px] font-mono text-navy-500 dark:text-navy-400">
                       {String(prevItem.index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
                   {/* Sharp Full Image Container */}
-                  <div className="relative w-full aspect-[16/10] my-2 rounded-xl overflow-hidden bg-navy-900/90 border border-white/10 flex items-center justify-center p-1.5">
+                  <div className="relative w-full aspect-[16/10] my-2 rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/70 dark:border-white/10 flex items-center justify-center p-1.5">
                     <img
                       src={prevItem.website.thumbnail}
                       alt={prevItem.website.title}
@@ -189,13 +189,13 @@ export function Hero({
                   </div>
 
                   <div>
-                    <h4 className="text-xs md:text-sm font-bold text-white line-clamp-1">
+                    <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
                       {prevItem.website.title}
                     </h4>
-                    <p className="text-[11px] text-navy-300 line-clamp-1 mt-0.5">
+                    <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
                       {prevItem.website.shortDescription}
                     </p>
-                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-400">
+                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
                       <span>Click to view</span>
                       <Icon name="ChevronRight" size="xs" />
                     </span>
@@ -207,19 +207,19 @@ export function Hero({
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-2xl md:rounded-3xl p-3 md:p-4 bg-navy-950/90 border border-navy-700/80 shadow-xl opacity-60 hover:opacity-95 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-[5px] p-3 md:p-4 bg-white/95 dark:bg-navy-950/90 border border-navy-200/90 dark:border-navy-700/80 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-full bg-brand-500/20 text-brand-300 border border-brand-500/30 line-clamp-1">
+                    <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-[5px] bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30 line-clamp-1">
                       {nextItem.website.categoryName}
                     </span>
-                    <span className="text-[10px] font-mono text-navy-400">
+                    <span className="text-[10px] font-mono text-navy-500 dark:text-navy-400">
                       {String(nextItem.index + 1).padStart(2, '0')}
                     </span>
                   </div>
 
                   {/* Sharp Full Image Container */}
-                  <div className="relative w-full aspect-[16/10] my-2 rounded-xl overflow-hidden bg-navy-900/90 border border-white/10 flex items-center justify-center p-1.5">
+                  <div className="relative w-full aspect-[16/10] my-2 rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/70 dark:border-white/10 flex items-center justify-center p-1.5">
                     <img
                       src={nextItem.website.thumbnail}
                       alt={nextItem.website.title}
@@ -228,13 +228,13 @@ export function Hero({
                   </div>
 
                   <div>
-                    <h4 className="text-xs md:text-sm font-bold text-white line-clamp-1">
+                    <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
                       {nextItem.website.title}
                     </h4>
-                    <p className="text-[11px] text-navy-300 line-clamp-1 mt-0.5">
+                    <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
                       {nextItem.website.shortDescription}
                     </p>
-                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-400">
+                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
                       <span>Click to view</span>
                       <Icon name="ChevronRight" size="xs" />
                     </span>
@@ -244,14 +244,14 @@ export function Hero({
 
               {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] p-3.5 sm:p-5 bg-white dark:bg-navy-950 border-2 border-brand-500/50 dark:border-brand-400/60 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Top Bar: Category Pill & Slide Counter */}
                   <div className="flex items-center justify-between mb-2.5 sm:mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                    <span className="inline-flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-[5px] text-[10px] sm:text-xs font-semibold bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
                       <Icon name="Sparkles" size="xs" />
                       <span className="truncate max-w-[130px] sm:max-w-none">{currentItem.website.categoryName}</span>
                     </span>
-                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-navy-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-navy-800/80 border border-white/10">
+                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-navy-700 dark:text-navy-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-[5px] bg-navy-100 dark:bg-navy-800/80 border border-navy-200 dark:border-white/10">
                       {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
                     </span>
                   </div>
@@ -259,7 +259,7 @@ export function Hero({
                   {/* Dedicated Full Image Screen Showcase — Completely Sharp & Uncropped */}
                   <Link
                     to={`/portfolio/${currentItem.website.slug}`}
-                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/90 border border-white/15 shadow-inner flex items-center justify-center p-1.5 sm:p-2 group-hover:border-brand-400/50 transition-colors duration-300 cursor-pointer"
+                    className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 shadow-inner flex items-center justify-center p-1.5 sm:p-2 group-hover:border-brand-400/50 transition-colors duration-300 cursor-pointer"
                     title={`View ${currentItem.website.title}`}
                   >
                     <img
@@ -274,16 +274,36 @@ export function Hero({
                   <div className="mt-2.5 sm:mt-3.5 text-center flex flex-col items-center">
                     <Link
                       to={`/portfolio/${currentItem.website.slug}`}
-                      className="hover:text-brand-400 transition-colors"
+                      className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                     >
-                      <h3 className="font-display font-bold text-sm sm:text-base md:text-xl text-white tracking-tight leading-snug line-clamp-1">
+                      <h3 className="font-display font-bold text-sm sm:text-base md:text-xl text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
                         {currentItem.website.title}
                       </h3>
                     </Link>
 
-                    <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-navy-200 line-clamp-2 leading-relaxed px-1">
+                    <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed px-1">
                       {currentItem.website.shortDescription}
                     </p>
+                  </div>
+
+                  {/* Card Action Footer */}
+                  <div className="mt-3 pt-3 border-t border-navy-100 dark:border-white/10 w-full flex items-center justify-between px-1">
+                    <a
+                      href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
+                      target={currentItem.website.demoUrl ? "_blank" : undefined}
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                    >
+                      <Icon name="Eye" size="xs" />
+                      <span>Live Preview</span>
+                    </a>
+                    <Link
+                      to={`/portfolio/${currentItem.website.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                    >
+                      <span>Details</span>
+                      <Icon name="ArrowRight" size="xs" />
+                    </Link>
                   </div>
                 </div>
               )}
@@ -293,7 +313,7 @@ export function Hero({
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev - 1 + total) % total)}
                 aria-label="Previous website showcase"
-                className="hidden sm:flex absolute -left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-navy-900/90 hover:bg-brand-600 text-white border border-white/20 shadow-lg items-center justify-center transition-all"
+                className="hidden sm:flex absolute -left-3 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-[5px] bg-white/95 dark:bg-navy-900/90 hover:bg-brand-600 hover:text-white text-navy-800 dark:text-white border border-navy-200/90 dark:border-white/20 shadow-lg items-center justify-center transition-all"
               >
                 <Icon name="ChevronLeft" size="sm" />
               </button>
@@ -301,7 +321,7 @@ export function Hero({
                 type="button"
                 onClick={() => setCurrentIndex((prev) => (prev + 1) % total)}
                 aria-label="Next website showcase"
-                className="hidden sm:flex absolute -right-3 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-full bg-navy-900/90 hover:bg-brand-600 text-white border border-white/20 shadow-lg items-center justify-center transition-all"
+                className="hidden sm:flex absolute -right-3 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 rounded-[5px] bg-white/95 dark:bg-navy-900/90 hover:bg-brand-600 hover:text-white text-navy-800 dark:text-white border border-navy-200/90 dark:border-white/20 shadow-lg items-center justify-center transition-all"
               >
                 <Icon name="ChevronRight" size="sm" />
               </button>
@@ -342,15 +362,15 @@ export function Hero({
               {localWebsites.map((site, idx) => (
                 <div
                   key={site.id}
-                  className="rounded-2xl p-3.5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border border-brand-500/30 shadow-lg flex flex-col justify-between"
+                  className="rounded-[5px] p-3.5 bg-white dark:bg-navy-950 border border-navy-200/90 dark:border-brand-500/30 shadow-soft dark:shadow-lg flex flex-col justify-between"
                 >
                   {/* Top Bar: Category & Index */}
                   <div className="flex items-center justify-between mb-2.5">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[5px] text-[10px] font-semibold bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
                       <Icon name="Sparkles" size="xs" />
                       <span>{site.categoryName}</span>
                     </span>
-                    <span className="text-[10px] font-mono font-bold text-navy-200 px-2 py-0.5 rounded-full bg-navy-800/80 border border-white/10">
+                    <span className="text-[10px] font-mono font-bold text-navy-700 dark:text-navy-200 px-2 py-0.5 rounded-[5px] bg-navy-100 dark:bg-navy-800/80 border border-navy-200 dark:border-white/10">
                       0{idx + 1} / 0{localWebsites.length}
                     </span>
                   </div>
@@ -358,7 +378,7 @@ export function Hero({
                   {/* Website Preview Image Showcase */}
                   <Link
                     to={`/portfolio/${site.slug}`}
-                    className="relative w-full aspect-[16/10] rounded-xl overflow-hidden bg-navy-900/90 border border-white/15 flex items-center justify-center p-1.5 active:scale-[0.98] transition-transform"
+                    className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 flex items-center justify-center p-1.5 active:scale-[0.98] transition-transform"
                     title={`View ${site.title}`}
                   >
                     <img
@@ -373,28 +393,31 @@ export function Hero({
                   <div className="mt-2.5">
                     <Link
                       to={`/portfolio/${site.slug}`}
-                      className="hover:text-brand-400 transition-colors"
+                      className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                     >
-                      <h4 className="font-display font-bold text-sm text-white tracking-tight leading-snug line-clamp-1">
+                      <h4 className="font-display font-bold text-sm text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
                         {site.title}
                       </h4>
                     </Link>
-                    <p className="mt-0.5 text-xs text-navy-200 line-clamp-2 leading-relaxed">
+                    <p className="mt-0.5 text-xs text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
                       {site.shortDescription}
                     </p>
 
-                    <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between">
-                      <span className="text-xs font-bold text-brand-400">
-                        Starts at ${site.price || 55} USD{' '}
-                        <span className="text-navy-300 text-[10px] font-normal">
-                          (~₱{((site.price || 55) * 56).toLocaleString()})
-                        </span>
-                      </span>
+                    <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-white/10 flex items-center justify-between">
+                      <a
+                        href={site.demoUrl || `/portfolio/${site.slug}`}
+                        target={site.demoUrl ? "_blank" : undefined}
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                      >
+                        <Icon name="Eye" size="xs" />
+                        <span>Live Preview</span>
+                      </a>
                       <Link
                         to={`/portfolio/${site.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-white hover:text-brand-400 transition-colors"
+                        className="inline-flex items-center gap-1 text-xs font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                       >
-                        <span>Explore Website</span>
+                        <span>Details</span>
                         <Icon name="ArrowRight" size="xs" />
                       </Link>
                     </div>
