@@ -17,7 +17,7 @@ export const heroData = {
   headline: 'Ready-Made & Custom Websites',
   highlightedText: 'for Your Business.',
   subheadline:
-    "Choose the website design that fits you best, and we'll take care of the customization for you. Free logo, colors, and content setup included — review your working website preview first before paying ($0 downpayment on static sites, starts at $55 / ₱3,000).",
+    "Choose a website design you like, and we'll take care of customizing it for your business. Starts at just $55 (₱3,000) for static websites.",
   primaryCta: {
     label: 'Get a Custom Website',
     path: '/contact',
