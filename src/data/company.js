@@ -13,8 +13,8 @@ export const navLinks = [
 ];
 
 export const heroData = {
-  originBadge: 'Ready-to-Launch Websites • Serving Clients in PH & Worldwide',
-  headline: 'Ready-Made & Custom Websites',
+  originBadge: 'Modern Websites • Serving Clients in PH & Worldwide',
+  headline: 'Modern & Custom Websites',
   highlightedText: 'for Your Business.',
   subheadline:
     "Choose a website design you like, and we'll take care of customizing it for your business. Starts at just $55 (₱3,000) for static websites.",
@@ -30,7 +30,7 @@ export const heroData = {
   },
   trustBadges: [
     { icon: 'ShieldCheck', label: '$0 Downpayment (Output First bago bayad)' },
-    { icon: 'Zap', label: '2–4 Business Days Fast Launch' },
+    { icon: 'Zap', label: 'Fast Turnaround' },
     { icon: 'Sparkles', label: '100% Free Customization Included' },
   ],
   heroImage: {
@@ -38,14 +38,14 @@ export const heroData = {
     secondarySrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
     alt: 'e-yhan Web Engineering Studio — Modern Multi-Device Websites and Digital Storefronts',
     floatingTopBadge: 'Production-Ready Web Systems',
-    floatingBottomTitle: 'Custom & Ready-Made Architecture',
+    floatingBottomTitle: 'Custom & Modern Architecture',
     floatingBottomSubtitle: 'Built with React, Tailwind CSS & Enterprise SEO',
   },
   companyStats: [
-    { value: 'From $55', label: 'Starting Price (₱3,000)', detail: 'Transparent pricing with no hidden fees' },
-    { value: '$0 Down', label: 'Output First Guarantee', detail: 'Pay only when satisfied on static sites' },
-    { value: '2–4 Days', label: 'Fast Turnaround', detail: 'From inquiry to live website' },
-    { value: '100% Free', label: 'Customization Included', detail: 'Your logo, photos, and colors applied' },
+    { value: 'From $55', label: 'Affordable Rates', detail: 'Starts at only ₱3,000 PHP' },
+    { value: '100% Free', label: 'Customization', detail: 'Logo, colors & text applied for free' },
+    { value: 'Direct Support', label: '1-on-1 Consultation', detail: 'No middlemen or agency bloat' },
+    { value: 'Mobile-First', label: 'Fast & Responsive', detail: 'Optimized for smartphone users' },
   ],
 };
 

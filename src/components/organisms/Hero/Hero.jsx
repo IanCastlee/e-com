@@ -73,7 +73,7 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-10 pb-16 sm:pt-16 sm:pb-24 border-b border-navy-200/70 dark:border-navy-800/80">
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:pt-16 sm:pb-24 border-b border-navy-200/70 dark:border-navy-800/80">
       {/* Subtle Architectural Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-70 pointer-events-none" aria-hidden="true" />
       <div
@@ -86,23 +86,23 @@ export function Hero({
       />
 
       <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Copy Column */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.45 }}
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-4 sm:space-y-6"
           >
             {originBadge && (
               <div>
-                <Badge variant="brand" size="md" icon="MapPin">
+                <Badge variant="brand" size="md" icon="MapPin" className="text-[11px] sm:text-xs">
                   {originBadge}
                 </Badge>
               </div>
             )}
 
-            <Heading as="h1" size="2xl" className="tracking-tight">
+            <Heading as="h1" size="2xl" className="tracking-tight leading-tight">
               {headline}{' '}
               {highlightedText && (
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-600 to-brand-400 dark:from-brand-400 dark:to-brand-300">
@@ -112,19 +112,20 @@ export function Hero({
             </Heading>
 
             {subheadline && (
-              <Text size="lg" variant="muted" className="max-w-2xl">
+              <Text size="lg" variant="muted" className="max-w-2xl text-sm sm:text-base lg:text-lg leading-relaxed">
                 {subheadline}
               </Text>
             )}
 
             {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-2">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3.5 pt-1 sm:pt-2">
               {primaryCta && (
                 <Button
                   variant="primary"
-                  size="lg"
+                  size="md"
                   to={primaryCta.path}
                   rightIcon={primaryCta.icon || 'ArrowUpRight'}
+                  className="w-full sm:w-auto text-sm sm:text-base py-2.5 sm:py-3.5"
                 >
                   {primaryCta.label}
                 </Button>
@@ -132,9 +133,10 @@ export function Hero({
               {secondaryCta && (
                 <Button
                   variant="white"
-                  size="lg"
+                  size="md"
                   to={secondaryCta.path}
                   leftIcon={secondaryCta.icon || 'LayoutGrid'}
+                  className="w-full sm:w-auto text-sm sm:text-base py-2.5 sm:py-3.5"
                 >
                   {secondaryCta.label}
                 </Button>
@@ -242,12 +244,12 @@ export function Hero({
 
               {/* Center Active Focal Card (Mobile & Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[370px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-4 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-2xl sm:rounded-3xl p-3.5 sm:p-5 bg-gradient-to-b from-navy-900/95 via-navy-950 to-navy-950 border-2 border-brand-400/60 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Top Bar: Category Pill & Slide Counter */}
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full text-[11px] sm:text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
+                  <div className="flex items-center justify-between mb-2.5 sm:mb-3">
+                    <span className="inline-flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-full text-[10px] sm:text-xs font-semibold bg-brand-500/20 text-brand-300 border border-brand-500/30">
                       <Icon name="Sparkles" size="xs" />
-                      <span className="truncate max-w-[150px] sm:max-w-none">{currentItem.website.categoryName}</span>
+                      <span className="truncate max-w-[130px] sm:max-w-none">{currentItem.website.categoryName}</span>
                     </span>
                     <span className="text-[10px] sm:text-[11px] font-mono font-bold text-navy-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-navy-800/80 border border-white/10">
                       {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
@@ -269,17 +271,17 @@ export function Hero({
                   </Link>
 
                   {/* Card Content */}
-                  <div className="mt-3 sm:mt-3.5 text-center flex flex-col items-center">
+                  <div className="mt-2.5 sm:mt-3.5 text-center flex flex-col items-center">
                     <Link
                       to={`/portfolio/${currentItem.website.slug}`}
                       className="hover:text-brand-400 transition-colors"
                     >
-                      <h3 className="font-display font-bold text-base sm:text-lg md:text-xl text-white tracking-tight leading-snug line-clamp-1">
+                      <h3 className="font-display font-bold text-sm sm:text-base md:text-xl text-white tracking-tight leading-snug line-clamp-1">
                         {currentItem.website.title}
                       </h3>
                     </Link>
 
-                    <p className="mt-1 text-xs sm:text-sm text-navy-200 line-clamp-2 leading-relaxed px-1">
+                    <p className="mt-0.5 sm:mt-1 text-xs sm:text-sm text-navy-200 line-clamp-2 leading-relaxed px-1">
                       {currentItem.website.shortDescription}
                     </p>
                   </div>
@@ -347,20 +349,20 @@ export function Hero({
 
         {/* Corporate Metrics Strip */}
         {companyStats.length > 0 && (
-          <div className="mt-12 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+          <div className="mt-8 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
             {companyStats.map((stat) => (
               <div
                 key={stat.label}
-                className="p-5 sm:p-6 rounded-2xl bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
+                className="p-3 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
               >
-                <div className="font-display text-2xl sm:text-3xl font-extrabold text-brand-600 dark:text-brand-400">
+                <div className="font-display text-base sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
                   {stat.value}
                 </div>
-                <Heading as="h3" size="sm" className="mt-1">
+                <Heading as="h3" size="sm" className="mt-1 text-xs sm:text-sm md:text-base font-bold line-clamp-1">
                   {stat.label}
                 </Heading>
                 {stat.detail && (
-                  <Text size="xs" variant="muted" className="mt-0.5">
+                  <Text size="xs" variant="muted" className="mt-0.5 text-[10px] sm:text-xs leading-normal line-clamp-2">
                     {stat.detail}
                   </Text>
                 )}

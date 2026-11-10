@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { cn } from '../../../utils/formatters';
 
 const SIZE_CLASSES = {
-  '2xl': 'text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12]',
-  xl: 'text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight leading-[1.18]',
-  lg: 'text-xl sm:text-2xl font-bold tracking-tight leading-snug',
-  md: 'text-lg sm:text-xl font-bold leading-snug',
-  sm: 'text-base sm:text-lg font-semibold leading-snug',
-  xs: 'text-sm font-semibold uppercase tracking-wider',
+  '2xl': 'text-2xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.15]',
+  xl: 'text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight leading-[1.18]',
+  lg: 'text-lg sm:text-xl lg:text-2xl font-bold tracking-tight leading-snug',
+  md: 'text-base sm:text-lg font-bold leading-snug',
+  sm: 'text-sm sm:text-base font-semibold leading-snug',
+  xs: 'text-xs font-semibold uppercase tracking-wider',
 };
 
 const COLOR_CLASSES = {
