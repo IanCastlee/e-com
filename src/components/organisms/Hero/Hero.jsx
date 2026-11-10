@@ -352,7 +352,7 @@ export function Hero({
                   Featured Website Feed
                 </span>
               </div>
-              <span className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded-full border border-brand-500/20">
+              <span className="text-[11px] font-semibold text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded-[5px] border border-brand-500/20">
                 {localWebsites.length} Designs
               </span>
             </div>
@@ -448,7 +448,7 @@ export function Hero({
             {companyStats.map((stat) => (
               <div
                 key={stat.label}
-                className="p-3 sm:p-5 md:p-6 rounded-xl sm:rounded-2xl bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
+                className="p-3 sm:p-5 md:p-6 rounded-[5px] bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
               >
                 <div className="font-display text-base sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
                   {stat.value}

@@ -12,7 +12,7 @@ import { formatCurrencyPHP, cn } from '../../../utils/formatters';
 export function WebsiteCard({
   website,
   pricePrefix = 'Starting at',
-  demoButtonLabel = 'View Demo',
+  demoButtonLabel = 'Live Preview',
   detailsButtonLabel = 'Details',
   featuredBadgeLabel = 'Featured',
   onPreviewDemo,
@@ -37,7 +37,7 @@ export function WebsiteCard({
   return (
     <article
       className={cn(
-        'group flex flex-col bg-white dark:bg-navy-900 rounded-2xl border border-navy-200/80 dark:border-navy-800/90 overflow-hidden shadow-soft hover:shadow-elevated hover:border-brand-500/60 dark:hover:border-brand-500/50 transition-all duration-300',
+        'group flex flex-col bg-white dark:bg-navy-900 rounded-[5px] border border-navy-200/80 dark:border-navy-800/90 overflow-hidden shadow-soft hover:shadow-elevated hover:border-brand-500/60 dark:hover:border-brand-500/50 transition-all duration-300',
         className
       )}
     >
