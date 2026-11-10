@@ -168,19 +168,10 @@ export function Hero({
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-[5px] p-3 md:p-4 bg-white/95 dark:bg-navy-950/90 border border-navy-200/90 dark:border-navy-700/80 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[5px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-[5px] bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30 line-clamp-1">
-                      {prevItem.website.categoryName}
-                    </span>
-                    <span className="text-[10px] font-mono text-navy-500 dark:text-navy-400">
-                      {String(prevItem.index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  {/* Sharp Full Image Container */}
-                  <div className="relative w-full aspect-[16/10] my-2 rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/70 dark:border-white/10 flex items-center justify-center p-1.5">
+                  {/* Sharp Full Image Container — Clean, No Inner Border */}
+                  <div className="relative w-full aspect-[16/10] my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     <img
                       src={prevItem.website.thumbnail}
                       alt={prevItem.website.title}
@@ -207,19 +198,10 @@ export function Hero({
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[320px] md:h-[350px] rounded-[5px] p-3 md:p-4 bg-white/95 dark:bg-navy-950/90 border border-navy-200/90 dark:border-navy-700/80 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[240px] md:w-[280px] h-[300px] md:h-[330px] rounded-[5px] p-3 md:p-3.5 bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
-                  <div className="flex items-center justify-between">
-                    <span className="text-[10px] md:text-xs font-semibold px-2.5 py-0.5 rounded-[5px] bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30 line-clamp-1">
-                      {nextItem.website.categoryName}
-                    </span>
-                    <span className="text-[10px] font-mono text-navy-500 dark:text-navy-400">
-                      {String(nextItem.index + 1).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  {/* Sharp Full Image Container */}
-                  <div className="relative w-full aspect-[16/10] my-2 rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/70 dark:border-white/10 flex items-center justify-center p-1.5">
+                  {/* Sharp Full Image Container — Clean, No Inner Border */}
+                  <div className="relative w-full aspect-[16/10] my-1 rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     <img
                       src={nextItem.website.thumbnail}
                       alt={nextItem.website.title}
@@ -244,23 +226,12 @@ export function Hero({
 
               {/* Center Active Focal Card (Desktop Responsive) */}
               {currentItem && (
-                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] p-3.5 sm:p-5 bg-white dark:bg-navy-950 border-2 border-brand-500/50 dark:border-brand-400/60 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
-                  {/* Top Bar: Category Pill & Slide Counter */}
-                  <div className="flex items-center justify-between mb-2.5 sm:mb-3">
-                    <span className="inline-flex items-center gap-1.5 px-2 sm:px-3 py-0.5 sm:py-1 rounded-[5px] text-[10px] sm:text-xs font-semibold bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
-                      <Icon name="Sparkles" size="xs" />
-                      <span className="truncate max-w-[130px] sm:max-w-none">{currentItem.website.categoryName}</span>
-                    </span>
-                    <span className="text-[10px] sm:text-[11px] font-mono font-bold text-navy-700 dark:text-navy-200 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-[5px] bg-navy-100 dark:bg-navy-800/80 border border-navy-200 dark:border-white/10">
-                      {String(currentIndex + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-                    </span>
-                  </div>
-
-                  {/* Dedicated Full Image Screen Showcase — Completely Sharp & Uncropped */}
-                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 shadow-inner flex items-center justify-center p-1.5 sm:p-2 group-hover:border-brand-400/50 transition-colors duration-300">
+                <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[5px] p-3.5 sm:p-4 bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                  {/* Dedicated Full Image Screen Showcase — Clean, No Inner Border */}
+                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                     {/* Free Customization Badge */}
-                    <div className="absolute top-2 left-2 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
+                    <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-sm">
                         <Icon name="Sparkles" size="xs" />
                         <span>Free Customization</span>
                       </span>
@@ -274,7 +245,7 @@ export function Hero({
                       <img
                         src={currentItem.website.thumbnail}
                         alt={currentItem.website.title}
-                        className="w-full h-full object-contain drop-shadow-md transform group-hover:scale-[1.02] transition-transform duration-500"
+                        className="w-full h-full object-contain drop-shadow-sm transform group-hover:scale-[1.02] transition-transform duration-500"
                         loading="eager"
                       />
                     </Link>
@@ -369,27 +340,16 @@ export function Hero({
 
             {/* Scrollable Feed List */}
             <div className="space-y-4">
-              {localWebsites.map((site, idx) => (
+              {localWebsites.map((site) => (
                 <div
                   key={site.id}
-                  className="rounded-[5px] p-3.5 bg-white dark:bg-navy-950 border border-navy-200/90 dark:border-brand-500/30 shadow-soft dark:shadow-lg flex flex-col justify-between"
+                  className="rounded-[5px] p-3.5 bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-sm flex flex-col justify-between"
                 >
-                  {/* Top Bar: Category & Index */}
-                  <div className="flex items-center justify-between mb-2.5">
-                    <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[5px] text-[10px] font-semibold bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
-                      <Icon name="Sparkles" size="xs" />
-                      <span>{site.categoryName}</span>
-                    </span>
-                    <span className="text-[10px] font-mono font-bold text-navy-700 dark:text-navy-200 px-2 py-0.5 rounded-[5px] bg-navy-100 dark:bg-navy-800/80 border border-navy-200 dark:border-white/10">
-                      0{idx + 1} / 0{localWebsites.length}
-                    </span>
-                  </div>
-
-                  {/* Website Preview Image Showcase */}
-                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-900/90 border border-navy-200/80 dark:border-white/15 flex items-center justify-center p-1.5 active:scale-[0.98] transition-transform">
+                  {/* Website Preview Image Showcase (Clean, No Inner Border) */}
+                  <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center active:scale-[0.98] transition-transform">
                     {/* Free Customization Badge */}
                     <div className="absolute top-2 left-2 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
                         <Icon name="Sparkles" size="xs" />
                         <span>Free Customization</span>
                       </span>
@@ -403,14 +363,14 @@ export function Hero({
                       <img
                         src={site.thumbnail}
                         alt={site.title}
-                        className="w-full h-full object-contain drop-shadow-md"
+                        className="w-full h-full object-contain drop-shadow-sm"
                         loading="lazy"
                       />
                     </Link>
                   </div>
 
                   {/* Card Content & Action Link */}
-                  <div className="mt-2.5">
+                  <div className="mt-3">
                     <Link
                       to={`/portfolio/${site.slug}`}
                       className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -419,11 +379,11 @@ export function Hero({
                         {site.title}
                       </h4>
                     </Link>
-                    <p className="mt-0.5 text-xs text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
+                    <p className="mt-1 text-xs text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
                       {site.shortDescription}
                     </p>
 
-                    <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-white/10 flex items-center justify-between">
+                    <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-navy-800/80 flex items-center justify-between">
                       <a
                         href={site.demoUrl || `/portfolio/${site.slug}`}
                         target={site.demoUrl ? "_blank" : undefined}

@@ -61,27 +61,16 @@ export function FeaturedSlider({
 
         {/* Feed-Style Cards Grid (Mobile 1 col feed, Tablet 2 cols, Desktop 3 cols) */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-          {displayWebsites.map((site, idx) => (
+          {displayWebsites.map((site) => (
             <div
               key={site.id}
-              className="rounded-[5px] p-4 bg-white dark:bg-navy-900/90 border border-navy-200/90 dark:border-brand-500/30 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
+              className="rounded-[5px] p-4 bg-white dark:bg-navy-900/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
             >
-              {/* Top Bar: Category Pill & Index Counter */}
-              <div className="flex items-center justify-between mb-2.5">
-                <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-[5px] text-[10px] font-semibold bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 border border-brand-200 dark:border-brand-500/30">
-                  <Icon name="Sparkles" size="xs" />
-                  <span>{site.categoryName}</span>
-                </span>
-                <span className="text-[10px] font-mono font-bold text-navy-700 dark:text-navy-200 px-2 py-0.5 rounded-[5px] bg-navy-100 dark:bg-navy-800/80 border border-navy-200 dark:border-white/10">
-                  0{idx + 1} / 0{displayWebsites.length}
-                </span>
-              </div>
-
-              {/* Website Preview Image Showcase with Free Customization Badge */}
-              <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-50 dark:bg-navy-950 border border-navy-200/80 dark:border-white/15 flex items-center justify-center p-1.5 group-hover:border-brand-500/40 transition-colors">
+              {/* Website Preview Image Showcase (Clean, No Inner Border) */}
+              <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center">
                 {/* Free Customization Badge */}
                 <div className="absolute top-2 left-2 z-20 pointer-events-none">
-                  <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow border border-amber-300">
+                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[5px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
                     <Icon name="Sparkles" size="xs" />
                     <span>Free Customization</span>
                   </span>
@@ -95,7 +84,7 @@ export function FeaturedSlider({
                   <img
                     src={site.thumbnail}
                     alt={site.title}
-                    className="w-full h-full object-contain drop-shadow-md transform group-hover:scale-[1.02] transition-transform duration-500"
+                    className="w-full h-full object-contain drop-shadow-sm transform group-hover:scale-[1.02] transition-transform duration-500"
                     loading="lazy"
                   />
                 </Link>
@@ -133,7 +122,7 @@ export function FeaturedSlider({
                 </div>
 
                 {/* Footer Actions: Live Preview & Details */}
-                <div className="mt-4 pt-3 border-t border-navy-100 dark:border-white/10 flex items-center justify-between">
+                <div className="mt-4 pt-3 border-t border-navy-100 dark:border-navy-800/80 flex items-center justify-between">
                   <a
                     href={site.demoUrl || `/portfolio/${site.slug}`}
                     target={site.demoUrl ? "_blank" : undefined}
