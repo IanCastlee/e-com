@@ -139,7 +139,7 @@ export function Contact() {
                   Direct Studio Contact
                 </Heading>
                 <Text size="sm" variant="light" className="text-navy-300 mt-1">
-                  Prefer chatting on Facebook Messenger or calling directly? We respond promptly in English, Tagalog, or Bicol.
+                  Prefer chatting on Facebook Messenger or calling directly? We respond promptly during business hours.
                 </Text>
               </div>
 

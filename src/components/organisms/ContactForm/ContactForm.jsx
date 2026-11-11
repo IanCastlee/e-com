@@ -23,8 +23,8 @@ export function ContactForm({
   onSubmit,
   onReset,
   submitLabel = 'Submit Project Inquiry',
-  successTitle = 'Maraming Salamat! Inquiry Received.',
-  successMessage = 'We have received your website request in Bulusan, Sorsogon. Expect a personalized reply via email or phone/Messenger within 24 business hours.',
+  successTitle = 'Thank You! Inquiry Received.',
+  successMessage = 'We have received your project details. Our team will review your requirements and respond via email or phone/Messenger within 24 business hours.',
   className = '',
 }) {
   if (isSubmitted) {
@@ -220,7 +220,7 @@ export function ContactForm({
           <div className="space-y-1">
             <p className="font-semibold">{submitError}</p>
             <p className="text-xs text-navy-600 dark:text-navy-300">
-              Maaari ka ring magpadala nang direkta via email:{' '}
+              You can also contact our studio directly via email:{' '}
               <a
                 href={`mailto:ml99997955@gmail.com?subject=Website%20Inquiry%20from%20${encodeURIComponent(values.fullName || 'Client')}&body=${encodeURIComponent(values.message || '')}`}
                 className="underline font-semibold text-brand-600 dark:text-brand-400 hover:opacity-80"

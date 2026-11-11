@@ -102,6 +102,20 @@ export function useContactForm(prefill = {}, options = {}) {
       }
 
       try {
+        const timestamp = new Date().toLocaleString('en-US', {
+          weekday: 'short',
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZoneName: 'short',
+        });
+
+        const selectedDesign = options.selectedWebsiteCode
+          ? `${options.selectedWebsiteTitle || 'Website'} [Code: ${options.selectedWebsiteCode}]`
+          : 'Custom Project (No Template Selected)';
+
         const response = await fetch('https://api.web3forms.com/submit', {
           method: 'POST',
           headers: {
@@ -110,17 +124,21 @@ export function useContactForm(prefill = {}, options = {}) {
           },
           body: JSON.stringify({
             access_key: accessKey,
-            subject: `New e-yhan Website Inquiry: ${values.fullName} [${options.selectedWebsiteCode || values.websiteType}]`,
-            from_name: 'e-yhan Web Portal',
+            subject: `💼 [New Client Inquiry] ${values.fullName} • ${options.selectedWebsiteCode || values.websiteType}`,
+            from_name: 'e-yhan Web Studio Inquiry',
             replyto: values.email,
-            name: values.fullName,
-            email: values.email,
-            phone: values.phone,
-            preferred_website_code: options.selectedWebsiteCode || 'None (General Inquiry)',
-            preferred_website_title: options.selectedWebsiteTitle || 'Custom',
-            website_solution: values.websiteType,
-            budget: values.budget,
-            message: values.message,
+
+            // Clean, beautifully labeled fields for the email notification
+            'Client Full Name': values.fullName,
+            'Client Email Address': values.email,
+            'Contact Number / Messenger': values.phone,
+            'Preferred Website Design': selectedDesign,
+            'Template Code': options.selectedWebsiteCode || 'N/A',
+            'Solution Category': values.websiteType,
+            'Estimated Budget Range': values.budget,
+            'Project Scope & Details': values.message,
+            'Submission Date & Time': timestamp,
+            'Origin Website': 'e-yhan Digital Solutions • https://e-yhan.onrender.com',
           }),
         });
 
@@ -129,11 +147,15 @@ export function useContactForm(prefill = {}, options = {}) {
         if (response.ok && data.success) {
           setIsSubmitted(true);
         } else {
-          setSubmitError(data.message || 'Unable to send email right now. Please try again or message us directly.');
+          setSubmitError(
+            data.message || 'Unable to submit your inquiry at this moment. Please try again or email us directly.'
+          );
         }
       } catch (err) {
         console.error('Contact form submission error:', err);
-        setSubmitError('Connection error. Please try again or reach out to ml99997955@gmail.com directly.');
+        setSubmitError(
+          'A network error occurred. Please check your connection or contact us directly at ml99997955@gmail.com.'
+        );
       } finally {
         setIsSubmitting(false);
       }
