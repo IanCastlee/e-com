@@ -67,11 +67,11 @@ export function FeaturedSlider({
               className="rounded-[10px] overflow-hidden bg-white dark:bg-navy-900/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-lg flex flex-col justify-between hover:shadow-elevated hover:border-brand-500/50 transition-all duration-300 group"
             >
               {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
-              <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
-                {/* Free Customization Badge */}
+              <div className="relative w-full aspect-video bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800/80 flex items-center justify-center overflow-hidden">
+                {/* Free Customization Badge — Elegant Premium Glassmorphism (Adapts to Light & Dark) */}
                 <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] font-bold bg-amber-400 text-navy-950 shadow-sm">
-                    <Icon name="Sparkles" size="xs" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[10px] text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                    <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
                     <span>Free Customization</span>
                   </span>
                 </div>

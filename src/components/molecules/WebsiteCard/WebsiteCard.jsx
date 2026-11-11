@@ -42,7 +42,7 @@ export function WebsiteCard({
       )}
     >
       {/* Thumbnail Preview Container with Skeleton Placeholder */}
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-none bg-navy-100 dark:bg-navy-950 border-b border-navy-100 dark:border-navy-800 flex items-center justify-center">
+      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-none bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800 flex items-center justify-center">
         {!imageLoaded && (
           <div className="absolute inset-0 bg-navy-200/70 dark:bg-navy-800/80 animate-pulse flex items-center justify-center pointer-events-none z-0">
             <Icon name="Image" size="md" className="text-navy-300 dark:text-navy-600 animate-pulse" />
@@ -62,10 +62,10 @@ export function WebsiteCard({
           />
         </Link>
 
-        {/* Free Customization Badge */}
+        {/* Free Customization Badge — Elegant Premium Glassmorphism (Adapts to Light & Dark) */}
         <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-          <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-[10px] text-[10px] sm:text-xs font-bold bg-amber-400 text-navy-950 shadow-md border border-amber-300">
-            <Icon name="Sparkles" size="xs" />
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[10px] text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+            <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
             <span>Free Customization</span>
           </span>
         </div>
