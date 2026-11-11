@@ -73,7 +73,7 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:pt-16 sm:pb-24 border-b border-navy-200/70 dark:border-navy-800/80">
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:pt-12 sm:pb-16 lg:py-16 border-b border-navy-200/70 dark:border-navy-800/80">
       {/* Subtle Architectural Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-70 pointer-events-none" aria-hidden="true" />
       <div
@@ -412,30 +412,6 @@ export function Hero({
             </div>
           </div>
         </div>
-
-        {/* Corporate Metrics Strip */}
-        {companyStats.length > 0 && (
-          <div className="mt-8 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
-            {companyStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="p-3 sm:p-5 md:p-6 rounded-[10px] bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
-              >
-                <div className="font-display text-base sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
-                  {stat.value}
-                </div>
-                <Heading as="h3" size="sm" className="mt-1 text-xs sm:text-sm md:text-base font-bold line-clamp-1">
-                  {stat.label}
-                </Heading>
-                {stat.detail && (
-                  <Text size="xs" variant="muted" className="mt-0.5 text-[10px] sm:text-xs leading-normal line-clamp-2">
-                    {stat.detail}
-                  </Text>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );
