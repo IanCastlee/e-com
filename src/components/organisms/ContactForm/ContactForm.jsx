@@ -16,6 +16,7 @@ export function ContactForm({
   errors = {},
   isSubmitting = false,
   isSubmitted = false,
+  submitError = null,
   websiteTypeOptions = [],
   budgetOptions = [],
   onChange,
@@ -213,6 +214,24 @@ export function ContactForm({
         onChange={(e) => onChange('message', e.target.value)}
       />
 
+      {submitError && (
+        <div className="p-4 rounded-xl bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 text-red-700 dark:text-red-400 text-sm flex items-start gap-3">
+          <Icon name="AlertCircle" size="md" className="shrink-0 mt-0.5" />
+          <div className="space-y-1">
+            <p className="font-semibold">{submitError}</p>
+            <p className="text-xs text-navy-600 dark:text-navy-300">
+              Maaari ka ring magpadala nang direkta via email:{' '}
+              <a
+                href={`mailto:ml99997955@gmail.com?subject=Website%20Inquiry%20from%20${encodeURIComponent(values.fullName || 'Client')}&body=${encodeURIComponent(values.message || '')}`}
+                className="underline font-semibold text-brand-600 dark:text-brand-400 hover:opacity-80"
+              >
+                ml99997955@gmail.com
+              </a>
+            </p>
+          </div>
+        </div>
+      )}
+
       <div className="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-center gap-2 text-xs text-navy-500 dark:text-navy-400">
           <Icon name="ShieldCheck" size="sm" className="text-brand-600 dark:text-brand-400 shrink-0" />
@@ -241,6 +260,7 @@ ContactForm.propTypes = {
   errors: PropTypes.object,
   isSubmitting: PropTypes.bool,
   isSubmitted: PropTypes.bool,
+  submitError: PropTypes.string,
   websiteTypeOptions: PropTypes.arrayOf(
     PropTypes.shape({
       value: PropTypes.string.isRequired,

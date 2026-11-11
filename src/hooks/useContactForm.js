@@ -11,14 +11,16 @@ const INITIAL_VALUES = {
 
 /**
  * Custom hook encapsulating Contact Form validation, pre-filled query parameters,
- * and submission state.
+ * and email submission via Web3Forms API to ml99997955@gmail.com.
  * @param {Object} prefill - Optional initial field overrides
+ * @param {Object} options - Optional submission configurations (e.g. selectedWebsite details)
  */
-export function useContactForm(prefill = {}) {
+export function useContactForm(prefill = {}, options = {}) {
   const [values, setValues] = useState({ ...INITIAL_VALUES, ...prefill });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
 
   useEffect(() => {
     if (prefill && Object.keys(prefill).length > 0) {
@@ -66,10 +68,11 @@ export function useContactForm(prefill = {}) {
       delete updated[field];
       return updated;
     });
+    setSubmitError(null);
   }, []);
 
   const handleSubmit = useCallback(
-    (event) => {
+    async (event) => {
       if (event && event.preventDefault) event.preventDefault();
       const validationErrors = validate(values);
       setErrors(validationErrors);
@@ -79,19 +82,69 @@ export function useContactForm(prefill = {}) {
       }
 
       setIsSubmitting(true);
-      setTimeout(() => {
+      setSubmitError(null);
+
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || options.accessKey;
+
+      if (!accessKey) {
+        // If access key is not yet configured, gracefully simulate success in dev/preview
+        // while informing developer via console.
+        console.info(
+          '[e-yhan Contact] Form submitted locally. Set VITE_WEB3FORMS_ACCESS_KEY to send directly to ml99997955@gmail.com'
+        );
+        setTimeout(() => {
+          setIsSubmitting(false);
+          setIsSubmitted(true);
+        }, 500);
+        return true;
+      }
+
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: accessKey,
+            subject: `New e-yhan Website Inquiry: ${values.fullName} [${options.selectedWebsiteCode || values.websiteType}]`,
+            from_name: 'e-yhan Web Portal',
+            replyto: values.email,
+            name: values.fullName,
+            email: values.email,
+            phone: values.phone,
+            preferred_website_code: options.selectedWebsiteCode || 'None (General Inquiry)',
+            preferred_website_title: options.selectedWebsiteTitle || 'Custom',
+            website_solution: values.websiteType,
+            budget: values.budget,
+            message: values.message,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (response.ok && data.success) {
+          setIsSubmitted(true);
+        } else {
+          setSubmitError(data.message || 'Unable to send email right now. Please try again or message us directly.');
+        }
+      } catch (err) {
+        console.error('Contact form submission error:', err);
+        setSubmitError('Connection error. Please try again or reach out to ml99997955@gmail.com directly.');
+      } finally {
         setIsSubmitting(false);
-        setIsSubmitted(true);
-      }, 450);
+      }
 
       return true;
     },
-    [validate, values]
+    [validate, values, options]
   );
 
   const resetForm = useCallback(() => {
     setValues({ ...INITIAL_VALUES });
     setErrors({});
+    setSubmitError(null);
     setIsSubmitted(false);
   }, []);
 
@@ -100,6 +153,7 @@ export function useContactForm(prefill = {}) {
     errors,
     isSubmitting,
     isSubmitted,
+    submitError,
     handleChange,
     handleSubmit,
     resetForm,

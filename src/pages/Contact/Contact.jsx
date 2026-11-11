@@ -68,10 +68,14 @@ export function Contact() {
     errors,
     isSubmitting,
     isSubmitted,
+    submitError,
     handleChange,
     handleSubmit,
     resetForm,
-  } = useContactForm(prefill);
+  } = useContactForm(prefill, {
+    selectedWebsiteCode: selectedWebsite?.code,
+    selectedWebsiteTitle: selectedWebsite?.title,
+  });
 
   const websiteTypeOptions = useMemo(() => {
     const catOptions = categories.map((cat) => ({
@@ -114,6 +118,7 @@ export function Contact() {
               errors={errors}
               isSubmitting={isSubmitting}
               isSubmitted={isSubmitted}
+              submitError={submitError}
               websiteTypeOptions={websiteTypeOptions}
               budgetOptions={BUDGET_RANGES}
               onChange={handleChange}
