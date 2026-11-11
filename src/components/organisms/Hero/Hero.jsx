@@ -73,7 +73,7 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:pt-12 sm:pb-16 lg:py-16 border-b border-navy-200/70 dark:border-navy-800/80">
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:py-10 lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
       {/* Subtle Architectural Grid Pattern */}
       <div className="absolute inset-0 bg-grid-pattern opacity-70 pointer-events-none" aria-hidden="true" />
       <div
@@ -85,7 +85,7 @@ export function Hero({
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Copy Column */}
           <motion.div
