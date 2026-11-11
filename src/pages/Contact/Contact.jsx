@@ -4,7 +4,7 @@ import { PageLayout } from '../../components/templates';
 import { ContactForm, FAQAccordion } from '../../components/organisms';
 import { SocialLinks } from '../../components/molecules';
 import { Heading, Text, Icon, Badge, Button } from '../../components/atoms';
-import { categories, faqs, footerData } from '../../data';
+import { categories, faqs, footerData, websites } from '../../data';
 import { useContactForm } from '../../hooks';
 import { BRAND_INFO, BUDGET_RANGES } from '../../utils/constants';
 
@@ -16,26 +16,52 @@ import { BRAND_INFO, BUDGET_RANGES } from '../../utils/constants';
 export function Contact() {
   const [searchParams] = useSearchParams();
 
+  const preferredParam = searchParams.get('preferred') || searchParams.get('code');
+  const designParam = searchParams.get('design') || searchParams.get('website');
+  const categoryParam = searchParams.get('category');
+  const packageParam = searchParams.get('package');
+
+  // Match selected website blueprint from websites data if provided
+  const selectedWebsite = useMemo(() => {
+    if (!preferredParam && !designParam) return null;
+    const found = websites.find((w) => {
+      if (preferredParam && w.code && w.code.toLowerCase() === preferredParam.toLowerCase()) return true;
+      if (preferredParam && w.id && w.id.toLowerCase() === preferredParam.toLowerCase()) return true;
+      if (designParam && w.title.toLowerCase() === designParam.toLowerCase()) return true;
+      return false;
+    });
+
+    if (found) return found;
+
+    return {
+      title: designParam || preferredParam,
+      code: preferredParam || 'CUSTOM',
+      categoryName: categoryParam || 'Custom Website',
+    };
+  }, [preferredParam, designParam, categoryParam]);
+
   const prefill = useMemo(() => {
-    const websiteParam = searchParams.get('website');
-    const categoryParam = searchParams.get('category');
-    const packageParam = searchParams.get('package');
-
     const initial = {};
-    if (categoryParam) {
-      initial.websiteType = categoryParam;
-    } else if (packageParam) {
-      initial.websiteType = packageParam;
-    }
 
-    if (websiteParam) {
-      initial.message = `Hello e-yhan! We would like to request the "${websiteParam}" system and customize it for our organization.`;
-    } else if (packageParam) {
-      initial.message = `Hello e-yhan! We are interested in the "${packageParam}" package. Here are our initial project details: `;
+    if (selectedWebsite) {
+      initial.websiteType = selectedWebsite.categoryName || categoryParam || 'Static Website ($55–$180 / ₱3k–₱10k • Output First)';
+      initial.message = `Hello e-yhan! I prefer this website design: "${selectedWebsite.title}" (Code: ${selectedWebsite.code}).\n\nI would like to request and customize this design for my business/organization with my logo, brand colors, and content.`;
+    } else {
+      if (categoryParam) {
+        initial.websiteType = categoryParam;
+      } else if (packageParam) {
+        initial.websiteType = packageParam;
+      }
+
+      if (designParam) {
+        initial.message = `Hello e-yhan! We would like to request the "${designParam}" system and customize it for our organization.`;
+      } else if (packageParam) {
+        initial.message = `Hello e-yhan! We are interested in the "${packageParam}" package. Here are our initial project details: `;
+      }
     }
 
     return initial;
-  }, [searchParams]);
+  }, [selectedWebsite, categoryParam, packageParam, designParam]);
 
   const {
     values,
@@ -83,6 +109,7 @@ export function Contact() {
           {/* Left Column: Contact Form Organism */}
           <div className="lg:col-span-7">
             <ContactForm
+              selectedWebsite={selectedWebsite}
               values={values}
               errors={errors}
               isSubmitting={isSubmitting}

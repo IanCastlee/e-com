@@ -21,8 +21,11 @@ export function WebsiteCard({
   const [imageLoaded, setImageLoaded] = useState(false);
 
   const {
+    id,
+    code,
     title,
     slug,
+    category,
     categoryName,
     shortDescription,
     techStack = [],
@@ -72,72 +75,92 @@ export function WebsiteCard({
       </div>
 
       {/* Card Body */}
-      <div className="flex flex-col flex-1 p-5 sm:p-6">
-        <Link
-          to={detailsPath}
-          className="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-md"
-        >
-          <Heading
-            as="h3"
-            size="md"
-            className="group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-1"
+      <div className="flex flex-col flex-1 p-5 sm:p-6 justify-between">
+        <div>
+          {/* Category & Template Code Tag */}
+          <div className="flex items-center gap-2 mb-2 flex-wrap">
+            {categoryName && (
+              <span className="text-[10px] font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-2 py-0.5 rounded-[5px] border border-brand-500/20">
+                {categoryName}
+              </span>
+            )}
+            {code && (
+              <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
+                Code: {code}
+              </span>
+            )}
+          </div>
+
+          <Link
+            to={detailsPath}
+            className="focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 rounded-md"
           >
-            {title}
-          </Heading>
-        </Link>
+            <Heading
+              as="h3"
+              size="md"
+              className="group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors line-clamp-1"
+            >
+              {title}
+            </Heading>
+          </Link>
 
-        <Text size="sm" variant="muted" className="mt-2 line-clamp-2 flex-1">
-          {shortDescription}
-        </Text>
+          <Text size="sm" variant="muted" className="mt-2 line-clamp-2">
+            {shortDescription}
+          </Text>
 
-        {/* Tech Stack Tags */}
-        {techStack.length > 0 && (
-          <div className="flex flex-wrap gap-1.5 mt-4">
-            {techStack.slice(0, 4).map((tech) => (
-              <Tag key={tech} label={tech} variant="subtle" size="sm" />
-            ))}
-          </div>
-        )}
+          {/* Tech Stack Tags */}
+          {techStack.length > 0 && (
+            <div className="flex flex-wrap gap-1.5 mt-3">
+              {techStack.slice(0, 4).map((tech) => (
+                <Tag key={tech} label={tech} variant="subtle" size="sm" />
+              ))}
+            </div>
+          )}
+        </div>
 
-        {/* Price & Action Footer */}
-        <div className="mt-5 pt-4 border-t border-navy-100 dark:border-navy-800/80 flex items-center justify-between gap-3">
-          <div className="flex flex-col">
-            <Text as="span" size="xs" variant="muted" className="uppercase tracking-wider font-semibold text-[10px]">
-              {pricePrefix}
-            </Text>
-            <span className="font-display text-lg sm:text-xl font-extrabold text-navy-900 dark:text-white">
-              {formatCurrencyPHP(price)}
-            </span>
-          </div>
+        {/* Action Section: Preferred Design CTA + Live Preview & Details */}
+        <div className="mt-5 pt-3 border-t border-navy-100 dark:border-navy-800/80 space-y-2.5">
+          <Button
+            to={`/contact?preferred=${encodeURIComponent(code || id)}&design=${encodeURIComponent(title)}&category=${encodeURIComponent(categoryName || category || '')}`}
+            variant="primary"
+            size="sm"
+            leftIcon="CheckCircle2"
+            className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs sm:text-sm py-2"
+          >
+            I prefer this website design
+          </Button>
 
-          <div className="flex items-center gap-2">
-            {onPreviewDemo ? (
+          <div className="flex items-center justify-between gap-3 pt-0.5">
+            <div className="flex flex-col">
+              <Text as="span" size="xs" variant="muted" className="uppercase tracking-wider font-semibold text-[10px]">
+                {pricePrefix}
+              </Text>
+              <span className="font-display text-base sm:text-lg font-extrabold text-navy-900 dark:text-white">
+                {formatCurrencyPHP(price)}
+              </span>
+            </div>
+
+            <div className="flex items-center gap-2">
               <Button
                 variant="outline"
                 size="sm"
+                to={website.demoUrl || detailsPath}
+                target={website.demoUrl ? "_blank" : undefined}
                 leftIcon="Eye"
-                onClick={() => onPreviewDemo(website)}
+                className="text-xs"
               >
                 {demoButtonLabel}
               </Button>
-            ) : (
               <Button
                 variant="outline"
                 size="sm"
                 to={detailsPath}
-                leftIcon="Eye"
+                rightIcon="ArrowRight"
+                className="text-xs"
               >
-                {demoButtonLabel}
+                {detailsButtonLabel}
               </Button>
-            )}
-            <Button
-              variant="primary"
-              size="sm"
-              to={detailsPath}
-              rightIcon="ArrowRight"
-            >
-              {detailsButtonLabel}
-            </Button>
+            </div>
           </div>
         </div>
       </div>

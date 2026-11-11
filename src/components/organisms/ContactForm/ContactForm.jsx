@@ -11,6 +11,7 @@ import { cn } from '../../../utils/formatters';
 export function ContactForm({
   title = 'Request a Website or Custom Quote',
   subtitle = 'Fill out the project brief below and receive a detailed response and PHP estimate within 24 hours.',
+  selectedWebsite = null,
   values = {},
   errors = {},
   isSubmitting = false,
@@ -89,6 +90,51 @@ export function ContactForm({
           </Text>
         )}
       </div>
+
+      {/* Selected Website Design Banner */}
+      {selectedWebsite && (
+        <div className="p-4 sm:p-5 rounded-[10px] bg-gradient-to-r from-brand-50/90 via-white to-brand-50/40 dark:from-navy-950 dark:via-navy-900/90 dark:to-navy-950 border-2 border-brand-500/70 dark:border-brand-500/50 shadow-soft flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-center gap-3.5">
+            {selectedWebsite.thumbnail && (
+              <img
+                src={selectedWebsite.thumbnail}
+                alt={selectedWebsite.title}
+                className="w-20 h-13 aspect-video object-cover rounded-[6px] border border-brand-200 dark:border-brand-800 shadow-xs shrink-0"
+              />
+            )}
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[11px] font-mono font-bold px-2 py-0.5 rounded-[5px] bg-brand-600 text-white shadow-xs">
+                  Code: {selectedWebsite.code}
+                </span>
+                {selectedWebsite.categoryName && (
+                  <span className="text-[11px] font-semibold text-brand-700 dark:text-brand-300 bg-brand-500/15 px-2 py-0.5 rounded-[5px]">
+                    {selectedWebsite.categoryName}
+                  </span>
+                )}
+              </div>
+              <h4 className="font-display font-bold text-sm sm:text-base text-navy-900 dark:text-white mt-1">
+                {selectedWebsite.title}
+              </h4>
+              <p className="text-xs text-navy-600 dark:text-navy-300 mt-0.5">
+                ✨ Selected Design • 100% Free customization included
+              </p>
+            </div>
+          </div>
+
+          {selectedWebsite.demoUrl && (
+            <a
+              href={selectedWebsite.demoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline shrink-0"
+            >
+              <Icon name="Eye" size="xs" />
+              <span>Preview Demo</span>
+            </a>
+          )}
+        </div>
+      )}
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
         <FormField
@@ -190,6 +236,7 @@ export function ContactForm({
 ContactForm.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
+  selectedWebsite: PropTypes.object,
   values: PropTypes.object.isRequired,
   errors: PropTypes.object,
   isSubmitting: PropTypes.bool,

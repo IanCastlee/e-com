@@ -78,7 +78,7 @@ export function WebsiteDetails() {
     );
   }
 
-  const requestUrl = `/contact?website=${encodeURIComponent(website.title)}&category=${encodeURIComponent(website.categoryName)}`;
+  const requestUrl = `/contact?preferred=${encodeURIComponent(website.code || website.id)}&design=${encodeURIComponent(website.title)}&category=${encodeURIComponent(website.categoryName || '')}`;
 
   return (
     <PageLayout
@@ -95,8 +95,8 @@ export function WebsiteDetails() {
         { label: website.title },
       ]}
       headerActions={
-        <Button variant="primary" size="lg" to={requestUrl} rightIcon="ArrowUpRight">
-          Request This Website
+        <Button variant="primary" size="lg" to={requestUrl} leftIcon="CheckCircle2" rightIcon="ArrowUpRight">
+          I prefer this website design
         </Button>
       }
       footerBannerSlot={<CTABanner {...ctaBannerData} />}
@@ -231,6 +231,16 @@ export function WebsiteDetails() {
 
               {/* Quick Meta Specifications */}
               <div className="space-y-3 text-sm">
+                {website.code && (
+                  <div className="flex items-center justify-between py-1.5 border-b border-navy-100 dark:border-navy-800/80">
+                    <span className="text-navy-500 flex items-center gap-2">
+                      <Icon name="Tag" size="xs" /> Template Code
+                    </span>
+                    <span className="font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2.5 py-0.5 rounded-[5px] border border-amber-500/30 text-xs">
+                      {website.code}
+                    </span>
+                  </div>
+                )}
                 <div className="flex items-center justify-between py-1.5 border-b border-navy-100 dark:border-navy-800/80">
                   <span className="text-navy-500 flex items-center gap-2">
                     <Icon name="Clock" size="xs" /> Turnaround
@@ -300,9 +310,10 @@ export function WebsiteDetails() {
                   size="lg"
                   fullWidth
                   to={requestUrl}
+                  leftIcon="CheckCircle2"
                   rightIcon="ArrowRight"
                 >
-                  Request This Website
+                  I prefer this website design
                 </Button>
                 <Button
                   variant="outline"

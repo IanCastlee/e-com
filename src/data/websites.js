@@ -7,6 +7,7 @@
 export const websites = [
   {
     id: "web-00",
+    code: "Photographer_portfolio1",
     title: "Photographer Portfolio",
     slug: "photographer-portfolio",
     category: "personal-portfolio",
@@ -44,6 +45,7 @@ export const websites = [
   },
   {
     id: "web-01",
+    code: "Resort1",
     title: "Luxury Resort & Hotel Booking Website",
     slug: "resort-website",
     category: "resort-hotel",
@@ -87,6 +89,7 @@ export const websites = [
   },
   {
     id: "web-02",
+    code: "VA_portfolio1",
     title: "Virtual Assistant Portfolio",
     slug: "va-portfolio",
     category: "personal-portfolio",
@@ -127,6 +130,7 @@ export const websites = [
   // ==========================================
   {
     id: "web-03",
+    code: "Resort3",
     title: "Ultra-Luxury Dark Resort & Private Reserve Website",
     slug: "ultra-luxury-resort-website",
     category: "resort-hotel",
@@ -177,6 +181,7 @@ export const websites = [
   // ==========================================
   {
     id: "web-04",
+    code: "Resort2",
     title: "Tropical Coastal Eco-Sanctuary & Pool Villa Website",
     slug: "eco-luxury-sanctuary-website",
     category: "resort-hotel",

@@ -259,6 +259,20 @@ export function Hero({
                   {/* Card Content & Action Footer Container with Even Padding */}
                   <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
                     <div>
+                      {/* Category & Template Code Tag */}
+                      <div className="flex items-center gap-2 mb-2 flex-wrap">
+                        {currentItem.website.categoryName && (
+                          <span className="text-[10px] font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-2 py-0.5 rounded-[5px] border border-brand-500/20">
+                            {currentItem.website.categoryName}
+                          </span>
+                        )}
+                        {currentItem.website.code && (
+                          <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
+                            Code: {currentItem.website.code}
+                          </span>
+                        )}
+                      </div>
+
                       <Link
                         to={`/portfolio/${currentItem.website.slug}`}
                         className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -274,23 +288,35 @@ export function Hero({
                     </div>
 
                     {/* Card Action Footer */}
-                    <div className="mt-4 pt-3 border-t border-navy-100 dark:border-white/10 w-full flex items-center justify-between">
-                      <a
-                        href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
-                        target={currentItem.website.demoUrl ? "_blank" : undefined}
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                    <div className="mt-4 pt-3 border-t border-navy-100 dark:border-white/10 w-full space-y-2">
+                      <Button
+                        to={`/contact?preferred=${encodeURIComponent(currentItem.website.code || currentItem.website.id)}&design=${encodeURIComponent(currentItem.website.title)}&category=${encodeURIComponent(currentItem.website.categoryName || currentItem.website.category || '')}`}
+                        variant="primary"
+                        size="sm"
+                        leftIcon="CheckCircle2"
+                        className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs sm:text-sm py-2"
                       >
-                        <Icon name="Eye" size="xs" />
-                        <span>Live Preview</span>
-                      </a>
-                      <Link
-                        to={`/portfolio/${currentItem.website.slug}`}
-                        className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                      >
-                        <span>Details</span>
-                        <Icon name="ArrowRight" size="xs" />
-                      </Link>
+                        I prefer this website design
+                      </Button>
+
+                      <div className="flex items-center justify-between pt-0.5">
+                        <a
+                          href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
+                          target={currentItem.website.demoUrl ? "_blank" : undefined}
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                        >
+                          <Icon name="Eye" size="xs" />
+                          <span>Live Preview</span>
+                        </a>
+                        <Link
+                          to={`/portfolio/${currentItem.website.slug}`}
+                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                        >
+                          <span>Details</span>
+                          <Icon name="ArrowRight" size="xs" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -361,6 +387,15 @@ export function Hero({
                   {/* Card Content & Action Link */}
                   <div className="p-3.5 flex flex-col flex-1 justify-between">
                     <div>
+                      {/* Template Code Tag */}
+                      {site.code && (
+                        <div className="mb-1.5">
+                          <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
+                            Code: {site.code}
+                          </span>
+                        </div>
+                      )}
+
                       <Link
                         to={`/portfolio/${site.slug}`}
                         className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
@@ -374,23 +409,35 @@ export function Hero({
                       </p>
                     </div>
 
-                    <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-navy-800/80 flex items-center justify-between">
-                      <a
-                        href={site.demoUrl || `/portfolio/${site.slug}`}
-                        target={site.demoUrl ? "_blank" : undefined}
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                    <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-navy-800/80 space-y-2">
+                      <Button
+                        to={`/contact?preferred=${encodeURIComponent(site.code || site.id)}&design=${encodeURIComponent(site.title)}&category=${encodeURIComponent(site.categoryName || site.category || '')}`}
+                        variant="primary"
+                        size="sm"
+                        leftIcon="CheckCircle2"
+                        className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs py-1.5"
                       >
-                        <Icon name="Eye" size="xs" />
-                        <span>Live Preview</span>
-                      </a>
-                      <Link
-                        to={`/portfolio/${site.slug}`}
-                        className="inline-flex items-center gap-1 text-xs font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                      >
-                        <span>Details</span>
-                        <Icon name="ArrowRight" size="xs" />
-                      </Link>
+                        I prefer this website design
+                      </Button>
+
+                      <div className="flex items-center justify-between pt-0.5">
+                        <a
+                          href={site.demoUrl || `/portfolio/${site.slug}`}
+                          target={site.demoUrl ? "_blank" : undefined}
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                        >
+                          <Icon name="Eye" size="xs" />
+                          <span>Live Preview</span>
+                        </a>
+                        <Link
+                          to={`/portfolio/${site.slug}`}
+                          className="inline-flex items-center gap-1 text-xs font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                        >
+                          <span>Details</span>
+                          <Icon name="ArrowRight" size="xs" />
+                        </Link>
+                      </div>
                     </div>
                   </div>
                 </div>
