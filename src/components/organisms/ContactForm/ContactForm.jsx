@@ -205,7 +205,7 @@ export function ContactForm({
       <FormField
         name="message"
         as="textarea"
-        rows={4}
+        rows={5}
         label="Project Details & Goals"
         required
         placeholder="Tell us about your resort, barangay, school, or business, target launch date, and any specific features you need..."

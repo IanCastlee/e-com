@@ -32,11 +32,11 @@ export function FormField({
       {label && (
         <label
           htmlFor={fieldId}
-          className="text-xs sm:text-sm font-semibold text-navy-800 dark:text-navy-100 flex items-center gap-1"
+          className="text-xs sm:text-sm font-semibold text-navy-900 dark:text-white flex items-center gap-1.5 mb-0.5 tracking-tight"
         >
           <span>{label}</span>
           {required && (
-            <span className="text-brand-600 dark:text-brand-400" aria-hidden="true">
+            <span className="text-brand-500 dark:text-brand-400 font-bold" aria-hidden="true">
               *
             </span>
           )}
