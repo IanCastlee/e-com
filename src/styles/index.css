@@ -44,14 +44,12 @@
   }
 }
 
-/* Universal 10px border radius across all cards, buttons, badges, modals, inputs */
+/* Universal 10px border radius across standard cards, buttons, badges, modals, inputs */
 .rounded,
 .rounded-sm,
 .rounded-md,
 .rounded-lg,
-.rounded-xl,
-.rounded-2xl,
-.rounded-3xl {
+.rounded-xl {
   border-radius: 10px !important;
 }
 
