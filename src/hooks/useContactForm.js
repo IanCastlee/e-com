@@ -9,6 +9,8 @@ const INITIAL_VALUES = {
   message: '',
 };
 
+const DEFAULT_WEB3FORMS_KEY = '868609e0-f5a4-4c13-978d-3c7fac522e46';
+
 /**
  * Custom hook encapsulating Contact Form validation, pre-filled query parameters,
  * and email submission via Web3Forms API to ml99997955@gmail.com.
@@ -84,7 +86,7 @@ export function useContactForm(prefill = {}, options = {}) {
       setIsSubmitting(true);
       setSubmitError(null);
 
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || options.accessKey;
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || options.accessKey || DEFAULT_WEB3FORMS_KEY;
 
       if (!accessKey) {
         // If access key is not yet configured, gracefully simulate success in dev/preview
