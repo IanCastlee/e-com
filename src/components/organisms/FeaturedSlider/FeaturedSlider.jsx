@@ -68,9 +68,9 @@ export function FeaturedSlider({
             >
               {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
               <div className="relative w-full aspect-video bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800/80 flex items-center justify-center overflow-hidden">
-                {/* Free Customization Badge — Elegant Premium Glassmorphism (Adapts to Light & Dark) */}
-                <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[10px] text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                {/* Free Customization Badge — Elevated to top edge */}
+                <div className="absolute top-1.5 left-2 z-20 pointer-events-none">
+                  <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[8px] text-[10px] font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
                     <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
                     <span>Free Customization</span>
                   </span>
@@ -93,16 +93,11 @@ export function FeaturedSlider({
               {/* Card Content & Action Links */}
               <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
                 <div>
-                  {/* Category & Official Template Code Badge */}
+                  {/* Category Badge */}
                   <div className="flex items-center gap-2 mb-2 flex-wrap">
                     {site.categoryName && (
                       <span className="text-[10px] font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-2 py-0.5 rounded-[5px] border border-brand-500/20">
                         {site.categoryName}
-                      </span>
-                    )}
-                    {site.code && (
-                      <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
-                        Code: {site.code}
                       </span>
                     )}
                   </div>

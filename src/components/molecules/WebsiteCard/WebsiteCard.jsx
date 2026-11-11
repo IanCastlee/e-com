@@ -65,9 +65,9 @@ export function WebsiteCard({
           />
         </Link>
 
-        {/* Free Customization Badge — Elegant Premium Glassmorphism (Adapts to Light & Dark) */}
-        <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[10px] text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+        {/* Free Customization Badge — Elevated to top edge */}
+        <div className="absolute top-1.5 left-2 z-20 pointer-events-none">
+          <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[8px] text-[10px] font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
             <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
             <span>Free Customization</span>
           </span>
@@ -77,16 +77,11 @@ export function WebsiteCard({
       {/* Card Body */}
       <div className="flex flex-col flex-1 p-5 sm:p-6 justify-between">
         <div>
-          {/* Category & Template Code Tag */}
+          {/* Category Tag */}
           <div className="flex items-center gap-2 mb-2 flex-wrap">
             {categoryName && (
               <span className="text-[10px] font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-2 py-0.5 rounded-[5px] border border-brand-500/20">
                 {categoryName}
-              </span>
-            )}
-            {code && (
-              <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
-                Code: {code}
               </span>
             )}
           </div>

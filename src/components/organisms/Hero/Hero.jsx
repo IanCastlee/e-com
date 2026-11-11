@@ -234,9 +234,9 @@ export function Hero({
                 <div className="relative w-full max-w-[340px] sm:w-[360px] md:w-[410px] rounded-[20px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-xl dark:shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
                   {/* Dedicated Full Image Screen Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
                   <div className="relative w-full aspect-video bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800/80 flex items-center justify-center overflow-hidden">
-                    {/* Free Customization Badge — Elegant Premium Glassmorphism (Adapts to Light & Dark) */}
-                    <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[10px] text-[10px] sm:text-xs font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                    {/* Free Customization Badge — Elevated to top edge */}
+                    <div className="absolute top-1.5 left-2 z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[8px] text-[10px] font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
                         <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
                         <span>Free Customization</span>
                       </span>
@@ -259,16 +259,11 @@ export function Hero({
                   {/* Card Content & Action Footer Container with Even Padding */}
                   <div className="p-4 sm:p-5 flex flex-col flex-1 justify-between">
                     <div>
-                      {/* Category & Template Code Tag */}
+                      {/* Category Tag */}
                       <div className="flex items-center gap-2 mb-2 flex-wrap">
                         {currentItem.website.categoryName && (
                           <span className="text-[10px] font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-2 py-0.5 rounded-[5px] border border-brand-500/20">
                             {currentItem.website.categoryName}
-                          </span>
-                        )}
-                        {currentItem.website.code && (
-                          <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
-                            Code: {currentItem.website.code}
                           </span>
                         )}
                       </div>
@@ -362,9 +357,9 @@ export function Hero({
                 >
                   {/* Website Preview Image Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
                   <div className="relative w-full aspect-video bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800/80 flex items-center justify-center active:scale-[0.98] transition-transform overflow-hidden">
-                    {/* Free Customization Badge — Elegant Premium Glassmorphism (Adapts to Light & Dark) */}
-                    <div className="absolute top-2.5 left-2.5 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[10px] text-[10px] font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                    {/* Free Customization Badge — Elevated to top edge */}
+                    <div className="absolute top-1.5 left-2 z-20 pointer-events-none">
+                      <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-[8px] text-[10px] font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
                         <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
                         <span>Free Customization</span>
                       </span>
@@ -387,15 +382,6 @@ export function Hero({
                   {/* Card Content & Action Link */}
                   <div className="p-3.5 flex flex-col flex-1 justify-between">
                     <div>
-                      {/* Template Code Tag */}
-                      {site.code && (
-                        <div className="mb-1.5">
-                          <span className="text-[10px] font-mono font-bold text-amber-800 dark:text-amber-300 bg-amber-500/15 dark:bg-amber-500/20 px-2 py-0.5 rounded-[5px] border border-amber-500/30">
-                            Code: {site.code}
-                          </span>
-                        </div>
-                      )}
-
                       <Link
                         to={`/portfolio/${site.slug}`}
                         className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
