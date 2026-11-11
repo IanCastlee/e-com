@@ -73,19 +73,29 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:pt-16 sm:pb-24 border-b border-navy-200/70 dark:border-navy-800/80">
-      {/* Subtle Architectural Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-70 pointer-events-none" aria-hidden="true" />
-      <div
-        className="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-brand-400/15 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute bottom-0 left-10 w-80 h-80 rounded-full bg-accent-400/10 blur-3xl pointer-events-none"
-        aria-hidden="true"
-      />
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/40 via-white to-navy-50 dark:from-[#040711] dark:via-[#080d1c] dark:to-[#040711] pt-6 pb-10 sm:pt-12 sm:pb-14 lg:py-16 lg:min-h-[calc(100vh-4.5rem)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
+      {/* Melting Liquid Galaxy Cosmic Background ("Palusaw na Galaxy") */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {/* Deep Cosmic Base Tint */}
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-950/20 to-navy-950/80 dark:via-brand-950/30 dark:to-[#040711]/90" />
 
-      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        {/* Nebula Swirl 1: Cosmic Violet / Indigo Galaxy Melt (Behind Showcase Cards) */}
+        <div className="absolute -top-20 -right-20 lg:right-[2%] w-[550px] lg:w-[800px] h-[550px] lg:h-[750px] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-indigo-500/30 via-purple-600/20 to-transparent blur-[100px] lg:blur-[140px] opacity-90" />
+
+        {/* Nebula Swirl 2: Bulusan Emerald & Electric Cyan Liquid Melt (Center & Heading) */}
+        <div className="absolute top-[5%] left-[10%] lg:left-[28%] w-[500px] lg:w-[750px] h-[450px] lg:h-[650px] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-cyan-400/25 via-brand-500/25 to-transparent blur-[90px] lg:blur-[130px] opacity-85" />
+
+        {/* Nebula Swirl 3: Deep Marine Teal Melt (Top Left) */}
+        <div className="absolute -top-32 -left-20 w-[450px] lg:w-[600px] h-[450px] lg:h-[600px] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-teal-500/30 via-teal-900/20 to-transparent blur-[85px] lg:blur-[115px] opacity-80" />
+
+        {/* Nebula Swirl 4: Warm Solar Amber Stardust (Bottom Left Melt) */}
+        <div className="absolute -bottom-24 left-[5%] lg:left-[12%] w-[380px] lg:w-[500px] h-[350px] lg:h-[450px] rounded-full bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-amber-500/20 via-rose-500/10 to-transparent blur-[90px] lg:blur-[120px] opacity-65" />
+
+        {/* Subtle Architectural Grid Pattern Overlay */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 dark:opacity-20" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Copy Column */}
           <motion.div
@@ -430,30 +440,6 @@ export function Hero({
             </div>
           </div>
         </div>
-
-        {/* Corporate Metrics Strip */}
-        {companyStats.length > 0 && (
-          <div className="mt-8 sm:mt-16 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-6">
-            {companyStats.map((stat) => (
-              <div
-                key={stat.label}
-                className="p-3 sm:p-5 md:p-6 rounded-[10px] bg-white/90 dark:bg-navy-900/90 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft"
-              >
-                <div className="font-display text-base sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
-                  {stat.value}
-                </div>
-                <Heading as="h3" size="sm" className="mt-1 text-xs sm:text-sm md:text-base font-bold line-clamp-1">
-                  {stat.label}
-                </Heading>
-                {stat.detail && (
-                  <Text size="xs" variant="muted" className="mt-0.5 text-[10px] sm:text-xs leading-normal line-clamp-2">
-                    {stat.detail}
-                  </Text>
-                )}
-              </div>
-            ))}
-          </div>
-        )}
       </div>
     </section>
   );

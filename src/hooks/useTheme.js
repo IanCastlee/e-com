@@ -9,7 +9,7 @@ export function useTheme() {
       const saved = window.localStorage.getItem('eyhan-theme');
       if (saved === 'dark' || saved === 'light') return saved;
     }
-    return 'light';
+    return 'dark';
   });
 
   useEffect(() => {

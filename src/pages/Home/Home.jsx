@@ -61,9 +61,34 @@ export function Home() {
         primaryCta={heroData.primaryCta}
         secondaryCta={heroData.secondaryCta}
         trustBadges={heroData.trustBadges}
-        companyStats={heroData.companyStats}
         showcaseWebsites={localShowcaseWebsites}
       />
+
+      {/* 1.5. Corporate Value Highlights Strip (Dedicated Section Below Hero, No Peeking in Desktop Hero) */}
+      <section className="relative z-10 py-8 sm:py-12 bg-white dark:bg-[#060913] border-b border-navy-200/80 dark:border-navy-800/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+            {heroData.companyStats.map((stat) => (
+              <div
+                key={stat.label}
+                className="p-4 sm:p-5 md:p-6 rounded-[10px] bg-navy-50/70 dark:bg-navy-900/80 backdrop-blur-sm border border-navy-200/80 dark:border-navy-800 shadow-soft hover:shadow-elevated transition-all duration-300"
+              >
+                <div className="font-display text-lg sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
+                  {stat.value}
+                </div>
+                <Heading as="h3" size="sm" className="mt-1 text-xs sm:text-sm md:text-base font-bold line-clamp-1">
+                  {stat.label}
+                </Heading>
+                {stat.detail && (
+                  <Text size="xs" variant="muted" className="mt-0.5 text-[10px] sm:text-xs leading-normal line-clamp-2">
+                    {stat.detail}
+                  </Text>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* 2. Featured Websites Showcase (Immediate Product Visibility) */}
       <FeaturedSlider
