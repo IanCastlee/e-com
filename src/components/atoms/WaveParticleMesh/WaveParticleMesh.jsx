@@ -43,14 +43,14 @@ export function WaveParticleMesh({
       step += 0.01;
       ctx.clearRect(0, 0, width, height);
 
-      // Camera & 3D space projection parameters - lowered vertically to stay behind content
+      // Camera & 3D space projection parameters - clearly visible in viewport on both mobile & desktop
       const centerX = width * 0.5;
-      const centerY = width < 768 ? height * 0.7 : height * 0.65;
-      const fov = 340;
+      const centerY = width < 768 ? height * 0.52 : height * 0.62;
+      const fov = width < 768 ? 320 : 340;
 
-      // Adjust grid density based on screen width so it renders smoothly on mobile
-      const effectiveCols = width < 768 ? Math.floor(cols * 0.6) : cols;
-      const effectiveRows = width < 768 ? Math.floor(rows * 0.65) : rows;
+      // Adjust grid density based on screen width so it renders smoothly and vibrantly on mobile
+      const effectiveCols = width < 768 ? 48 : cols;
+      const effectiveRows = width < 768 ? 30 : rows;
 
       const zSpacing = width < 768 ? 16 : 22;
 
@@ -75,8 +75,8 @@ export function WaveParticleMesh({
           const screenY = centerY + worldY * perspective;
 
           // Size scaling with depth
-          const baseSize = width < 768 ? 1.4 : 2.1;
-          const size = Math.max(0.6, baseSize * perspective * 1.3);
+          const baseSize = width < 768 ? 1.8 : 2.2;
+          const size = Math.max(0.7, baseSize * perspective * 1.3);
 
           // Normalized height for color gradient (-80 to 110)
           const normHeight = (worldY + 80) / 190;
@@ -98,7 +98,7 @@ export function WaveParticleMesh({
             b = Math.round(241 + (246 - 241) * clampedNorm * 2);
           }
 
-          const dotAlpha = Math.max(0.06, Math.min(0.92, perspective * 1.15 * opacity));
+          const dotAlpha = Math.max(0.12, Math.min(0.96, perspective * 1.35 * opacity));
 
           ctx.beginPath();
           ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
