@@ -277,10 +277,43 @@ export function Hero({
                         </h3>
                       </Link>
 
-                      <p className="mt-1.5 text-xs sm:text-sm text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
-                        {currentItem.website.shortDescription}
-                      </p>
+                      <div className="flex items-center gap-1.5 mt-1 text-xs text-navy-500 dark:text-navy-400 font-medium">
+                        <span>by</span>
+                        <span className="font-semibold text-navy-900 dark:text-white">
+                          e-yhan
+                        </span>
+                      </div>
                     </div>
+
+                    {/* Pricing Breakdown */}
+                    {currentItem.website.pricing && (
+                      <div className="mt-3 pt-2.5 border-t border-navy-100/90 dark:border-white/10 space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                          <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                            <span className="truncate">{currentItem.website.pricing.basic?.name || 'Basic (Static Website)'}</span>
+                          </span>
+                          <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                            ${currentItem.website.pricing.basic?.usd}{' '}
+                            <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                              (₱{currentItem.website.pricing.basic?.php?.toLocaleString()})
+                            </span>
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                          <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                            <span className="truncate">{currentItem.website.pricing.premium?.name || 'Premium (Dynamic Website + Admin Panel)'}</span>
+                          </span>
+                          <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                            ${currentItem.website.pricing.premium?.usd}{' '}
+                            <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                              (₱{currentItem.website.pricing.premium?.php?.toLocaleString()})
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    )}
 
                     {/* Card Action Footer */}
                     <div className="mt-4 pt-3 border-t border-navy-100 dark:border-white/10 w-full space-y-2">
@@ -294,23 +327,37 @@ export function Hero({
                         I prefer this website design
                       </Button>
 
-                      <div className="flex items-center justify-between pt-0.5">
-                        <a
-                          href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
-                          target={currentItem.website.demoUrl ? "_blank" : undefined}
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
-                        >
-                          <Icon name="Eye" size="xs" />
-                          <span>Live Preview</span>
-                        </a>
-                        <Link
-                          to={`/portfolio/${currentItem.website.slug}`}
-                          className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                        >
-                          <span>Details</span>
-                          <Icon name="ArrowRight" size="xs" />
-                        </Link>
+                      <div className="flex items-center justify-between gap-2 pt-0.5">
+                        <div className="flex flex-col">
+                          <span className="text-[10px] uppercase font-semibold text-navy-500 dark:text-navy-400">
+                            Starts at
+                          </span>
+                          <span className="font-bold text-xs sm:text-sm text-navy-900 dark:text-white">
+                            ${currentItem.website.pricing?.basic?.usd || 55}{' '}
+                            <span className="text-[10px] text-navy-500 font-normal">
+                              (₱{(currentItem.website.pricing?.basic?.php || 3000).toLocaleString()})
+                            </span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <a
+                            href={currentItem.website.demoUrl || `/portfolio/${currentItem.website.slug}`}
+                            target={currentItem.website.demoUrl ? "_blank" : undefined}
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                          >
+                            <Icon name="Eye" size="xs" />
+                            <span>Live Preview</span>
+                          </a>
+                          <Link
+                            to={`/portfolio/${currentItem.website.slug}`}
+                            className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                          >
+                            <span>Details</span>
+                            <Icon name="ArrowRight" size="xs" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -398,34 +445,78 @@ export function Hero({
                       </div>
                     </div>
 
+                    {/* Pricing Packages Breakdown */}
+                    {site.pricing && (
+                      <div className="mt-3 pt-2.5 border-t border-navy-100/90 dark:border-navy-800/80 space-y-1.5 text-xs">
+                        <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                          <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                            <span className="truncate">{site.pricing.basic?.name || 'Basic (Static Website)'}</span>
+                          </span>
+                          <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                            ${site.pricing.basic?.usd}{' '}
+                            <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                              (₱{site.pricing.basic?.php?.toLocaleString()})
+                            </span>
+                          </span>
+                        </div>
+                        <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                          <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                            <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                            <span className="truncate">{site.pricing.premium?.name || 'Premium (Dynamic Website + Admin Panel)'}</span>
+                          </span>
+                          <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                            ${site.pricing.premium?.usd}{' '}
+                            <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                              (₱{site.pricing.premium?.php?.toLocaleString()})
+                            </span>
+                          </span>
+                        </div>
+                      </div>
+                    )}
+
                     <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-navy-800/80 space-y-2">
                       <Button
                         to={`/contact?preferred=${encodeURIComponent(site.code || site.id)}&design=${encodeURIComponent(site.title)}&category=${encodeURIComponent(site.categoryName || site.category || '')}`}
                         variant="primary"
                         size="sm"
                         leftIcon="CheckCircle2"
-                        className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs py-1.5"
+                        className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs py-2"
                       >
                         I prefer this website design
                       </Button>
 
-                      <div className="flex items-center justify-between pt-0.5">
-                        <a
-                          href={site.demoUrl || `/portfolio/${site.slug}`}
-                          target={site.demoUrl ? "_blank" : undefined}
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
-                        >
-                          <Icon name="Eye" size="xs" />
-                          <span>Live Preview</span>
-                        </a>
-                        <Link
-                          to={`/portfolio/${site.slug}`}
-                          className="inline-flex items-center gap-1 text-xs font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                        >
-                          <span>Details</span>
-                          <Icon name="ArrowRight" size="xs" />
-                        </Link>
+                      <div className="flex items-center justify-between gap-2 pt-0.5">
+                        <div className="flex flex-col">
+                          <span className="text-[10px] uppercase font-semibold text-navy-500 dark:text-navy-400">
+                            Starts at
+                          </span>
+                          <span className="font-bold text-xs sm:text-sm text-navy-900 dark:text-white">
+                            ${site.pricing?.basic?.usd || 55}{' '}
+                            <span className="text-[10px] text-navy-500 dark:text-navy-400 font-normal">
+                              (₱{(site.pricing?.basic?.php || 3000).toLocaleString()})
+                            </span>
+                          </span>
+                        </div>
+
+                        <div className="flex items-center gap-2">
+                          <a
+                            href={site.demoUrl || `/portfolio/${site.slug}`}
+                            target={site.demoUrl ? "_blank" : undefined}
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+                          >
+                            <Icon name="Eye" size="xs" />
+                            <span>Live Preview</span>
+                          </a>
+                          <Link
+                            to={`/portfolio/${site.slug}`}
+                            className="inline-flex items-center gap-1 text-xs font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+                          >
+                            <span>Details</span>
+                            <Icon name="ArrowRight" size="xs" />
+                          </Link>
+                        </div>
                       </div>
                     </div>
                   </div>
