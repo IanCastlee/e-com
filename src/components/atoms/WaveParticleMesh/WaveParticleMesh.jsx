@@ -11,7 +11,7 @@ export function WaveParticleMesh({
   className = '',
   rows = 38,
   cols = 64,
-  opacity = 0.85,
+  opacity = 0.45,
 }) {
   const canvasRef = useRef(null);
 
@@ -40,15 +40,15 @@ export function WaveParticleMesh({
     window.addEventListener('resize', resize);
 
     const render = () => {
-      step += 0.012;
+      step += 0.01;
       ctx.clearRect(0, 0, width, height);
 
-      // Camera & 3D space projection parameters
+      // Camera & 3D space projection parameters - lowered vertically to stay behind content
       const centerX = width * 0.5;
-      const centerY = height * 0.52;
+      const centerY = width < 768 ? height * 0.7 : height * 0.65;
       const fov = 340;
 
-      // Adjust grid density based on screen width
+      // Adjust grid density based on screen width so it renders smoothly on mobile
       const effectiveCols = width < 768 ? Math.floor(cols * 0.6) : cols;
       const effectiveRows = width < 768 ? Math.floor(rows * 0.65) : rows;
 

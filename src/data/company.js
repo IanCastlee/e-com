@@ -8,6 +8,7 @@ export const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'Storefront & Portfolio', path: '/portfolio' },
   { label: 'Solutions & Pricing', path: '/services' },
+  { label: 'FAQs', path: '/faqs' },
   { label: 'About Company', path: '/about' },
   { label: 'Contact Us', path: '/contact' },
 ];

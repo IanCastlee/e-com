@@ -12,6 +12,7 @@ const Portfolio = lazy(() => import('../pages/Portfolio'));
 const CategoryPage = lazy(() => import('../pages/CategoryPage'));
 const WebsiteDetails = lazy(() => import('../pages/WebsiteDetails'));
 const Services = lazy(() => import('../pages/Services'));
+const FAQs = lazy(() => import('../pages/FAQs'));
 const About = lazy(() => import('../pages/About'));
 const Contact = lazy(() => import('../pages/Contact'));
 const NotFound = lazy(() => import('../pages/NotFound'));
@@ -61,6 +62,8 @@ export function AppRoutes() {
           <Route path="/category/:slug" element={<CategoryPage />} />
           <Route path="/services" element={<Services />} />
           <Route path="/pricing" element={<Services />} />
+          <Route path="/faqs" element={<FAQs />} />
+          <Route path="/faq" element={<FAQs />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />

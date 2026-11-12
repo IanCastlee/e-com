@@ -3,6 +3,20 @@
  */
 export const faqs = [
   {
+    id: 'faq-static-vs-premium',
+    category: 'Website Packages',
+    question: 'What is the difference between a Basic (Static Website) and a Premium (Dynamic Website with Database & Admin Panel)?',
+    answer:
+      'A Basic (Static Website, starting at $55 / ₱3,000) is a fast, high-performance website designed for portfolios, small businesses, company profiles, and service showcases that do not need frequent user logins or database operations. It provides ultra-fast loading speeds, zero database maintenance costs, and our risk-free "Output First Before Payment" guarantee.\n\nA Premium (Dynamic Website with Database & Admin Panel, starting at $150–$360 / ₱8,500–₱20,000+) includes a complete backend database and an interactive Admin Dashboard / CMS. This allows you to manage bookings, product catalogs, customer inquiries, user accounts, and real-time website updates on your own without touching any code.',
+  },
+  {
+    id: 'faq-static-requirements',
+    category: 'Project Requirements',
+    question: 'What materials and details do I need to provide for a Static Website project?',
+    answer:
+      'To build and customize your static website with the best possible visual quality, please prepare and send us the following:\n1. Clear, High-Resolution Images & Logo: Sharp HD photos of your products, resort/store premises, team, or portfolio items, plus your official logo file (PNG or vector preferred).\n2. Business & Contact Information: Your official business or organization name, active contact numbers, email address, physical location or Google Maps pin, and social media links (Facebook, Instagram, etc.).\n3. Website Content & Copy: Any specific texts or sections you want included, such as your About Us story, list of services or products with prices, FAQs, and business operating hours.\n4. Design & Style Preferences: Your preferred template from our catalog, brand color scheme, or any reference websites you like.',
+  },
+  {
     id: 'faq-01',
     category: 'Process & Turnaround',
     question: 'How fast can you launch a ready-made website for my business or barangay?',
