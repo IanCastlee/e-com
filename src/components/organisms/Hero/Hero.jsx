@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { Badge, Heading, Text, Button, Icon } from '../../atoms';
+import { Badge, Heading, Text, Button, Icon, WaveParticleMesh } from '../../atoms';
 import { Link } from 'react-router-dom';
 
 /**
@@ -74,8 +74,11 @@ export function Hero({
 
   return (
     <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:py-10 lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
+      {/* 3D Wave Particle Mesh (Pure Style/Canvas, Zero External Images) */}
+      <WaveParticleMesh opacity={0.75} className="opacity-45 dark:opacity-90" />
+
       {/* Subtle Architectural Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-70 pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-40 dark:opacity-20 pointer-events-none" aria-hidden="true" />
       <div
         className="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-brand-400/15 blur-3xl pointer-events-none"
         aria-hidden="true"

@@ -67,7 +67,7 @@ export function Home() {
       {/* 2. Value Propositions & Guarantee Metrics Strip (Dedicated Section, No Hero Overlap) */}
       {heroData.companyStats && heroData.companyStats.length > 0 && (
         <section className="relative py-8 sm:py-12 bg-white dark:bg-navy-900/60 border-b border-navy-200/70 dark:border-navy-800/80">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%]">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
               {heroData.companyStats.map((stat) => (
                 <div
@@ -129,7 +129,7 @@ export function Home() {
 
       {/* 5. Customer Guarantees & Highlights */}
       <section className="py-12 sm:py-16 bg-white dark:bg-navy-900 border-b border-navy-200/70 dark:border-navy-800/80">
-        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%]">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             {companyHighlights.map((pillar) => (
               <div

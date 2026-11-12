@@ -69,7 +69,7 @@ export function WebsiteDetails() {
           { label: 'Not Found' },
         ]}
       >
-        <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 py-16 text-center">
+        <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%] py-16 text-center">
           <Button variant="primary" size="lg" to="/portfolio" leftIcon="LayoutGrid">
             Return to Website Catalog
           </Button>
@@ -101,7 +101,7 @@ export function WebsiteDetails() {
       }
       footerBannerSlot={<CTABanner {...ctaBannerData} />}
     >
-      <section className="py-10 sm:py-16 max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <section className="py-10 sm:py-16 w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Column: Gallery + Overview + Features + Tech Stack */}
           <div className="lg:col-span-8 space-y-10">

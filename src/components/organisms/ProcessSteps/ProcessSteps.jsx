@@ -15,7 +15,7 @@ export function ProcessSteps({
 }) {
   return (
     <section className={cn('py-16 sm:py-24', className)}>
-      <div className="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%]">
         {sectionHeader && (
           <SectionTitle
             eyebrow={sectionHeader.eyebrow}

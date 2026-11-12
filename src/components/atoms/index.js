@@ -9,3 +9,4 @@ export { Text } from './Text';
 export { Logo } from './Logo';
 export { Spinner } from './Spinner';
 export { Skeleton } from './Skeleton';
+export { WaveParticleMesh } from './WaveParticleMesh';
