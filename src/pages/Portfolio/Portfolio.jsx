@@ -54,12 +54,12 @@ export function Portfolio() {
 
   return (
     <PageLayout
-      seoTitle="Website Catalog & Storefront | e-yhan Digital Solutions"
-      seoDescription="Browse 12+ ready-made and customizable website systems for Philippine resorts, barangays, schools, online stores, cafes, and corporate businesses."
-      badge="Ready-Made & Customizable Systems"
-      badgeIcon="LayoutGrid"
-      title="Digital Storefront & Website Catalog"
-      subtitle="Explore production-ready web architectures engineered in Bulusan, Sorsogon. Pick any template below to inspect features, launch an interactive demo, or request customization."
+      seoTitle="Choose Your Website Design | e-yhan Digital Solutions"
+      seoDescription="Choose a website design you like, and we'll take care of customizing it for your business. Starts at just $55 (₱3,000) for static websites."
+      badge="Choose Your Design • 100% Free Customization"
+      badgeIcon="Sparkles"
+      title="Choose a Website Design for Your Business"
+      subtitle="Choose a website design you like, and we'll take care of customizing it for your business. Starts at just $55 (₱3,000) for static websites with output first before payment."
       breadcrumbs={[
         { label: 'Home', path: '/' },
         { label: 'Storefront & Portfolio' },
