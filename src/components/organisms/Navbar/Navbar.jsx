@@ -28,52 +28,21 @@ export function Navbar({
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header
-      className={cn(
-        'sticky top-0 z-50 w-full transition-all duration-300',
-        isScrolled
-          ? 'bg-white/95 dark:bg-navy-950/95 backdrop-blur-md shadow-soft border-b border-navy-200/80 dark:border-navy-800/80'
-          : 'bg-white/85 dark:bg-navy-950/85 backdrop-blur-sm border-b border-navy-200/50 dark:border-navy-800/50'
-      )}
-    >
-      {/* Top Corporate Bar */}
-      {(originText || contactEmail || contactPhone) && (
-        <div className="bg-navy-900 dark:bg-navy-950 text-navy-200 border-b border-navy-800 text-xs py-1.5">
-          <div className="w-full max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 md:px-8 lg:px-[5%]">
-            {originText && (
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
-                <Text as="span" size="xs" variant="light" className="font-medium">
-                  {originText}
-                </Text>
-              </div>
-            )}
-            <div className="hidden md:flex items-center gap-5 text-navy-300">
-              {contactPhone && (
-                <a
-                  href={`tel:${contactPhone.replace(/\s+/g, '')}`}
-                  className="inline-flex items-center gap-1.5 hover:text-brand-400 transition-colors"
-                >
-                  <Icon name="Phone" size="xs" />
-                  <span>{contactPhone}</span>
-                </a>
-              )}
-              {contactEmail && (
-                <a
-                  href={`mailto:${contactEmail}`}
-                  className="inline-flex items-center gap-1.5 hover:text-brand-400 transition-colors"
-                >
-                  <Icon name="Mail" size="xs" />
-                  <span>{contactEmail}</span>
-                </a>
-              )}
-            </div>
-          </div>
-        </div>
-      )}
-
+    <header className="sticky top-0 z-50 w-full transition-all duration-300 px-3 pt-2.5 pb-1 sm:p-0">
       {/* Main Navigation Row */}
-      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%] h-16 sm:h-20 flex items-center justify-between gap-4">
+      <div
+        className={cn(
+          'w-full max-w-[1600px] mx-auto transition-all duration-300 flex items-center justify-between gap-4',
+          // Mobile: floating glass island
+          'h-14 sm:h-20 px-3.5 sm:px-6 md:px-8 lg:px-[5%]',
+          'rounded-[14px] sm:rounded-none',
+          'bg-white/90 dark:bg-navy-900/90 sm:bg-white/85 sm:dark:bg-navy-950/85',
+          'backdrop-blur-xl',
+          'border border-navy-200/90 dark:border-white/10 sm:border-0 sm:border-b sm:border-navy-200/50 sm:dark:border-navy-800/50',
+          'shadow-[0_8px_25px_rgba(0,0,0,0.12)] dark:shadow-[0_10px_35px_rgba(0,0,0,0.45)] sm:shadow-none',
+          isScrolled && 'sm:shadow-soft sm:border-b sm:border-navy-200/80 sm:dark:border-navy-800/80 sm:bg-white/95 sm:dark:bg-navy-950/95'
+        )}
+      >
         <Logo brandName={brandName} subtitle={brandSubtitle} size="md" />
 
         {/* Desktop Nav Links */}
@@ -124,17 +93,17 @@ export function Navbar({
         </div>
       </div>
 
-      {/* Mobile Menu Drawer */}
+      {/* Mobile Menu Drawer (Floating dropdown) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.22 }}
-            className="lg:hidden overflow-hidden bg-white dark:bg-navy-900 border-b border-navy-200 dark:border-navy-800"
+            initial={{ opacity: 0, y: -8, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -8, scale: 0.98 }}
+            transition={{ duration: 0.2 }}
+            className="lg:hidden mt-2 max-w-[1600px] mx-auto rounded-[14px] overflow-hidden bg-white/95 dark:bg-navy-900/95 backdrop-blur-xl border border-navy-200/90 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.25)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.6)]"
           >
-            <nav aria-label="Mobile navigation" className="px-4 pt-3 pb-6 space-y-1.5">
+            <nav aria-label="Mobile navigation" className="px-4 pt-3 pb-5 space-y-1.5">
               {links.map((link) => (
                 <NavLink
                   key={link.path}
@@ -157,14 +126,6 @@ export function Navbar({
                   >
                     {ctaButton.label}
                   </Button>
-                </div>
-              )}
-
-              {originText && (
-                <div className="pt-2 flex justify-center">
-                  <Badge variant="brand" size="sm" icon="MapPin">
-                    {originText}
-                  </Badge>
                 </div>
               )}
             </nav>

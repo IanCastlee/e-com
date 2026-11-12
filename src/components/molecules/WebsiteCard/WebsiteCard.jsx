@@ -99,9 +99,12 @@ export function WebsiteCard({
             </Heading>
           </Link>
 
-          <Text size="sm" variant="muted" className="mt-2 line-clamp-2">
-            {shortDescription}
-          </Text>
+          <div className="flex items-center gap-1.5 mt-1.5 text-xs text-navy-500 dark:text-navy-400 font-medium">
+            <span>by</span>
+            <span className="font-semibold text-navy-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+              e-yhan
+            </span>
+          </div>
 
           {/* Tech Stack Tags */}
           {techStack.length > 0 && (

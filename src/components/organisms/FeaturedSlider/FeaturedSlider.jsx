@@ -111,9 +111,12 @@ export function FeaturedSlider({
                     </h3>
                   </Link>
 
-                  <p className="mt-1 text-xs sm:text-sm text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
-                    {site.shortDescription}
-                  </p>
+                  <div className="flex items-center gap-1.5 mt-1.5 text-xs text-navy-500 dark:text-navy-400 font-medium">
+                    <span>by</span>
+                    <span className="font-semibold text-navy-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                      e-yhan
+                    </span>
+                  </div>
 
                   {/* Tech Stack Pills */}
                   {site.techStack && site.techStack.length > 0 && (

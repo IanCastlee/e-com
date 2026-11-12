@@ -390,9 +390,12 @@ export function Hero({
                           {site.title}
                         </h4>
                       </Link>
-                      <p className="mt-1 text-xs text-navy-600 dark:text-navy-300 line-clamp-2 leading-relaxed">
-                        {site.shortDescription}
-                      </p>
+                      <div className="flex items-center gap-1.5 mt-1 text-xs text-navy-500 dark:text-navy-400 font-medium">
+                        <span>by</span>
+                        <span className="font-semibold text-navy-900 dark:text-white">
+                          e-yhan
+                        </span>
+                      </div>
                     </div>
 
                     <div className="mt-3 pt-2.5 border-t border-navy-100 dark:border-navy-800/80 space-y-2">
