@@ -37,7 +37,21 @@ export const resortHotelWebsites = [
       "React Helmet Async",
       "Atomic Design Architecture",
     ],
-    price: 330,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 330,
+        php: 18500,
+        formatted: "$330 (₱18,500)",
+      },
+    },
+    price: 55,
     turnaround: "5–7 Business Days",
     clientType: "Beach & Mountain Resorts, Boutique Hotels, Staycation Villas",
     thumbnail: "/resort_and_hotel/resort1/thumbnail/resort_thumbnail1.webp",
@@ -87,7 +101,21 @@ export const resortHotelWebsites = [
       "Custom Arch Layouts",
       "Editorial Typography",
     ],
-    price: 350,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 350,
+        php: 19500,
+        formatted: "$350 (₱19,500)",
+      },
+    },
+    price: 55,
     turnaround: "5–7 Business Days",
     clientType:
       "Eco-Luxury Beachfront Villas, Tropical Wellness Retreats, Sustainable Nature Sanctuaries",
@@ -138,7 +166,21 @@ export const resortHotelWebsites = [
       "IntersectionObserver Engine",
       "Glassmorphism UI",
     ],
-    price: 360,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 360,
+        php: 20000,
+        formatted: "$360 (₱20,000)",
+      },
+    },
+    price: 55,
     turnaround: "5–7 Business Days",
     clientType:
       "Ultra-Luxury Private Reserves, Clifftop Villas, 5-Star Boutique Hotels, Island Retreats",

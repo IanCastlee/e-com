@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Logo, Button, Icon, Badge, Text } from '../../atoms';
@@ -24,11 +24,56 @@ export function Navbar({
   mobileMenuAriaLabel = 'Toggle navigation menu',
 }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileNavVisible, setMobileNavVisible] = useState(true);
+
+  // Auto-hide mobile navbar when scrolling down; show when scrolling up
+  useEffect(() => {
+    let lastScrollY = typeof window !== 'undefined' ? window.scrollY : 0;
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show when near the very top of the page
+      if (currentScrollY <= 24) {
+        setMobileNavVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      // Do not hide if the mobile menu dropdown is currently open
+      if (mobileMenuOpen) {
+        setMobileNavVisible(true);
+        lastScrollY = currentScrollY;
+        return;
+      }
+
+      const diff = currentScrollY - lastScrollY;
+
+      // Swipe up (scroll down to read): hide mobile nav
+      if (diff > 8) {
+        setMobileNavVisible(false);
+      }
+      // Swipe down (scroll up towards top): show mobile nav
+      else if (diff < -8) {
+        setMobileNavVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [mobileMenuOpen]);
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full transition-all duration-300 px-3 pt-2.5 pb-1 sm:p-0">
+    <header
+      className={cn(
+        'sticky top-0 z-50 w-full transition-transform duration-300 ease-in-out px-3 pt-2.5 pb-1 sm:p-0',
+        !mobileNavVisible && '-translate-y-[120%] sm:translate-y-0'
+      )}
+    >
       {/* Main Navigation Row */}
       <div
         className={cn(

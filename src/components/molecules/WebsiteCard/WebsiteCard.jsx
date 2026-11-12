@@ -29,7 +29,8 @@ export function WebsiteCard({
     categoryName,
     shortDescription,
     techStack = [],
-    price,
+    pricing,
+    price = 55,
     thumbnail,
     featured,
     turnaround,
@@ -106,12 +107,33 @@ export function WebsiteCard({
             </span>
           </div>
 
-          {/* Tech Stack Tags */}
-          {techStack.length > 0 && (
-            <div className="flex flex-wrap gap-1.5 mt-3">
-              {techStack.slice(0, 4).map((tech) => (
-                <Tag key={tech} label={tech} variant="subtle" size="sm" />
-              ))}
+          {/* Pricing Options */}
+          {pricing && (
+            <div className="mt-3.5 pt-2.5 border-t border-navy-100/90 dark:border-navy-800/80 space-y-1.5 text-xs">
+              <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                  <span className="truncate">{pricing.basic?.name || 'Basic (Static Website)'}</span>
+                </span>
+                <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                  ${pricing.basic?.usd}{' '}
+                  <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                    (₱{pricing.basic?.php?.toLocaleString()})
+                  </span>
+                </span>
+              </div>
+              <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                  <span className="truncate">{pricing.premium?.name || 'Premium (Dynamic Website + Admin Panel)'}</span>
+                </span>
+                <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                  ${pricing.premium?.usd}{' '}
+                  <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                    (₱{pricing.premium?.php?.toLocaleString()})
+                  </span>
+                </span>
+              </div>
             </div>
           )}
         </div>
@@ -134,7 +156,9 @@ export function WebsiteCard({
                 {pricePrefix}
               </Text>
               <span className="font-display text-base sm:text-lg font-extrabold text-navy-900 dark:text-white">
-                {formatCurrencyPHP(price)}
+                {pricing?.basic?.usd
+                  ? `$${pricing.basic.usd} (₱${pricing.basic.php.toLocaleString()})`
+                  : formatCurrencyPHP(price)}
               </span>
             </div>
 

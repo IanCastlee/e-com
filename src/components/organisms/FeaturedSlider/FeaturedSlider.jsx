@@ -118,17 +118,33 @@ export function FeaturedSlider({
                     </span>
                   </div>
 
-                  {/* Tech Stack Pills */}
-                  {site.techStack && site.techStack.length > 0 && (
-                    <div className="flex flex-wrap gap-1 mt-2.5">
-                      {site.techStack.slice(0, 3).map((tech) => (
-                        <Tag
-                          key={tech}
-                          label={tech}
-                          size="sm"
-                          className="bg-navy-50 dark:bg-navy-800/80 text-navy-600 dark:text-navy-300 border-navy-200/70 dark:border-navy-700 text-[10px] py-0.5 rounded-[10px]"
-                        />
-                      ))}
+                  {/* Pricing Options */}
+                  {site.pricing && (
+                    <div className="mt-3 pt-2 border-t border-navy-100/90 dark:border-navy-800/80 space-y-1 text-xs">
+                      <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                        <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                          <span className="truncate">{site.pricing.basic?.name || 'Basic (Static Website)'}</span>
+                        </span>
+                        <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                          ${site.pricing.basic?.usd}{' '}
+                          <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                            (₱{site.pricing.basic?.php?.toLocaleString()})
+                          </span>
+                        </span>
+                      </div>
+                      <div className="flex items-center justify-between text-navy-600 dark:text-navy-300">
+                        <span className="flex items-center gap-1.5 font-medium truncate pr-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                          <span className="truncate">{site.pricing.premium?.name || 'Premium (Dynamic Website + Admin Panel)'}</span>
+                        </span>
+                        <span className="font-bold text-navy-900 dark:text-white shrink-0">
+                          ${site.pricing.premium?.usd}{' '}
+                          <span className="text-[11px] text-navy-500 dark:text-navy-400 font-normal">
+                            (₱{site.pricing.premium?.php?.toLocaleString()})
+                          </span>
+                        </span>
+                      </div>
                     </div>
                   )}
                 </div>

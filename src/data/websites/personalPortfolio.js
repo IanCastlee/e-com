@@ -32,7 +32,21 @@ export const personalPortfolioWebsites = [
       "Lucide React",
       "Atomic Design Architecture",
     ],
-    price: 75,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 150,
+        php: 8500,
+        formatted: "$150 (₱8,500)",
+      },
+    },
+    price: 55,
     turnaround: "2–4 Business Days",
     clientType:
       "Photographers, Videographers, Visual Storytellers, Creative Directors",
@@ -69,7 +83,21 @@ export const personalPortfolioWebsites = [
       "Lucide React",
       "React Router v6",
     ],
-    price: 75,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 150,
+        php: 8500,
+        formatted: "$150 (₱8,500)",
+      },
+    },
+    price: 55,
     turnaround: "2–4 Business Days",
     clientType:
       "Executive Virtual Assistants, Fractional Operations Partners, Remote Specialists",
@@ -113,7 +141,21 @@ export const personalPortfolioWebsites = [
       "Self-Hosted Typography (@fontsource)",
       "Atomic Design Architecture",
     ],
-    price: 350,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 350,
+        php: 19500,
+        formatted: "$350 (₱19,500)",
+      },
+    },
+    price: 55,
     turnaround: "5–7 Business Days",
     clientType:
       "Rock Bands, Indie Artists, Solo Musicians, Touring Acts, Recording Artists",
@@ -162,7 +204,21 @@ export const personalPortfolioWebsites = [
       "Self-Hosted Typography (@fontsource)",
       "Atomic Design Architecture",
     ],
-    price: 350,
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 350,
+        php: 19500,
+        formatted: "$350 (₱19,500)",
+      },
+    },
+    price: 55,
     turnaround: "5–7 Business Days",
     clientType:
       "Life Coaches, Executive Mentors, Holistic Wellness Practitioners, Therapists, Leadership Consultants",

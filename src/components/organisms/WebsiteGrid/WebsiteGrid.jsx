@@ -190,12 +190,24 @@ export function WebsiteGrid({
 
               {/* Modal Bottom Action Bar */}
               <div className="px-5 sm:px-6 py-4 bg-white dark:bg-navy-900 border-t border-navy-200 dark:border-navy-800 flex flex-wrap items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <PriceTag amount={previewSite.price} size="sm" />
-                  <div className="hidden md:flex flex-wrap gap-1.5">
-                    {(previewSite.techStack || []).map((t) => (
-                      <Tag key={t} label={t} size="sm" />
-                    ))}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+                  <div className="text-xs space-y-0.5">
+                    <div className="flex items-center gap-1.5 text-navy-700 dark:text-navy-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      <span className="font-medium">Basic:</span>
+                      <span className="font-bold text-navy-900 dark:text-white">
+                        ${previewSite.pricing?.basic?.usd || 55} (₱{(previewSite.pricing?.basic?.php || 3000).toLocaleString()})
+                      </span>
+                    </div>
+                    {previewSite.pricing?.premium && (
+                      <div className="flex items-center gap-1.5 text-navy-700 dark:text-navy-200">
+                        <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                        <span className="font-medium">Premium:</span>
+                        <span className="font-bold text-navy-900 dark:text-white">
+                          ${previewSite.pricing.premium.usd} (₱{previewSite.pricing.premium.php.toLocaleString()})
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
                 <div className="flex items-center gap-2.5">

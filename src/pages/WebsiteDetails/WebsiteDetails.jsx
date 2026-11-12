@@ -197,18 +197,57 @@ export function WebsiteDetails() {
               </div>
             </div>
 
-            {/* Technology Stack & Engineering Standards */}
+            {/* Available Packages & Pricing Options */}
             <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-soft space-y-4">
               <Heading as="h2" size="lg">
-                Technology Stack & Standards
+                Available Packages & Pricing
               </Heading>
               <Text size="sm" variant="muted">
-                Built with modern, maintainable frontend architecture so your site stays fast, secure, and ready for future API or backend expansion.
+                Choose the architecture that best fits your business needs. Both packages include complete customization with your logo, brand colors, and content.
               </Text>
-              <div className="flex flex-wrap gap-2 pt-2">
-                {(website.techStack || []).map((tech) => (
-                  <Tag key={tech} label={tech} variant="brand" size="md" />
-                ))}
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+                {/* Basic Tier */}
+                <div className="p-4 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-500/30 flex flex-col justify-between gap-3">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-900/40">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Basic (Static Website)
+                    </div>
+                    <div className="mt-2.5 flex items-baseline gap-1.5">
+                      <span className="font-display text-2xl font-extrabold text-navy-900 dark:text-white">
+                        ${website.pricing?.basic?.usd || 55}
+                      </span>
+                      <span className="text-sm font-semibold text-navy-600 dark:text-navy-300">
+                        (₱{(website.pricing?.basic?.php || 3000).toLocaleString()} PHP)
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs text-navy-600 dark:text-navy-300">
+                      Ultra-fast static frontend with zero database maintenance. Output first before payment.
+                    </p>
+                  </div>
+                </div>
+
+                {/* Premium Tier */}
+                <div className="p-4 rounded-2xl bg-brand-50/50 dark:bg-brand-950/20 border border-brand-500/30 flex flex-col justify-between gap-3">
+                  <div>
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-100 dark:bg-brand-900/40">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-500" />
+                      Premium (Dynamic + Admin Panel)
+                    </div>
+                    <div className="mt-2.5 flex items-baseline gap-1.5">
+                      <span className="font-display text-2xl font-extrabold text-navy-900 dark:text-white">
+                        ${website.pricing?.premium?.usd || 180}
+                      </span>
+                      <span className="text-sm font-semibold text-navy-600 dark:text-navy-300">
+                        (₱{(website.pricing?.premium?.php || 10000).toLocaleString()} PHP)
+                      </span>
+                    </div>
+                    <p className="mt-2 text-xs text-navy-600 dark:text-navy-300">
+                      Full-stack system with real-time database, interactive admin panel / CMS, and management workflows.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -217,11 +256,17 @@ export function WebsiteDetails() {
           <aside className="lg:col-span-4 lg:sticky lg:top-28 space-y-6">
             <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-navy-900 border-2 border-brand-500/70 shadow-elevated space-y-6">
               <div className="flex items-center justify-between gap-2 pb-5 border-b border-navy-100 dark:border-navy-800">
-                <PriceTag
-                  amount={website.price}
-                  prefix="Complete Turnkey Package"
-                  size="lg"
-                />
+                <div className="flex flex-col">
+                  <span className="text-xs uppercase tracking-wider font-semibold text-navy-500 dark:text-navy-400">
+                    Starts at
+                  </span>
+                  <div className="font-display text-2xl font-extrabold text-navy-900 dark:text-white">
+                    ${website.pricing?.basic?.usd || 55}{' '}
+                    <span className="text-sm font-semibold text-navy-500 dark:text-navy-400">
+                      (₱{(website.pricing?.basic?.php || 3000).toLocaleString()})
+                    </span>
+                  </div>
+                </div>
                 {website.featured && (
                   <Badge variant="accent" size="sm" icon="Sparkles">
                     Bestseller
@@ -302,6 +347,33 @@ export function WebsiteDetails() {
                   </li>
                 </ul>
               </div>
+
+              {/* Pricing Packages Breakdown */}
+              {website.pricing && (
+                <div className="p-3.5 rounded-2xl bg-navy-50/70 dark:bg-navy-800/60 border border-navy-200/80 dark:border-navy-700/80 space-y-2 text-xs">
+                  <div className="font-semibold text-navy-500 dark:text-navy-400 uppercase tracking-wider text-[10px]">
+                    Available Package Options
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-navy-700 dark:text-navy-200 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                      Basic (Static Website)
+                    </span>
+                    <span className="font-bold text-navy-900 dark:text-white">
+                      ${website.pricing.basic?.usd || 55} (₱{(website.pricing.basic?.php || 3000).toLocaleString()})
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="font-medium text-navy-700 dark:text-navy-200 flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-brand-500 shrink-0" />
+                      Premium (Dynamic + Admin)
+                    </span>
+                    <span className="font-bold text-navy-900 dark:text-white">
+                      ${website.pricing.premium?.usd || 180} (₱{(website.pricing.premium?.php || 10000).toLocaleString()})
+                    </span>
+                  </div>
+                </div>
+              )}
 
               {/* Primary CTA Buttons */}
               <div className="space-y-3 pt-1">
