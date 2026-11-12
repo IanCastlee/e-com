@@ -65,13 +65,41 @@ export function Home() {
         showcaseWebsites={localShowcaseWebsites}
       />
 
-      {/* 2. Featured Websites Showcase (Immediate Product Visibility) */}
+      {/* 2. Value Propositions & Guarantee Metrics Strip (Dedicated Section on Laptop/Desktop) */}
+      {heroData.companyStats && heroData.companyStats.length > 0 && (
+        <section className="hidden lg:block relative py-8 sm:py-12 bg-white dark:bg-navy-900/60 border-b border-navy-200/70 dark:border-navy-800/80">
+          <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%]">
+            <div className="grid grid-cols-4 gap-4 sm:gap-6">
+              {heroData.companyStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="p-4 sm:p-6 rounded-[10px] bg-navy-50/70 dark:bg-navy-950/60 border border-navy-200/80 dark:border-navy-800 shadow-soft transition-all hover:border-brand-500/40"
+                >
+                  <div className="font-display text-xl sm:text-2xl md:text-3xl font-extrabold text-brand-600 dark:text-brand-400 leading-tight">
+                    {stat.value}
+                  </div>
+                  <h3 className="mt-1 text-xs sm:text-sm md:text-base font-bold text-navy-900 dark:text-white line-clamp-1">
+                    {stat.label}
+                  </h3>
+                  {stat.detail && (
+                    <p className="mt-0.5 text-[11px] sm:text-xs text-navy-600 dark:text-navy-300 leading-normal line-clamp-2">
+                      {stat.detail}
+                    </p>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* 3. Featured Websites Showcase (Immediate Product Visibility) */}
       <FeaturedSlider
         websites={websites}
         maxItems={6}
         eyebrow="Curated Website Solutions"
         title="Featured Websites for Your Business"
-        subtitle="Pick a website design that fits your brand. Free logo, colors, and content customization included — inspect the working live preview before paying."
+        subtitle="Pick a design with free customization — inspect live before paying."
       />
 
       {/* 3. Industry Categories Grid (8 Categories) */}

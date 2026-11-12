@@ -14,7 +14,7 @@ export function FeaturedSlider({
   websites = [],
   eyebrow = 'Curated Web Solutions',
   title = 'Featured Websites for Your Business',
-  subtitle = 'Pick a website design that fits your brand. Free logo, colors, and content customization included — inspect the working live preview before paying.',
+  subtitle = 'Pick a design with free customization — inspect live before paying.',
   viewAllLabel = 'View All Websites in Catalog',
   viewAllPath = '/portfolio',
   maxItems = 6,

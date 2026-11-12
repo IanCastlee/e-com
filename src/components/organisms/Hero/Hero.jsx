@@ -149,9 +149,9 @@ export function Hero({
               )}
             </div>
 
-            {/* Value Propositions & Guarantees Strip (Elevated directly below CTAs, mobile-optimized) */}
+            {/* Value Propositions & Guarantees Strip (Mobile Only: elevated directly below CTAs, hidden on laptop/desktop) */}
             {companyStats && companyStats.length > 0 && (
-              <div className="pt-2 sm:pt-3">
+              <div className="pt-2 sm:pt-3 lg:hidden">
                 <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
                   {companyStats.map((stat, idx) => {
                     const iconNames = ['Tag', 'Sparkles', 'Headphones', 'Smartphone'];
