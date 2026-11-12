@@ -159,26 +159,26 @@ export function Hero({
                     return (
                       <div
                         key={stat.label}
-                        className="group relative p-2.5 sm:p-3 rounded-[12px] sm:rounded-[14px] bg-white/70 dark:bg-navy-900/50 backdrop-blur-md border border-navy-200/70 dark:border-navy-800/80 hover:border-brand-500/40 dark:hover:border-brand-500/40 shadow-xs sm:shadow-soft transition-all duration-300 flex flex-col justify-between"
+                        className="group relative p-3 sm:p-3.5 min-h-[102px] sm:min-h-[110px] rounded-[14px] bg-white/70 dark:bg-navy-900/50 backdrop-blur-md border border-navy-200/70 dark:border-navy-800/80 hover:border-brand-500/40 dark:hover:border-brand-500/40 shadow-xs sm:shadow-soft transition-all duration-300 flex flex-col justify-between"
                       >
-                        <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
-                          <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-[6px] bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
-                            <Icon name={iconName} size="xs" />
-                          </span>
-                          <span className="font-display text-xs sm:text-sm font-extrabold text-brand-600 dark:text-brand-400 tracking-tight leading-none">
-                            {stat.value}
-                          </span>
-                        </div>
                         <div>
-                          <div className="text-[11px] sm:text-xs font-bold text-navy-900 dark:text-white leading-tight line-clamp-1">
+                          <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                            <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-[6px] bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
+                              <Icon name={iconName} size="xs" />
+                            </span>
+                            <span className="font-display text-xs sm:text-sm font-extrabold text-brand-600 dark:text-brand-400 tracking-tight leading-none">
+                              {stat.value}
+                            </span>
+                          </div>
+                          <div className="text-[11px] sm:text-xs font-bold text-navy-900 dark:text-white leading-tight">
                             {stat.label}
                           </div>
-                          {stat.detail && (
-                            <p className="text-[10px] sm:text-[11px] text-navy-500 dark:text-navy-400 leading-tight mt-0.5 line-clamp-1 sm:line-clamp-2">
-                              {stat.detail}
-                            </p>
-                          )}
                         </div>
+                        {stat.detail && (
+                          <p className="text-[10px] sm:text-[11px] text-navy-500 dark:text-navy-400 leading-snug mt-1 font-normal">
+                            {stat.detail}
+                          </p>
+                        )}
                       </div>
                     );
                   })}

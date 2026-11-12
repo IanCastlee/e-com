@@ -138,8 +138,8 @@ export function WebsiteCard({
           )}
         </div>
 
-        {/* Action Section: Preferred Design CTA + Live Preview & Details */}
-        <div className="mt-5 pt-3 border-t border-navy-100 dark:border-navy-800/80 space-y-2.5">
+        {/* Action Section: Preferred Design CTA + Live Preview & Details (Identical to Home) */}
+        <div className="mt-4 pt-3 border-t border-navy-100 dark:border-navy-800/80 space-y-2">
           <Button
             to={`/contact?preferred=${encodeURIComponent(code || id)}&design=${encodeURIComponent(title)}&category=${encodeURIComponent(categoryName || category || '')}`}
             variant="primary"
@@ -150,39 +150,24 @@ export function WebsiteCard({
             I prefer this website design
           </Button>
 
-          <div className="flex items-center justify-between gap-3 pt-0.5">
-            <div className="flex flex-col">
-              <Text as="span" size="xs" variant="muted" className="uppercase tracking-wider font-semibold text-[10px]">
-                {pricePrefix}
-              </Text>
-              <span className="font-display text-base sm:text-lg font-extrabold text-navy-900 dark:text-white">
-                {pricing?.basic?.usd
-                  ? `$${pricing.basic.usd} (₱${pricing.basic.php.toLocaleString()})`
-                  : formatCurrencyPHP(price)}
-              </span>
-            </div>
+          <div className="flex items-center justify-between pt-0.5">
+            <a
+              href={demoUrl || detailsPath}
+              target={demoUrl ? "_blank" : undefined}
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
+            >
+              <Icon name="Eye" size="xs" />
+              <span>{demoButtonLabel}</span>
+            </a>
 
-            <div className="flex items-center gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                to={website.demoUrl || detailsPath}
-                target={website.demoUrl ? "_blank" : undefined}
-                leftIcon="Eye"
-                className="text-xs"
-              >
-                {demoButtonLabel}
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                to={detailsPath}
-                rightIcon="ArrowRight"
-                className="text-xs"
-              >
-                {detailsButtonLabel}
-              </Button>
-            </div>
+            <Link
+              to={detailsPath}
+              className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
+            >
+              <span>{detailsButtonLabel}</span>
+              <Icon name="ArrowRight" size="xs" />
+            </Link>
           </div>
         </div>
       </div>
