@@ -17,7 +17,7 @@ export function Footer({
 }) {
   return (
     <footer className="bg-navy-950 text-navy-200 border-t border-navy-800/90">
-      <div className="w-full max-w-full px-[5px] sm:px-4 py-14 sm:py-16">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%] py-14 sm:py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8">
           {/* Brand & Mission Column */}
           <div className="lg:col-span-5 space-y-5">

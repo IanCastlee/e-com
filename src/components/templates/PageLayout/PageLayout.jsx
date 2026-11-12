@@ -38,7 +38,7 @@ export function PageLayout({
       {showPageHeader && title && (
         <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/60 via-white to-navy-50 dark:from-navy-900 dark:via-navy-950 dark:to-navy-950 pt-10 pb-12 sm:pt-14 sm:pb-16 border-b border-navy-200/80 dark:border-navy-800/80">
           <div className="absolute inset-0 bg-grid-pattern opacity-60 pointer-events-none" aria-hidden="true" />
-          <div className="relative w-full max-w-full px-[5px]">
+          <div className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%]">
             {/* Breadcrumb Trail */}
             {breadcrumbs.length > 0 && (
               <nav aria-label="Breadcrumb" className="mb-4">

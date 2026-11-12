@@ -85,7 +85,7 @@ export function Hero({
         aria-hidden="true"
       />
 
-      <div className="relative max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 w-full my-auto">
+      <div className="relative w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%] my-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center">
           {/* Left Copy Column */}
           <motion.div

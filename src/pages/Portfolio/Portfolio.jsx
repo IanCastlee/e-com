@@ -71,7 +71,7 @@ export function Portfolio() {
       }
       footerBannerSlot={<CTABanner {...ctaBannerData} />}
     >
-      <section className="py-8 sm:py-12 w-full max-w-full px-[5px] space-y-6">
+      <section className="py-8 sm:py-12 w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%] space-y-8">
         {/* Control Bar: Search + Sort + Category Filter Tabs */}
         <div className="p-3.5 sm:p-5 rounded-[10px] bg-white dark:bg-navy-900 border border-navy-200/80 dark:border-navy-800 shadow-soft space-y-4">
           <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">

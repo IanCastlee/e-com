@@ -38,8 +38,8 @@ export function Navbar({
     >
       {/* Top Corporate Bar */}
       {(originText || contactEmail || contactPhone) && (
-        <div className="bg-navy-900 dark:bg-navy-950 text-navy-200 border-b border-navy-800 text-xs py-1.5 px-[5px]">
-          <div className="w-full max-w-full mx-auto flex flex-wrap items-center justify-between gap-2 px-[5px]">
+        <div className="bg-navy-900 dark:bg-navy-950 text-navy-200 border-b border-navy-800 text-xs py-1.5">
+          <div className="w-full max-w-[1600px] mx-auto flex flex-wrap items-center justify-between gap-2 px-4 sm:px-6 md:px-8 lg:px-[5%]">
             {originText && (
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-brand-400 animate-pulse" />
@@ -73,7 +73,7 @@ export function Navbar({
       )}
 
       {/* Main Navigation Row */}
-      <div className="w-full max-w-full mx-auto px-[5px] h-16 sm:h-20 flex items-center justify-between gap-4">
+      <div className="w-full max-w-[1600px] mx-auto px-4 sm:px-6 md:px-8 lg:px-[5%] h-16 sm:h-20 flex items-center justify-between gap-4">
         <Logo brandName={brandName} subtitle={brandSubtitle} size="md" />
 
         {/* Desktop Nav Links */}
