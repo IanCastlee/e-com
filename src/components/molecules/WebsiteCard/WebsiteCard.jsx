@@ -20,6 +20,8 @@ export function WebsiteCard({
 }) {
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  if (!website) return null;
+
   const {
     id,
     code,
@@ -34,6 +36,7 @@ export function WebsiteCard({
     thumbnail,
     featured,
     turnaround,
+    demoUrl,
   } = website;
 
   const detailsPath = `/portfolio/${slug}`;
