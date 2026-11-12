@@ -73,10 +73,10 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-8 pb-14 sm:py-12 lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-10 pb-16 sm:py-16 min-h-[480px] sm:min-h-[520px] lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
       {/* 3D Wave Particle Mesh (Pure Style/Canvas, Angled Top-Right to Bottom-Left, strictly behind content) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <WaveParticleMesh opacity={0.5} className="w-full h-full opacity-40 dark:opacity-65" />
+        <WaveParticleMesh opacity={0.85} className="w-full h-full opacity-90 dark:opacity-95" />
       </div>
 
       {/* Subtle Architectural Grid Pattern */}
