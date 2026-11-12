@@ -11,7 +11,7 @@ export function WaveParticleMesh({
   className = '',
   rows = 30,
   cols = 52,
-  opacity = 0.8,
+  opacity = 0.45,
 }) {
   const canvasRef = useRef(null);
 
@@ -144,20 +144,20 @@ export function WaveParticleMesh({
             }
           }
 
-          // Clear, punchy alpha so dots stand out prominently on dark and light backgrounds
+          // Refined, subtle alpha so the wave pattern provides elegant depth without overpowering
           const dotAlpha = Math.max(
-            0.28,
-            Math.min(0.95, (0.35 + perspective * 0.8) * opacity)
+            0.14,
+            Math.min(0.68, (0.2 + perspective * 0.65) * opacity)
           );
 
           ctx.beginPath();
           ctx.arc(screenX, screenY, size, 0, Math.PI * 2);
           ctx.fillStyle = `rgba(${r}, ${g}, ${b}, ${dotAlpha})`;
 
-          // Subtle glow for foreground dots in dark mode
-          if (perspective > 0.55 && isDark) {
-            ctx.shadowBlur = Math.min(8, size * 1.5);
-            ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${dotAlpha * 0.6})`;
+          // Gentle ambient glow for foreground dots in dark mode
+          if (perspective > 0.62 && isDark) {
+            ctx.shadowBlur = Math.min(4, size * 1.0);
+            ctx.shadowColor = `rgba(${r}, ${g}, ${b}, ${dotAlpha * 0.45})`;
           } else {
             ctx.shadowBlur = 0;
           }

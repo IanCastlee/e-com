@@ -73,10 +73,10 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-10 pb-16 sm:py-16 min-h-[480px] sm:min-h-[520px] lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
-      {/* 3D Wave Particle Mesh (Pure Style/Canvas, Angled Top-Right to Bottom-Left, strictly behind content) */}
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-8 sm:pt-8 sm:pb-10 lg:py-12 lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
+      {/* 3D Wave Particle Mesh (Pure Style/Canvas, Angled Top-Right to Bottom-Left, subtle background opacity) */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <WaveParticleMesh opacity={0.85} className="w-full h-full opacity-90 dark:opacity-95" />
+        <WaveParticleMesh opacity={0.45} className="w-full h-full opacity-60 dark:opacity-75" />
       </div>
 
       {/* Subtle Architectural Grid Pattern */}
@@ -148,6 +148,43 @@ export function Hero({
                 </Button>
               )}
             </div>
+
+            {/* Value Propositions & Guarantees Strip (Elevated directly below CTAs, mobile-optimized) */}
+            {companyStats && companyStats.length > 0 && (
+              <div className="pt-2 sm:pt-3">
+                <div className="grid grid-cols-2 gap-2 sm:gap-2.5">
+                  {companyStats.map((stat, idx) => {
+                    const iconNames = ['Tag', 'Sparkles', 'Headphones', 'Smartphone'];
+                    const iconName = iconNames[idx] || 'CheckCircle2';
+                    return (
+                      <div
+                        key={stat.label}
+                        className="group relative p-2.5 sm:p-3 rounded-[12px] sm:rounded-[14px] bg-white/70 dark:bg-navy-900/50 backdrop-blur-md border border-navy-200/70 dark:border-navy-800/80 hover:border-brand-500/40 dark:hover:border-brand-500/40 shadow-xs sm:shadow-soft transition-all duration-300 flex flex-col justify-between"
+                      >
+                        <div className="flex items-center gap-1.5 sm:gap-2 mb-1">
+                          <span className="w-5 h-5 sm:w-6 sm:h-6 rounded-[6px] bg-brand-500/10 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 flex items-center justify-center shrink-0">
+                            <Icon name={iconName} size="xs" />
+                          </span>
+                          <span className="font-display text-xs sm:text-sm font-extrabold text-brand-600 dark:text-brand-400 tracking-tight leading-none">
+                            {stat.value}
+                          </span>
+                        </div>
+                        <div>
+                          <div className="text-[11px] sm:text-xs font-bold text-navy-900 dark:text-white leading-tight line-clamp-1">
+                            {stat.label}
+                          </div>
+                          {stat.detail && (
+                            <p className="text-[10px] sm:text-[11px] text-navy-500 dark:text-navy-400 leading-tight mt-0.5 line-clamp-1 sm:line-clamp-2">
+                              {stat.detail}
+                            </p>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </motion.div>
 
           {/* Right Column: 3D Cascading Auto-Scroll Cards Carousel (Desktop Only) */}
