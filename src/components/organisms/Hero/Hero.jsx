@@ -73,12 +73,14 @@ export function Hero({
   const nextItem = getCardAtOffset(1);
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-6 pb-12 sm:py-10 lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
-      {/* 3D Wave Particle Mesh (Vibrant & visible on both mobile and laptop) */}
-      <WaveParticleMesh opacity={0.65} className="opacity-60 dark:opacity-85 pointer-events-none" />
+    <section className="relative overflow-hidden bg-gradient-to-b from-brand-50/50 via-white to-navy-50 dark:from-navy-950 dark:via-navy-900 dark:to-navy-950 pt-8 pb-14 sm:py-12 lg:min-h-[calc(100vh-100px)] lg:flex lg:flex-col lg:justify-center border-b border-navy-200/70 dark:border-navy-800/80">
+      {/* 3D Wave Particle Mesh (Pure Style/Canvas, Angled Top-Right to Bottom-Left, strictly behind content) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <WaveParticleMesh opacity={0.5} className="w-full h-full opacity-40 dark:opacity-65" />
+      </div>
 
       {/* Subtle Architectural Grid Pattern */}
-      <div className="absolute inset-0 bg-grid-pattern opacity-30 dark:opacity-10 pointer-events-none" aria-hidden="true" />
+      <div className="absolute inset-0 bg-grid-pattern opacity-25 dark:opacity-10 pointer-events-none" aria-hidden="true" />
       <div
         className="absolute -top-32 right-1/4 w-96 h-96 rounded-full bg-brand-400/10 blur-3xl pointer-events-none"
         aria-hidden="true"
@@ -148,34 +150,34 @@ export function Hero({
             </div>
           </motion.div>
 
-          {/* Right Column: 3D Cascading Auto-Scroll Cards Carousel (Responsive on Mobile & Desktop) */}
+          {/* Right Column: 3D Cascading Auto-Scroll Cards Carousel (Desktop Only) */}
           <motion.div
             initial={{ opacity: 0, scale: 0.96 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="block w-full lg:col-span-6 mt-8 lg:mt-0"
+            className="hidden lg:block lg:col-span-6"
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
           >
             <div
               onTouchStart={handleTouchStart}
               onTouchEnd={handleTouchEnd}
-              className="relative mx-auto w-full max-w-xl lg:max-w-none min-h-[450px] sm:min-h-[520px] md:min-h-[580px] lg:min-h-[620px] xl:min-h-[660px] flex items-center justify-center select-none px-2 sm:px-0"
+              className="relative mx-auto w-full max-w-lg lg:max-w-none min-h-[450px] sm:min-h-[490px] lg:h-[510px] flex items-center justify-center select-none px-2 sm:px-0"
             >
               {/* Radial Ambient Lighting Behind Center */}
               <div
-                className="absolute inset-x-6 inset-y-6 rounded-full bg-brand-500/20 blur-3xl pointer-events-none"
+                className="absolute inset-x-10 inset-y-10 rounded-full bg-brand-500/15 blur-3xl pointer-events-none"
                 aria-hidden="true"
               />
 
-              {/* Left Flanking Card (Sharp, No Blur, Full Image Display) */}
+              {/* Left Flanking Card (Desktop Only - Sharp, No Blur, Full Image Display) */}
               {prevItem && (
                 <div
                   onClick={() => setCurrentIndex(prevItem.index)}
-                  className="flex flex-col justify-between absolute -left-14 sm:left-0 md:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[220px] sm:w-[300px] md:w-[360px] lg:w-[410px] xl:w-[450px] h-[330px] sm:h-[430px] md:h-[500px] lg:h-[550px] xl:h-[590px] rounded-[22px] overflow-hidden bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-35 sm:opacity-70 hover:opacity-100 transform -rotate-3 scale-[0.82] sm:scale-90 cursor-pointer transition-all duration-500 ease-out z-10 pointer-events-auto"
+                  className="hidden sm:flex flex-col justify-between absolute left-0 sm:left-2 lg:left-0 top-1/2 -translate-y-1/2 w-[260px] md:w-[300px] lg:w-[320px] h-[330px] md:h-[360px] lg:h-[380px] rounded-[20px] overflow-hidden bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform -rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   {/* Sharp Full Image Container — Full Bleed */}
-                  <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                     <img
                       src={prevItem.website.thumbnail}
                       alt={prevItem.website.title}
@@ -185,14 +187,14 @@ export function Hero({
 
                   <div className="p-3.5 md:p-4 flex flex-col flex-1 justify-between">
                     <div>
-                      <h4 className="text-sm md:text-base font-bold text-navy-900 dark:text-white line-clamp-1">
+                      <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
                         {prevItem.website.title}
                       </h4>
-                      <p className="text-xs text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
-                        by e-yhan
+                      <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
+                        {prevItem.website.shortDescription}
                       </p>
                     </div>
-                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
+                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
                       <span>Click to view</span>
                       <Icon name="ChevronRight" size="xs" />
                     </span>
@@ -200,14 +202,14 @@ export function Hero({
                 </div>
               )}
 
-              {/* Right Flanking Card (Sharp, No Blur, Full Image Display) */}
+              {/* Right Flanking Card (Desktop Only - Sharp, No Blur, Full Image Display) */}
               {nextItem && (
                 <div
                   onClick={() => setCurrentIndex(nextItem.index)}
-                  className="flex flex-col justify-between absolute -right-14 sm:right-0 md:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[220px] sm:w-[300px] md:w-[360px] lg:w-[410px] xl:w-[450px] h-[330px] sm:h-[430px] md:h-[500px] lg:h-[550px] xl:h-[590px] rounded-[22px] overflow-hidden bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-35 sm:opacity-70 hover:opacity-100 transform rotate-3 scale-[0.82] sm:scale-90 cursor-pointer transition-all duration-500 ease-out z-10 pointer-events-auto"
+                  className="hidden sm:flex flex-col justify-between absolute right-0 sm:right-2 lg:right-0 top-1/2 -translate-y-1/2 w-[260px] md:w-[300px] lg:w-[320px] h-[330px] md:h-[360px] lg:h-[380px] rounded-[20px] overflow-hidden bg-white/95 dark:bg-navy-950/90 border border-navy-200/80 dark:border-navy-800 shadow-soft dark:shadow-xl opacity-70 hover:opacity-100 transform rotate-3 scale-90 cursor-pointer transition-all duration-500 ease-out z-10"
                 >
                   {/* Sharp Full Image Container — Full Bleed */}
-                  <div className="relative w-full aspect-[16/10] bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
+                  <div className="relative w-full aspect-video bg-navy-100/50 dark:bg-navy-950 flex items-center justify-center overflow-hidden">
                     <img
                       src={nextItem.website.thumbnail}
                       alt={nextItem.website.title}
@@ -217,14 +219,14 @@ export function Hero({
 
                   <div className="p-3.5 md:p-4 flex flex-col flex-1 justify-between">
                     <div>
-                      <h4 className="text-sm md:text-base font-bold text-navy-900 dark:text-white line-clamp-1">
+                      <h4 className="text-xs md:text-sm font-bold text-navy-900 dark:text-white line-clamp-1">
                         {nextItem.website.title}
                       </h4>
-                      <p className="text-xs text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
-                        by e-yhan
+                      <p className="text-[11px] text-navy-600 dark:text-navy-300 line-clamp-1 mt-0.5">
+                        {nextItem.website.shortDescription}
                       </p>
                     </div>
-                    <span className="mt-2 inline-flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
+                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-semibold text-brand-600 dark:text-brand-400">
                       <span>Click to view</span>
                       <Icon name="ChevronRight" size="xs" />
                     </span>
@@ -232,14 +234,14 @@ export function Hero({
                 </div>
               )}
 
-              {/* Center Active Focal Card (Larger, Taller & Responsive) */}
+              {/* Center Active Focal Card (Enlarged & Prominent) */}
               {currentItem && (
-                <div className="relative w-full max-w-[350px] sm:w-[450px] md:w-[520px] lg:w-[560px] xl:w-[600px] min-h-[430px] sm:min-h-[500px] md:min-h-[560px] lg:min-h-[610px] rounded-[24px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
-                  {/* Dedicated Full Image Screen Showcase — Full Bleed (Sagad sa taas, kaliwa, at kanan) */}
-                  <div className="relative w-full aspect-[16/10] min-h-[230px] sm:min-h-[280px] md:min-h-[330px] lg:min-h-[370px] bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800/80 flex items-center justify-center overflow-hidden">
+                <div className="relative w-full max-w-[430px] sm:w-[470px] md:w-[500px] lg:w-[520px] xl:w-[540px] rounded-[24px] overflow-hidden bg-white dark:bg-navy-950 border border-navy-200/80 dark:border-navy-800 shadow-2xl z-20 transform scale-100 transition-all duration-500 ease-out flex flex-col justify-between group">
+                  {/* Dedicated Full Image Screen Showcase — Full Bleed */}
+                  <div className="relative w-full aspect-[16/10] bg-gradient-to-b from-navy-100/70 to-navy-50/40 dark:from-navy-950 dark:to-navy-900/60 border-b border-navy-100 dark:border-navy-800/80 flex items-center justify-center overflow-hidden">
                     {/* Free Customization Badge — Elevated to top edge */}
                     <div className="absolute top-2 left-2.5 z-20 pointer-events-none">
-                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[8px] text-[11px] font-semibold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
+                      <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[8px] text-[11px] font-bold tracking-wide backdrop-blur-md transition-all duration-300 bg-white/95 text-navy-950 border border-amber-300/80 shadow-[0_2px_10px_rgba(245,158,11,0.15)] dark:bg-navy-950/90 dark:text-amber-300 dark:border-amber-400/40 dark:shadow-[0_0_15px_rgba(245,158,11,0.25)]">
                         <Icon name="Sparkles" size="xs" className="text-amber-500 dark:text-amber-400 shrink-0" />
                         <span>Free Customization</span>
                       </span>
@@ -259,13 +261,13 @@ export function Hero({
                     </Link>
                   </div>
 
-                  {/* Card Content Container — Taller with Roomy Padding */}
-                  <div className="p-5 sm:p-6 md:p-7 flex flex-col flex-1 justify-between">
+                  {/* Card Content Container */}
+                  <div className="p-5 sm:p-6 flex flex-col flex-1 justify-between">
                     <div>
                       {/* Category Tag */}
                       <div className="flex items-center gap-2 mb-2.5 flex-wrap">
                         {currentItem.website.categoryName && (
-                          <span className="text-xs font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-3 py-1 rounded-[6px] border border-brand-500/20">
+                          <span className="text-[11px] font-bold text-brand-700 dark:text-brand-300 bg-brand-500/10 dark:bg-brand-500/20 px-2.5 py-1 rounded-[6px] border border-brand-500/20">
                             {currentItem.website.categoryName}
                           </span>
                         )}
@@ -275,14 +277,14 @@ export function Hero({
                         to={`/portfolio/${currentItem.website.slug}`}
                         className="hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
                       >
-                        <h3 className="font-display font-extrabold text-base sm:text-xl md:text-2xl text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
+                        <h3 className="font-display font-bold text-base sm:text-lg md:text-xl lg:text-2xl text-navy-900 dark:text-white tracking-tight leading-snug line-clamp-1">
                           {currentItem.website.title}
                         </h3>
                       </Link>
 
-                      <div className="flex items-center gap-1.5 mt-2 text-xs sm:text-sm text-navy-500 dark:text-navy-400 font-medium">
+                      <div className="flex items-center gap-1.5 mt-1.5 text-xs sm:text-sm text-navy-500 dark:text-navy-400 font-medium">
                         <span>by</span>
-                        <span className="font-bold text-navy-900 dark:text-white group-hover:text-brand-600 dark:group-hover:text-brand-400 transition-colors">
+                        <span className="font-bold text-navy-900 dark:text-white">
                           e-yhan
                         </span>
                       </div>
@@ -293,7 +295,7 @@ export function Hero({
             </div>
 
             {/* Slider Dots Indicator */}
-            <div className="mt-4 sm:mt-5 flex items-center justify-center gap-1.5 px-1">
+            <div className="mt-5 flex items-center justify-center gap-1.5 px-1">
               {localWebsites.map((_, dotIdx) => (
                 <button
                   key={dotIdx}
@@ -307,6 +309,7 @@ export function Hero({
               ))}
             </div>
           </motion.div>
+
         </div>
       </div>
     </section>
