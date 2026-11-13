@@ -190,12 +190,12 @@ export function FeaturedSlider({
         {(hasMoreThanSix || websites.length >= 5) && (
           <div className="mt-10 sm:mt-12 text-center flex flex-col items-center justify-center gap-2">
             <Button
-              variant="primary"
+              variant="outline"
               size="lg"
               to={viewAllPath}
               leftIcon="LayoutGrid"
               rightIcon="ArrowRight"
-              className="w-full sm:w-auto px-8 py-3.5 text-sm sm:text-base font-bold shadow-soft hover:shadow-glow rounded-[10px]"
+              className="w-full sm:w-auto px-8 py-3.5 text-sm sm:text-base font-bold rounded-[12px] bg-transparent text-navy-900 dark:text-white border-2 border-brand-500/50 hover:border-brand-500 dark:border-brand-400/50 dark:hover:border-brand-400 hover:bg-brand-500/10 dark:hover:bg-brand-500/10 transition-all duration-300 shadow-none"
             >
               {viewAllLabel}
             </Button>
