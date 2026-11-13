@@ -149,37 +149,41 @@ export function FeaturedSlider({
                   )}
                 </div>
 
-                {/* Direct Action: "I prefer this website design" Button + Live Preview & Details */}
+                {/* Action Section: Live Preview & Details Buttons (Top) + Preferred Design CTA (Bottom) */}
                 <div className="mt-4 pt-3 border-t border-navy-100 dark:border-navy-800/80 space-y-2">
+                  {/* Dual Action Buttons: Live Preview & Details (Transparent with Border) */}
+                  <div className="grid grid-cols-2 gap-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      href={site.demoUrl || `/portfolio/${site.slug}`}
+                      target={site.demoUrl ? "_blank" : undefined}
+                      leftIcon="Eye"
+                      className="w-full text-xs font-semibold justify-center py-2 rounded-[8px] bg-transparent border border-navy-200 dark:border-navy-700/80 hover:border-brand-500 dark:hover:border-brand-400 text-navy-800 dark:text-navy-100 hover:bg-brand-500/10 dark:hover:bg-brand-500/10 transition-colors shadow-none"
+                    >
+                      Live Preview
+                    </Button>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      to={`/portfolio/${site.slug}`}
+                      rightIcon="ArrowRight"
+                      className="w-full text-xs font-semibold justify-center py-2 rounded-[8px] bg-transparent border border-navy-200 dark:border-navy-700/80 hover:border-brand-500 dark:hover:border-brand-400 text-navy-800 dark:text-navy-100 hover:bg-brand-500/10 dark:hover:bg-brand-500/10 transition-colors shadow-none"
+                    >
+                      Details
+                    </Button>
+                  </div>
+
+                  {/* Primary Action at the Bottom: I prefer this website design */}
                   <Button
                     to={`/contact?preferred=${encodeURIComponent(site.code || site.id)}&design=${encodeURIComponent(site.title)}&category=${encodeURIComponent(site.categoryName || site.category || '')}`}
                     variant="primary"
                     size="sm"
                     leftIcon="CheckCircle2"
-                    className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs sm:text-sm py-2"
+                    className="w-full font-bold justify-center shadow-soft hover:shadow-glow text-xs sm:text-sm py-2 rounded-[8px]"
                   >
                     I prefer this website design
                   </Button>
-
-                  <div className="flex items-center justify-between pt-0.5">
-                    <a
-                      href={site.demoUrl || `/portfolio/${site.slug}`}
-                      target={site.demoUrl ? "_blank" : undefined}
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-brand-600 dark:text-brand-400 hover:underline"
-                    >
-                      <Icon name="Eye" size="xs" />
-                      <span>Live Preview</span>
-                    </a>
-
-                    <Link
-                      to={`/portfolio/${site.slug}`}
-                      className="inline-flex items-center gap-1 text-xs sm:text-sm font-semibold text-navy-800 dark:text-white hover:text-brand-600 dark:hover:text-brand-400 transition-colors"
-                    >
-                      <span>Details</span>
-                      <Icon name="ArrowRight" size="xs" />
-                    </Link>
-                  </div>
                 </div>
               </div>
             </div>
