@@ -52,7 +52,7 @@ export const personalPortfolioWebsites = [
       "Photographers, Videographers, Visual Storytellers, Creative Directors",
     thumbnail: "/portfolio/photographer/thumbnail/photographer_thumbnail.webp",
     gallery: ["/portfolio//photographer/photographer_thumbnail.webp"],
-    demoUrl: "https://demo.e-yhan.ph/photographer-portfolio",
+    demoUrl: "https://portfolio-photographer1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 100,
     createdAt: "2026-11-08",
