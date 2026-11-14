@@ -186,10 +186,8 @@ export const resortHotelWebsites = [
     clientType:
       "Ultra-Luxury Private Reserves, Clifftop Villas, 5-Star Boutique Hotels, Island Retreats",
     thumbnail: "/resort_and_hotel/resort3/thumbnail/resort_thumbnail3.webp",
-    gallery: [
-      "/resort_and_hotel/resort3/thumbnail/resort_thumbnail3.webp",
-    ],
-    demoUrl: "https://e-yhan-resort1.onrender.com",
+    gallery: ["/resort_and_hotel/resort3/thumbnail/resort_thumbnail3.webp"],
+    demoUrl: "https://resort2.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 98,
     createdAt: "2026-11-08",
