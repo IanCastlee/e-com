@@ -175,29 +175,29 @@ export function WebsiteDetails() {
                 />
 
                 {/* Enlarge Badge */}
-                <div className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-navy-950/80 text-white border border-navy-700/80 backdrop-blur-sm shadow-md transition-all group-hover:bg-brand-600 group-hover:border-brand-500">
+                <div className="absolute top-2 right-2 sm:top-3 sm:right-3 z-10 inline-flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-semibold bg-navy-950/70 text-white/90 border border-white/10 backdrop-blur-sm shadow-md transition-all group-hover:bg-brand-600 group-hover:border-brand-500">
                   <Icon name="Maximize2" size="xs" />
                   <span>Click to enlarge</span>
                 </div>
 
-                {/* Inline Prev & Next Navigation Buttons */}
+                {/* Inline Prev & Next Navigation Buttons - Arrow only, positioned right at the edges */}
                 {galleryImages.length > 1 && (
                   <>
                     <button
                       type="button"
                       onClick={handlePrevImage}
                       aria-label="Previous preview"
-                      className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-2.5 rounded-full bg-navy-950/75 hover:bg-brand-500 text-white border border-navy-700/70 hover:border-brand-400 shadow-lg backdrop-blur-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all focus:opacity-100 focus:outline-none"
+                      className="absolute left-0 sm:left-1 top-1/2 -translate-y-1/2 z-10 p-1.5 sm:p-2.5 text-white/75 hover:text-white active:scale-90 transition-all drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] focus:outline-none"
                     >
-                      <Icon name="ChevronLeft" size="md" />
+                      <Icon name="ChevronLeft" size="xl" className="w-8 h-8 sm:w-10 sm:h-10" />
                     </button>
                     <button
                       type="button"
                       onClick={handleNextImage}
                       aria-label="Next preview"
-                      className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-2.5 rounded-full bg-navy-950/75 hover:bg-brand-500 text-white border border-navy-700/70 hover:border-brand-400 shadow-lg backdrop-blur-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all focus:opacity-100 focus:outline-none"
+                      className="absolute right-0 sm:right-1 top-1/2 -translate-y-1/2 z-10 p-1.5 sm:p-2.5 text-white/75 hover:text-white active:scale-90 transition-all drop-shadow-[0_2px_8px_rgba(0,0,0,0.85)] focus:outline-none"
                     >
-                      <Icon name="ChevronRight" size="md" />
+                      <Icon name="ChevronRight" size="xl" className="w-8 h-8 sm:w-10 sm:h-10" />
                     </button>
                   </>
                 )}
@@ -553,9 +553,9 @@ export function WebsiteDetails() {
                   type="button"
                   onClick={handlePrevImage}
                   aria-label="Previous image"
-                  className="absolute left-2 sm:left-4 z-30 p-3 sm:p-4 rounded-full bg-navy-900/90 hover:bg-brand-500 text-white border border-navy-700 hover:border-brand-400 shadow-2xl backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-400 group"
+                  className="absolute left-0 sm:left-2 z-30 p-2 sm:p-3 text-white/75 hover:text-white active:scale-90 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] focus:outline-none group"
                 >
-                  <Icon name="ChevronLeft" size="xl" className="transition-transform group-hover:-translate-x-0.5" />
+                  <Icon name="ChevronLeft" size="xl" className="w-9 h-9 sm:w-12 sm:h-12 transition-transform group-hover:-translate-x-1" />
                 </button>
               )}
 
@@ -577,9 +577,9 @@ export function WebsiteDetails() {
                   type="button"
                   onClick={handleNextImage}
                   aria-label="Next image"
-                  className="absolute right-2 sm:right-4 z-30 p-3 sm:p-4 rounded-full bg-navy-900/90 hover:bg-brand-500 text-white border border-navy-700 hover:border-brand-400 shadow-2xl backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-400 group"
+                  className="absolute right-0 sm:right-2 z-30 p-2 sm:p-3 text-white/75 hover:text-white active:scale-90 transition-all drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] focus:outline-none group"
                 >
-                  <Icon name="ChevronRight" size="xl" className="transition-transform group-hover:translate-x-0.5" />
+                  <Icon name="ChevronRight" size="xl" className="w-9 h-9 sm:w-12 sm:h-12 transition-transform group-hover:translate-x-1" />
                 </button>
               )}
             </div>
