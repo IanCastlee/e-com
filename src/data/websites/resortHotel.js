@@ -72,7 +72,7 @@ export const resortHotelWebsites = [
   // WEBSITE 02: Resort2
   // ==========================================
   {
-    id: "web-04",
+    id: "web-03",
     code: "Resort2",
     title: "Tropical Coastal Eco-Sanctuary & Pool Villa Website",
     slug: "eco-luxury-sanctuary-website",
@@ -127,7 +127,7 @@ export const resortHotelWebsites = [
       "/resort_and_hotel/haven_resort4.webp",
       "/resort_and_hotel/haven_resort5.webp",
     ],
-    demoUrl: "https://demo.e-yhan.ph/eyhan-haven",
+    demoUrl: "https://resort3.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 97,
     createdAt: "2026-11-09",
@@ -137,7 +137,7 @@ export const resortHotelWebsites = [
   // WEBSITE 03: Resort3
   // ==========================================
   {
-    id: "web-03",
+    id: "web-04",
     code: "Resort3",
     title: "Ultra-Luxury Dark Resort & Private Reserve Website",
     slug: "ultra-luxury-resort-website",

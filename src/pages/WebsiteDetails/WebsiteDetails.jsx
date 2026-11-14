@@ -1,5 +1,6 @@
-import React, { useState, useMemo, useEffect } from 'react';
+import React, { useState, useMemo, useEffect, useCallback } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { PageLayout } from '../../components/templates';
 import { WebsiteGrid, CTABanner } from '../../components/organisms';
 import { PriceTag, SectionTitle } from '../../components/molecules';
@@ -31,10 +32,12 @@ export function WebsiteDetails() {
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [mainImageLoaded, setMainImageLoaded] = useState(false);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     setActiveImageIndex(0);
     setMainImageLoaded(false);
+    setIsLightboxOpen(false);
   }, [slug]);
 
   const handleThumbnailClick = (idx) => {
@@ -43,6 +46,42 @@ export function WebsiteDetails() {
       setActiveImageIndex(idx);
     }
   };
+
+  const handlePrevImage = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setMainImageLoaded(false);
+    setActiveImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
+  }, [galleryImages.length]);
+
+  const handleNextImage = useCallback((e) => {
+    if (e) e.stopPropagation();
+    setMainImageLoaded(false);
+    setActiveImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
+  }, [galleryImages.length]);
+
+  // Keyboard navigation & body scroll locking for the lightbox modal
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        setIsLightboxOpen(false);
+      } else if (e.key === 'ArrowLeft') {
+        handlePrevImage();
+      } else if (e.key === 'ArrowRight') {
+        handleNextImage();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isLightboxOpen, handlePrevImage, handleNextImage]);
 
   const relatedWebsites = useMemo(() => {
     if (!website) return [];
@@ -105,9 +144,21 @@ export function WebsiteDetails() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           {/* Left Column: Gallery + Overview + Features + Tech Stack */}
           <div className="lg:col-span-8 space-y-10">
-            {/* Large Preview Gallery with Skeleton Loader */}
+            {/* Large Preview Gallery with Skeleton Loader & Interactive Overlay Trigger */}
             <div className="space-y-4">
-              <div className="relative min-h-[220px] sm:min-h-[380px] rounded-none overflow-hidden border border-navy-200 dark:border-navy-800 bg-navy-100 dark:bg-navy-950 shadow-soft flex items-center justify-center">
+              <div
+                onClick={() => setIsLightboxOpen(true)}
+                className="group relative min-h-[220px] sm:min-h-[380px] rounded-none overflow-hidden border border-navy-200 dark:border-navy-800 bg-navy-100 dark:bg-navy-950 shadow-soft flex items-center justify-center cursor-zoom-in select-none"
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setIsLightboxOpen(true);
+                  }
+                }}
+                aria-label="Click to enlarge image in overlay"
+              >
                 {!mainImageLoaded && (
                   <div className="absolute inset-0 bg-navy-200/70 dark:bg-navy-800/80 animate-pulse flex items-center justify-center">
                     <Icon name="Image" size="xl" className="text-navy-300 dark:text-navy-600 animate-pulse" />
@@ -118,14 +169,42 @@ export function WebsiteDetails() {
                   alt={`${website.title} preview screen ${activeImageIndex + 1}`}
                   onLoad={() => setMainImageLoaded(true)}
                   className={cn(
-                    'w-full h-auto object-contain rounded-none transition-all duration-500',
+                    'w-full h-auto object-contain rounded-none transition-all duration-300 group-hover:scale-[1.01]',
                     mainImageLoaded ? 'opacity-100' : 'opacity-0'
                   )}
                 />
+
+                {/* Enlarge Badge */}
+                <div className="absolute top-3 right-3 z-10 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-navy-950/80 text-white border border-navy-700/80 backdrop-blur-sm shadow-md transition-all group-hover:bg-brand-600 group-hover:border-brand-500">
+                  <Icon name="Maximize2" size="xs" />
+                  <span>Click to enlarge</span>
+                </div>
+
+                {/* Inline Prev & Next Navigation Buttons */}
+                {galleryImages.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      onClick={handlePrevImage}
+                      aria-label="Previous preview"
+                      className="absolute left-2.5 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-2.5 rounded-full bg-navy-950/75 hover:bg-brand-500 text-white border border-navy-700/70 hover:border-brand-400 shadow-lg backdrop-blur-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all focus:opacity-100 focus:outline-none"
+                    >
+                      <Icon name="ChevronLeft" size="md" />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleNextImage}
+                      aria-label="Next preview"
+                      className="absolute right-2.5 top-1/2 -translate-y-1/2 z-10 p-2 sm:p-2.5 rounded-full bg-navy-950/75 hover:bg-brand-500 text-white border border-navy-700/70 hover:border-brand-400 shadow-lg backdrop-blur-sm opacity-90 sm:opacity-0 sm:group-hover:opacity-100 transition-all focus:opacity-100 focus:outline-none"
+                    >
+                      <Icon name="ChevronRight" size="md" />
+                    </button>
+                  </>
+                )}
               </div>
 
               {galleryImages.length > 1 && (
-                <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                <div className="grid grid-cols-3 sm:grid-cols-5 gap-2.5 sm:gap-3">
                   {galleryImages.map((imgSrc, idx) => (
                     <button
                       key={`thumb-${idx}`}
@@ -415,6 +494,126 @@ export function WebsiteDetails() {
           </div>
         )}
       </section>
+
+      {/* Interactive Lightbox / Fullscreen Overlay Modal */}
+      <AnimatePresence>
+        {isLightboxOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="fixed inset-0 z-50 flex flex-col justify-between bg-navy-950/95 backdrop-blur-md p-3 sm:p-6"
+            onClick={() => setIsLightboxOpen(false)}
+            role="dialog"
+            aria-modal="true"
+            aria-label={`${website.title} Fullscreen Gallery`}
+          >
+            {/* Top Bar: Title, Count, Close Button */}
+            <div
+              className="flex items-center justify-between w-full max-w-7xl mx-auto pb-3 border-b border-navy-800/80 text-white select-none"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                <Badge variant="brand" size="sm" className="hidden sm:inline-flex">
+                  {website.categoryName}
+                </Badge>
+                <span className="font-semibold text-sm sm:text-base text-navy-100 truncate max-w-[200px] sm:max-w-md">
+                  {website.title}
+                </span>
+                {galleryImages.length > 1 && (
+                  <span className="text-xs text-navy-300 font-mono bg-navy-900 px-2.5 py-1 rounded-full border border-navy-800 shrink-0">
+                    {activeImageIndex + 1} / {galleryImages.length}
+                  </span>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 shrink-0">
+                <span className="hidden sm:inline-block text-xs text-navy-400 mr-2">
+                  Press <kbd className="px-1.5 py-0.5 rounded bg-navy-800 border border-navy-700 text-navy-300 font-mono">Esc</kbd> to close
+                </span>
+                <button
+                  type="button"
+                  onClick={() => setIsLightboxOpen(false)}
+                  aria-label="Close modal"
+                  className="p-2 sm:p-2.5 rounded-full bg-navy-900/90 hover:bg-navy-800 text-navy-300 hover:text-white border border-navy-700/80 transition-all focus:outline-none focus:ring-2 focus:ring-brand-400"
+                >
+                  <Icon name="X" size="lg" />
+                </button>
+              </div>
+            </div>
+
+            {/* Main Stage: Prev, Large Image, Next */}
+            <div
+              className="relative flex-1 flex items-center justify-center w-full max-w-7xl mx-auto py-3 sm:py-6 overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {galleryImages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handlePrevImage}
+                  aria-label="Previous image"
+                  className="absolute left-2 sm:left-4 z-30 p-3 sm:p-4 rounded-full bg-navy-900/90 hover:bg-brand-500 text-white border border-navy-700 hover:border-brand-400 shadow-2xl backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-400 group"
+                >
+                  <Icon name="ChevronLeft" size="xl" className="transition-transform group-hover:-translate-x-0.5" />
+                </button>
+              )}
+
+              <div className="relative max-h-[72vh] sm:max-h-[78vh] max-w-[92vw] sm:max-w-[85vw] flex items-center justify-center">
+                <motion.img
+                  key={activeImageIndex}
+                  src={galleryImages[activeImageIndex] || website.thumbnail}
+                  alt={`${website.title} view ${activeImageIndex + 1}`}
+                  initial={{ opacity: 0, scale: 0.98 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.98 }}
+                  transition={{ duration: 0.2 }}
+                  className="max-h-[72vh] sm:max-h-[78vh] w-auto max-w-full object-contain rounded-lg shadow-2xl border border-navy-800 bg-navy-950 select-none"
+                />
+              </div>
+
+              {galleryImages.length > 1 && (
+                <button
+                  type="button"
+                  onClick={handleNextImage}
+                  aria-label="Next image"
+                  className="absolute right-2 sm:right-4 z-30 p-3 sm:p-4 rounded-full bg-navy-900/90 hover:bg-brand-500 text-white border border-navy-700 hover:border-brand-400 shadow-2xl backdrop-blur-sm transition-all focus:outline-none focus:ring-2 focus:ring-brand-400 group"
+                >
+                  <Icon name="ChevronRight" size="xl" className="transition-transform group-hover:translate-x-0.5" />
+                </button>
+              )}
+            </div>
+
+            {/* Bottom Thumbnail Strip */}
+            {galleryImages.length > 1 && (
+              <div
+                className="w-full max-w-4xl mx-auto pt-2 border-t border-navy-800/80 flex items-center justify-center gap-2 sm:gap-3 overflow-x-auto py-2 px-2"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {galleryImages.map((imgSrc, idx) => (
+                  <button
+                    key={`modal-thumb-${idx}`}
+                    type="button"
+                    onClick={() => setActiveImageIndex(idx)}
+                    className={cn(
+                      'shrink-0 w-14 sm:w-20 aspect-[16/10] rounded overflow-hidden border-2 transition-all focus:outline-none focus:ring-2 focus:ring-brand-400',
+                      activeImageIndex === idx
+                        ? 'border-brand-400 ring-2 ring-brand-400/40 scale-105 opacity-100'
+                        : 'border-navy-700 opacity-60 hover:opacity-100 hover:border-navy-500'
+                    )}
+                  >
+                    <img
+                      src={imgSrc}
+                      alt={`Thumbnail ${idx + 1}`}
+                      className="w-full h-full object-cover"
+                    />
+                  </button>
+                ))}
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </PageLayout>
   );
 }
