@@ -235,6 +235,69 @@ export const personalPortfolioWebsites = [
     popularScore: 99,
     createdAt: "2026-11-11",
   },
+
+  {
+    id: "008",
+    code: "Artist1",
+    title: "Virtual Artist Portfolio",
+    slug: "contemporary-visual-artist-kinetic-muralist-portfolio-website",
+    category: "personal-portfolio",
+    categoryName: "Personal Portfolio",
+    shortDescription:
+      "An avant-garde brutalist visual artist and monumental muralist portfolio featuring kinetic typography overlays, interactive 3D physics-tilt artwork cards, live-animated stats counters, curated exhibition chronologies, and a private studio commission pipeline.",
+    description:
+      "Engineered specifically for contemporary visual artists, large-scale muralists, fine-art painters, sculptors, and creative directors. Boasting an obsidian, kinetic vermilion, and titanium-chrome palette, this website pairs an immersive 100vh spatial hero with kinetic letter animations, filterable masterwork catalog archives, interactive 3D physics tilt gallery cards, museum exhibition timelines, and a high-converting art commission and collector acquisition pipeline in Sorsogon, Philippines.",
+    features: [
+      "100vh Architectural Kinetic Hero with Staggered Kinetic Letter Reveals & Layered Canvas Overlays",
+      "Live Animated Studio Stat Counters (0 to 70+ Works, 14 Murals, 6 Solo Shows, 8+ Years Practice)",
+      "Interactive 3D Physics Mouse-Tilt Artwork Cards with Framed Gallery Brackets & Shimmer Sweep",
+      "Filterable Fine-Art Portfolio Catalog (Canvas Paintings, Kinetic Murals, Mixed Media, Installations)",
+      "Curated Solo & Group Exhibition Chronology with Venue Provenance & Gallery Press Badges",
+      "Direct Private Commission & Studio Visit Booking Pipeline with Responsive Form Validation",
+      "Full Local Fine-Art SEO Architecture with Semantic Schema.org VisualArtwork & LocalBusiness JSON-LD",
+      "100% Static Site Generation (SSG Prerender) with vite-react-ssg for 95+ Mobile & Desktop Lighthouse Scores",
+    ],
+    techStack: [
+      "React 18",
+      "Vite",
+      "vite-react-ssg",
+      "Tailwind CSS",
+      "React Router v6",
+      "Framer Motion",
+      "Self-Hosted Typography (@fontsource Syne, Space Grotesk, Plus Jakarta Sans)",
+      "Atomic Design Architecture",
+    ],
+    pricing: {
+      basic: {
+        name: "Basic (Static Website)",
+        usd: 55,
+        php: 3000,
+        formatted: "$55 (₱3,000)",
+      },
+      premium: {
+        name: "Premium (Dynamic Website + Admin Panel)",
+        usd: 350,
+        php: 19500,
+        formatted: "$350 (₱19,500)",
+      },
+    },
+    price: 55,
+    turnaround: "5–7 Business Days",
+    clientType:
+      "Visual Artists, Contemporary Painters, Large-Scale Muralists, Sculptors, Art Directors, Fine Art Studios",
+    thumbnail: "/portfolio/artist/thumbnail/artist1.webp",
+    gallery: [
+      "/portfolio/artist/artist1.webp",
+      "/portfolio/artist/artist2.jpg",
+      "/portfolio/artist/artist3.jpg",
+      "/portfolio/artist/artist4.jpg",
+      "/portfolio/artist/artist5.jpg",
+    ],
+    demoUrl: "https://portfolio-artist1.eyhan-webdesign.workers.dev",
+    featured: true,
+    popularScore: 99,
+    createdAt: "2026-11-14",
+  },
 ];
 
 export default personalPortfolioWebsites;
