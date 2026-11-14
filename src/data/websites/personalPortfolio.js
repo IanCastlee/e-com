@@ -51,7 +51,7 @@ export const personalPortfolioWebsites = [
     clientType:
       "Photographers, Videographers, Visual Storytellers, Creative Directors",
     thumbnail: "/portfolio/photographer/thumbnail/photographer_thumbnail.webp",
-    gallery: ["/portfolio//photographer/photographer_thumbnail.webp"],
+    gallery: ["/portfolio/photographer/thumbnail/photographer_thumbnail.webp"],
     demoUrl: "https://portfolio-photographer1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 100,
@@ -102,7 +102,7 @@ export const personalPortfolioWebsites = [
     clientType:
       "Executive Virtual Assistants, Fractional Operations Partners, Remote Specialists",
     thumbnail: "/portfolio/va/thumbnail/va_thumbnail.webp",
-    gallery: ["/portfolio/va/va_thumbnail.webp"],
+    gallery: ["/portfolio/va/thumbnail/va_thumbnail.webp"],
     demoUrl: "https://portfolio-va1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 98,
@@ -224,11 +224,7 @@ export const personalPortfolioWebsites = [
       "Life Coaches, Executive Mentors, Holistic Wellness Practitioners, Therapists, Leadership Consultants",
     thumbnail: "/portfolio/coach/thumbnail/coach1.webp",
     gallery: [
-      "/portfolio/coach/coach1.webp",
-      "/portfolio/coach/coach2.jpg",
-      "/portfolio/coach/coach3.jpg",
-      "/portfolio/coach/coach4.jpg",
-      "/portfolio/coach/coach5.jpg",
+      "/portfolio/coach/thumbnail/coach1.webp",
     ],
     demoUrl: "https://portfolio-coach1.eyhan-webdesign.workers.dev",
     featured: true,
@@ -292,6 +288,7 @@ export const personalPortfolioWebsites = [
       "/portfolio/artist/artp3.png",
       "/portfolio/artist/artp4.png",
       "/portfolio/artist/artp5.png",
+      "/portfolio/artist/artp6.png",
     ],
     demoUrl: "https://portfolio-artist1.eyhan-webdesign.workers.dev",
     featured: true,

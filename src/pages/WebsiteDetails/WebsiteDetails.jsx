@@ -31,31 +31,27 @@ export function WebsiteDetails() {
   }, [website]);
 
   const [activeImageIndex, setActiveImageIndex] = useState(0);
-  const [mainImageLoaded, setMainImageLoaded] = useState(false);
+  const [mainImageLoaded, setMainImageLoaded] = useState(true);
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
   useEffect(() => {
     setActiveImageIndex(0);
-    setMainImageLoaded(false);
     setIsLightboxOpen(false);
   }, [slug]);
 
   const handleThumbnailClick = (idx) => {
     if (idx !== activeImageIndex) {
-      setMainImageLoaded(false);
       setActiveImageIndex(idx);
     }
   };
 
   const handlePrevImage = useCallback((e) => {
     if (e) e.stopPropagation();
-    setMainImageLoaded(false);
     setActiveImageIndex((prev) => (prev === 0 ? galleryImages.length - 1 : prev - 1));
   }, [galleryImages.length]);
 
   const handleNextImage = useCallback((e) => {
     if (e) e.stopPropagation();
-    setMainImageLoaded(false);
     setActiveImageIndex((prev) => (prev === galleryImages.length - 1 ? 0 : prev + 1));
   }, [galleryImages.length]);
 
@@ -160,7 +156,7 @@ export function WebsiteDetails() {
                 aria-label="Click to enlarge image in overlay"
               >
                 {!mainImageLoaded && (
-                  <div className="absolute inset-0 bg-navy-200/70 dark:bg-navy-800/80 animate-pulse flex items-center justify-center">
+                  <div className="absolute inset-0 z-0 bg-navy-200/50 dark:bg-navy-800/50 animate-pulse flex items-center justify-center pointer-events-none">
                     <Icon name="Image" size="xl" className="text-navy-300 dark:text-navy-600 animate-pulse" />
                   </div>
                 )}
@@ -168,10 +164,13 @@ export function WebsiteDetails() {
                   src={galleryImages[activeImageIndex] || website.thumbnail}
                   alt={`${website.title} preview screen ${activeImageIndex + 1}`}
                   onLoad={() => setMainImageLoaded(true)}
-                  className={cn(
-                    'w-full h-auto object-contain rounded-none transition-all duration-300 group-hover:scale-[1.01]',
-                    mainImageLoaded ? 'opacity-100' : 'opacity-0'
-                  )}
+                  onError={(e) => {
+                    if (website.thumbnail && e.currentTarget.src !== website.thumbnail) {
+                      e.currentTarget.src = website.thumbnail;
+                    }
+                    setMainImageLoaded(true);
+                  }}
+                  className="relative z-10 w-full h-auto object-contain rounded-none transition-transform duration-300 group-hover:scale-[1.01]"
                 />
 
                 {/* Enlarge Badge */}
@@ -568,6 +567,11 @@ export function WebsiteDetails() {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.2 }}
+                  onError={(e) => {
+                    if (website.thumbnail && e.currentTarget.src !== website.thumbnail) {
+                      e.currentTarget.src = website.thumbnail;
+                    }
+                  }}
                   className="max-h-[72vh] sm:max-h-[78vh] w-auto max-w-full object-contain rounded-lg shadow-2xl border border-navy-800 bg-navy-950 select-none"
                 />
               </div>
