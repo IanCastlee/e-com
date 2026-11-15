@@ -51,7 +51,13 @@ export const personalPortfolioWebsites = [
     clientType:
       "Photographers, Videographers, Visual Storytellers, Creative Directors",
     thumbnail: "/portfolio/photographer/thumbnail/photographer_thumbnail.webp",
-    gallery: ["/portfolio/photographer/thumbnail/photographer_thumbnail.webp"],
+    gallery: [
+      "/portfolio/photographer/photogp1.png",
+      "/portfolio/photographer/photogp2.png",
+      "/portfolio/photographer/photogp3.png",
+      "/portfolio/photographer/photogp4.png",
+      "/portfolio/photographer/photogp5.png",
+    ],
     demoUrl: "https://portfolio-photographer1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 100,
@@ -223,9 +229,7 @@ export const personalPortfolioWebsites = [
     clientType:
       "Life Coaches, Executive Mentors, Holistic Wellness Practitioners, Therapists, Leadership Consultants",
     thumbnail: "/portfolio/coach/thumbnail/coach1.webp",
-    gallery: [
-      "/portfolio/coach/thumbnail/coach1.webp",
-    ],
+    gallery: ["/portfolio/coach/thumbnail/coach1.webp"],
     demoUrl: "https://portfolio-coach1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 99,

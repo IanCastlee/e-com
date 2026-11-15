@@ -66,7 +66,7 @@ export const schoolPortalWebsites = [
       "/school/school1/schoolp4.png",
       "/school/school1/schoolp5.png",
     ],
-    demoUrl: "https://school-portal.eyhan-webdesign.workers.dev",
+    demoUrl: "https://school1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 99,
     createdAt: "2026-11-15",
