@@ -21,7 +21,7 @@ export function MainLayout({
     <div className="min-h-screen flex flex-col bg-navy-50 dark:bg-navy-950 text-navy-900 dark:text-navy-50 transition-colors duration-300">
       {navbarSlot || <Navbar {...navbarProps} isScrolled={isScrolled} />}
 
-      <main id="main-content" className="flex-1">
+      <main id="main-content" className="flex-1 pb-20 lg:pb-0">
         {children || <Outlet />}
       </main>
 
@@ -29,7 +29,7 @@ export function MainLayout({
 
       {/* Floating Back-to-Top Button */}
       {isScrolled && onScrollTop && (
-        <div className="fixed bottom-6 right-6 z-40">
+        <div className="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-30">
           <Button
             variant="primary"
             size="sm"

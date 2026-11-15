@@ -10,3 +10,4 @@ export { TestimonialSection } from './TestimonialSection';
 export { ProcessSteps } from './ProcessSteps';
 export { FAQAccordion } from './FAQAccordion';
 export { CTABanner } from './CTABanner';
+export { MobileBottomBar } from './MobileBottomBar';

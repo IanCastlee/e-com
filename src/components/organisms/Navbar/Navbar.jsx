@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
-import { motion, AnimatePresence } from "framer-motion";
-import { Logo, Button, Icon, Badge, Text } from "../../atoms";
+import { Logo, Button, Icon } from "../../atoms";
 import { NavLink } from "../../molecules";
+import { MobileBottomBar } from "../MobileBottomBar";
 import { cn } from "../../../utils/formatters";
 
 /**
@@ -68,7 +68,8 @@ export function Navbar({
   const closeMobileMenu = () => setMobileMenuOpen(false);
 
   return (
-    <header
+    <>
+      <header
       className={cn(
         "sticky top-0 z-50 w-full transition-transform duration-300 ease-in-out px-3 pt-2.5 pb-1 sm:p-0",
         !mobileNavVisible && "-translate-y-[120%] sm:translate-y-0",
@@ -128,7 +129,7 @@ export function Navbar({
             </div>
           )}
 
-          {/* Mobile Hamburger Trigger */}
+          {/* Mobile Hamburger / Quick Drawer Trigger */}
           <Button
             variant="ghost"
             size="sm"
@@ -141,50 +142,17 @@ export function Navbar({
           </Button>
         </div>
       </div>
-
-      {/* Mobile Menu Drawer (Floating dropdown) */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.98 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden mt-2 max-w-[1600px] mx-auto rounded-[14px] overflow-hidden bg-white/95 dark:bg-navy-900/95 backdrop-blur-xl border border-navy-200/90 dark:border-white/10 shadow-[0_12px_40px_rgba(0,0,0,0.25)] dark:shadow-[0_15px_50px_rgba(0,0,0,0.6)]"
-          >
-            <nav
-              aria-label="Mobile navigation"
-              className="px-4 pt-3 pb-5 space-y-1.5"
-            >
-              {links.map((link) => (
-                <NavLink
-                  key={link.path}
-                  to={link.path}
-                  label={link.label}
-                  isMobile
-                  onClick={closeMobileMenu}
-                />
-              ))}
-
-              {ctaButton && (
-                <div className="pt-3 mt-3 border-t border-navy-100 dark:border-navy-800">
-                  <Button
-                    variant="primary"
-                    size="md"
-                    to={ctaButton.path}
-                    fullWidth
-                    rightIcon="ArrowUpRight"
-                    onClick={closeMobileMenu}
-                  >
-                    {ctaButton.label}
-                  </Button>
-                </div>
-              )}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </header>
+
+    {/* Mobile Bottom Navigation Bar & Slide-Up More Drawer */}
+    <MobileBottomBar
+      isMoreOpen={mobileMenuOpen}
+      onToggleMore={() => setMobileMenuOpen((prev) => !prev)}
+      onCloseMore={closeMobileMenu}
+      isDark={isDark}
+      onToggleTheme={onToggleTheme}
+    />
+  </>
   );
 }
 
