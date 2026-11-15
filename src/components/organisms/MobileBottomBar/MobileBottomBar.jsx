@@ -30,7 +30,7 @@ export function MobileBottomBar({
       isActive: currentPath === '/',
     },
     {
-      label: 'Portfolio',
+      label: 'Websites',
       path: '/portfolio',
       icon: 'LayoutGrid',
       isActive: currentPath.startsWith('/portfolio') || currentPath.startsWith('/category'),

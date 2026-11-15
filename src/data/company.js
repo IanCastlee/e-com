@@ -6,7 +6,7 @@ import { BRAND_INFO } from '../utils/constants';
  */
 export const navLinks = [
   { label: 'Home', path: '/' },
-  { label: 'Storefront & Portfolio', path: '/portfolio' },
+  { label: 'Websites', path: '/portfolio' },
   { label: 'Solutions & Pricing', path: '/services' },
   { label: 'FAQs', path: '/faqs' },
   { label: 'About Company', path: '/about' },

@@ -44,7 +44,7 @@ export function CategoryPage() {
         subtitle="The requested website category does not exist or may have been moved."
         breadcrumbs={[
           { label: 'Home', path: '/' },
-          { label: 'Portfolio', path: '/portfolio' },
+          { label: 'Websites', path: '/portfolio' },
           { label: 'Not Found' },
         ]}
       >
@@ -67,7 +67,7 @@ export function CategoryPage() {
       subtitle={currentCategory.description}
       breadcrumbs={[
         { label: 'Home', path: '/' },
-        { label: 'Portfolio', path: '/portfolio' },
+        { label: 'Websites', path: '/portfolio' },
         { label: currentCategory.name },
       ]}
       headerActions={

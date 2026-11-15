@@ -7,3 +7,4 @@ export { FormField } from './FormField';
 export { NavLink } from './NavLink';
 export { SectionTitle } from './SectionTitle';
 export { FilterDropdown } from './FilterDropdown';
+export { Pagination } from './Pagination';

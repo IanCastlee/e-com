@@ -100,7 +100,7 @@ export function WebsiteDetails() {
         subtitle="The website template you are looking for may have been renamed or moved."
         breadcrumbs={[
           { label: 'Home', path: '/' },
-          { label: 'Portfolio', path: '/portfolio' },
+          { label: 'Websites', path: '/portfolio' },
           { label: 'Not Found' },
         ]}
       >
@@ -125,7 +125,7 @@ export function WebsiteDetails() {
       subtitle={website.shortDescription}
       breadcrumbs={[
         { label: 'Home', path: '/' },
-        { label: 'Portfolio', path: '/portfolio' },
+        { label: 'Websites', path: '/portfolio' },
         { label: website.categoryName, path: `/category/${website.category}` },
         { label: website.title },
       ]}
