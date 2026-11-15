@@ -60,7 +60,11 @@ export const schoolPortalWebsites = [
       "DepEd National High Schools, Science High Schools, Private Academies, Vocational Institutes, Colleges",
     thumbnail: "/school/school1/thumbnail/school_thumbnail1.webp",
     gallery: [
-      "/school/school1/thumbnail/school_thumbnail1.webp",
+      "/school/school1/schoolp1.png",
+      "/school/school1/schoolp2.png",
+      "/school/school1/schoolp3.png",
+      "/school/school1/schoolp4.png",
+      "/school/school1/schoolp5.png",
     ],
     demoUrl: "https://school-portal.eyhan-webdesign.workers.dev",
     featured: true,
