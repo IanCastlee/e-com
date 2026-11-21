@@ -231,7 +231,7 @@ export function MobileBottomBar({
                       <Icon name="Building2" size="md" />
                     </div>
                     <div>
-                      <div className="text-sm font-semibold">About Company</div>
+                      <div className="text-sm font-semibold">About Us</div>
                       <div className="text-xs text-navy-500 dark:text-navy-400">
                         Studio story, team & Bulusan roots
                       </div>

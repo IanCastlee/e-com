@@ -35,7 +35,7 @@ export function About() {
       subtitle={leadParagraph}
       breadcrumbs={[
         { label: 'Home', path: '/' },
-        { label: 'About Company' },
+        { label: 'About Us' },
       ]}
       headerActions={
         <Button variant="primary" size="md" to="/contact" rightIcon="ArrowUpRight">

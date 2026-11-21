@@ -62,7 +62,7 @@ export const resortHotelWebsites = [
       "/resort_and_hotel/resort1/resort4.webp",
       "/resort_and_hotel/resort1/resort5.webp",
     ],
-    demoUrl: "https://demo.e-yhan.ph/bulusan-lake-resort",
+    demoUrl: "https://resort1.eyhan-webdesign.workers.dev",
     featured: true,
     popularScore: 99,
     createdAt: "2026-10-28",

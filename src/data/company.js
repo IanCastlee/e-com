@@ -9,7 +9,7 @@ export const navLinks = [
   { label: 'Websites', path: '/portfolio' },
   { label: 'Solutions & Pricing', path: '/services' },
   { label: 'FAQs', path: '/faqs' },
-  { label: 'About Company', path: '/about' },
+  { label: 'About Us', path: '/about' },
   { label: 'Contact Us', path: '/contact' },
 ];
 
@@ -79,7 +79,7 @@ export const aboutPageData = {
   headline: 'World-Class Web Engineering, Rooted in Bulusan, Sorsogon.',
   leadParagraph:
     'Founded at the foothills of Mt. Bulusan in Sorsogon, e-yhan started with a clear observation: local resorts, barangays, schools, and small businesses in the Philippines deserve the same modern, reliable web systems used by top corporations in Manila and abroad—without the intimidating six-figure agency price tag.',
-  missionTitle: 'Our Company Mission',
+  missionTitle: 'Our Mission',
   missionStatement:
     'To bridge the digital divide for Philippine SMEs, local government units, hospitality brands, and community institutions by delivering production-ready, accessible, and high-performing websites that generate real bookings, trust, and public service impact.',
   visionTitle: 'The e-yhan Standard',
@@ -89,7 +89,7 @@ export const aboutPageData = {
     name: 'Eyhan',
     role: 'Founder & Lead Frontend Architect',
     location: 'Bulusan, Sorsogon, Philippines (Region V - Bicol)',
-    bio: 'A senior frontend engineer and UI/UX designer passionate about modular React architectures, design systems, and helping local entrepreneurs and communities thrive online. Combining enterprise software standards with deep knowledge of how Filipino customers browse, book, and buy.',
+    bio: 'A frontend engineer and UI/UX designer passionate about modular React architectures, design systems, and helping local entrepreneurs and communities thrive online. Combining enterprise software standards with deep knowledge of how Filipino customers browse, book, and buy.',
     quote:
       '"Good software shouldn’t be exclusive to mega-corporations. When a local resort in Bulusan, a coffee shop in Sorsogon City, or a barangay hall goes online with a world-class website, the entire community grows."',
   },
@@ -181,7 +181,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Company',
+      title: 'Studio & Services',
       links: [
         { label: 'All Ready-Made Websites', path: '/portfolio' },
         { label: 'Packages & Pricing', path: '/services' },
